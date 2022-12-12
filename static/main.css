@@ -154,13 +154,13 @@ header .banner {
     padding-right: 10px;
     align-self: flex-start;
     padding-bottom: 20px;
+    width: 320px;
 }
 
 .projects .list p {
     max-width: fit-content;
     font-size: 1em;
     color: var(--primary-text);
-    width: 320px;
     margin:0;
 }
 
