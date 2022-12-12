@@ -6,24 +6,30 @@
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
         <link rel="manifest" href="/site.webmanifest">
+        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+        <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro&display=swap" rel="stylesheet">
+
         <style>
-            @import url('https://fonts.googleapis.com/css2?family=Cormorant&display=swap');
-        </style> 
+            @import url('https://fonts.googleapis.com/css2?family=Source+Serif+Pro&display=swap');
+        </style>            
         <style>
             @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css');
         </style> 
-        <style>
-            @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
-        </style>
           
+
         <link rel="stylesheet" href="/static/main.css">
+        
+        <title>Daniel Beltejar</title>
+        
         <meta name="msapplication-TileColor" content="#ffffff">
         <meta name="theme-color" content="#ffffff">
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-        <title>Daniel Beltejar</title>
-
         <meta name="description" content="I&#x27;m Daniel Beltejar, a young computer science."/>
+        
         <meta property="og:title" content="Daniel Beltejar"/>
         <meta property="og:image" content="https://images.prismic.io/karina-sirqueira/58ff0832-15aa-41d6-b5e7-f0901a3fb253_Open+Graph.png?auto&#x3D;compress,format"/>
         <meta property="og:description" content="I&#x27;m Daniel Beltejar, a young computer science"/>
@@ -35,16 +41,25 @@
         <link rel="manifest" href="/manifest.webmanifest">
     </head>
     <body>
-        <div class="title">
+        <header>
+            <div onclick="location.href='https://blog.danielbeltejar.es/game-dev-log-1-introduction-top-my-mmorts-backyard-monsters/';" class="banner">
+                <div class="circle-button">
+                    <p>Blog</p>
+                </div>
+                <div  class="banner-text">
+                    <p>
+                        Introduction to my first MMORTS - learn more
+                    </p>
+                </div>
+                
+            </div>
             <h1>Daniel Beltejar</h1>
-            <p> <p>    
-        </div>
+        </header>
         <div class="about">
             <h2>About</h2>
-            <p>I started as a programmer and system administrator in a self-taught way as a hobby.
+            <p> Welcome to my personal web page. I started my journey as a self-taught programmer and system administrator who has been working in the field for many years.
                 Later on I set up with a friend a small project and began to educate in the field of networks and telecommunications.
-                I mainly work with Java, Python, C# and web programming
-                , I know about databases both sequential and non-sequential, Python for process automation and monitoring. I have
+                My main areas of expertise include systems administration and operations, automations, monitoring, Java, Python, C#, web programming. Also know about databases both sequential and non-sequential, Python for process automation and monitoring. I have
                 knowledge of CI tools like Jenkins, Git, proxies, reverse proxies, virtualization and containers like Docker or Kubernetes. Both administration and deployment of on-premise and cloud servers, apps, operating systems and networks as well as the
                 installation and maintenance of services or applications.
             </p>
@@ -64,7 +79,8 @@
         </div>
         <div class="projects">
             <h2>Projects</h2>
-            <p>These are my own projects I work on to expand my skills in new and different technologies.
+            <p>I also have a number of personal projects that I work on in my free time. These projects allow me to explore new and emerging technologies and to expand my
+                 skillset in a variety of different areas. Through these projects, I have gained valuable experience and knowledge that I can apply to my professional work. I am always looking for new and exciting opportunities to learn and grow, and my personal projects are an important part of that journey.
             </p>
             <div style="display: flex; justify-content: center;">   
                 <div class="list">
@@ -74,7 +90,7 @@
                             <source src="/static/fym.mp4" type="video/mp4">
                             Sorry, your browser does not support HTML5 video.
                         </video>                      
-                        <h3>An online MMORTS inspired in the art style and mechanics of an old flash game. Used C#, Blender, Python, Redis, MongoDB, Traefik.</h3>
+                        <p>A self-made online MMORTS inspired by the art style and mechanics of an old flash game. This game was built using C#, Blender, Python, Redis, and MongoDB, offering a unique blend of retro and modern elements that provide an engaging and immersive experience for players. This project was made to inquire into creating and implementing a complex online game system using a range of modern technologies.</h3>
                         <div class="pbuttons">
                             <div onclick="location.href='https://www.linkedin.com/in/daniel-beltejar-sancho/';" class="button">
                                 <i class="fa-solid fa-arrow-up-right-from-square"></i>
@@ -92,7 +108,7 @@
                             <source src="/static/comugamers.mp4" type="video/mp4">
                             Sorry, your browser does not support HTML5 video.
                         </video>                      
-                        <h3>A solution developed back in 2016 for storing and manage 6.000.000 users data. Storing players data, statics, leaderboards and games mechanics linked to it. Used Java, Redis, MySQL.</h3>
+                        <p>A Java-based solution developed in 2016 for storing and managing the data of 6 million users. This solution allows for the storage of players' data, statistics, leaderboards, and game mechanics, all linked together to provide a comprehensive system for managing user data. Redis and MySQL were used to enable efficient and scalable data storage and management. This solution has proven effective in providing a robust and reliable way to handle thousands of simultaneous users.</h3>
                         <div class="pbuttons">
                             <div onclick="location.href='https://github.com/danielbeltejar/ComuGlobal';" class="button">
                                 <i class="fa-brands fa-square-github"></i>
@@ -106,7 +122,8 @@
                             <source src="/static/kafka.mp4" type="video/mp4">
                             Sorry, your browser does not support HTML5 video.
                         </video>                      
-                        <h3>Collects public data from Spanish real state to analyze the evolution of housing prices over the time. Used Apache Spark, Python, HTML, Typescript, CSS.</h3>
+                        <p>A self-made project that collects public data on Spanish real estate to analyze the evolution of housing prices over time. This project uses Apache Spark, Python, HTML, Typescript, and CSS to gather, process, and present data in a user-friendly format. This project demonstrates the skill in working with big data and web technologies to create a valuable resource for understanding trends in the housing market.
+                        </p>
                         <div class="pbuttons">
                             <div onclick="location.href='https://github.com/danielbeltejar';" class="button">
                                 <i class="fa-brands fa-square-github"></i>
@@ -120,7 +137,7 @@
         <div class="contact">
             <h2>Contact me</h2>
             <p>
-                Feel free to write to one of the next options.
+                Thank you for visiting my personal web page. If you have any questions or would like to get in touch, please feel free to to write to one of the next options. I look forward to hearing from you!
             </p>
             <div class="buttons">
                 <div onclick="location.href='https://www.linkedin.com/in/daniel-beltejar-sancho/';" class="button">

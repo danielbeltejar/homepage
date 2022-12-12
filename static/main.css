@@ -31,25 +31,53 @@ body {
     margin: 0;
 }
 
-.title h1 {
-    margin-bottom: 0%;
+header {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+header h1 {
     font-size:2.9em;
+    align-self: center;
+    margin: 20px 0;
 }
 
 @media only screen and (min-width: 1200px) {
-    .title h1 {
-        margin-bottom: 0%;
+    header h1 {
         font-size:3.5em;
     }
 }
 
-.title p {
-    margin-top: 0%;
-    margin-left: auto;
-    float: right;
-    font-size: 1.5em;
-    font-weight: bolder;
-    padding-right: 15px;
+header .banner {
+    background-color: var(--secondary-text);
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.banner .circle-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1em;
+    height: 20px;
+    width: 40px;
+    border: 2px solid var(--secondary-color);
+    margin-right: 10px;
+}
+
+.banner .circle-button p {
+    color: var(--secondary-color);
+}
+
+.banner p {
+    color: var(--primary-color);
+    margin: 0;
+    font-size: 0.8em;
 }
 
 .about, .contact {
@@ -119,7 +147,7 @@ body {
     overflow-x: auto;
     margin-right: calc(100vw / 10);
     margin-left: calc(100vw / 10);
-    margin-bottom: calc(100vw / 15);
+    margin-bottom: calc(100vw / 30);
 }
 
 .projects .project {
@@ -128,33 +156,40 @@ body {
     padding-bottom: 20px;
 }
 
-.projects .list h3 {
+.projects .list p {
     max-width: fit-content;
-    font-size: 1.2em;
+    font-size: 1em;
     color: var(--primary-text);
-    font-family: 'Cormorant', serif;
     width: 320px;
+    margin:0;
 }
 
 .pbuttons {
     display: flex;
     flex-direction: row;
+    margin-top: 10px;
 }
 
 .about, .experience, .projects, .contact {
     width: 100%;
 }
 
-h1, .title p{
-    font-family: 'VT323', monospace;
-    font-size: 2em;
+h1 {
+    color: var(--secondary-text);
+    font-family: 'Source Serif Pro', serif;
+    font-weight: bolder;
     letter-spacing: -1px;
+    margin: 0px;
 }
 
 h2 {
     color: var(--secondary-text);
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Source Serif Pro', serif;
     font-size: 2em;
     font-weight: 600;
     margin-bottom: -5px;
+}
+
+p {
+    font-family: Arial, Helvetica, sans-serif;
 }
