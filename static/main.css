@@ -1,0 +1,160 @@
+:root {
+    --primary-color: #f1efe9;
+    --secondary-color: #E2DED1;
+    --primary-text: #282828;
+    --secondary-text: #452b1a;
+}
+
+html {
+    overflow: -moz-scrollbars-horizontal; 
+    overflow-y: scroll;
+}
+
+.projects .list::-webkit-scrollbar, html::-webkit-scrollbar {
+    width: 12px;               /* width of the entire scrollbar */
+  }
+  
+.projects .list::-webkit-scrollbar-track, html::-webkit-scrollbar-track {
+    background: var(--secondary-color);        /* color of the tracking area */
+  }
+  
+.projects .list::-webkit-scrollbar-thumb, html::-webkit-scrollbar-thumb {
+    background-color: var(--secondary-text);     /* color of the scroll thumb */
+  }
+
+body {
+    background-color: var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    height: 100vh;
+    margin: 0;
+}
+
+.title h1 {
+    margin-bottom: 0%;
+    font-size:2.9em;
+}
+
+@media only screen and (min-width: 1200px) {
+    .title h1 {
+        margin-bottom: 0%;
+        font-size:3.5em;
+    }
+}
+
+.title p {
+    margin-top: 0%;
+    margin-left: auto;
+    float: right;
+    font-size: 1.5em;
+    font-weight: bolder;
+    padding-right: 15px;
+}
+
+.about, .contact {
+    background-color: var(--secondary-color);
+}
+
+.about p,.projects p, .experience p, .contact p  {
+    font-size: 1.2em;
+    color: var(--primary-text);
+    margin-top: calc(100vh / 60);
+}
+
+.about p,.projects p, .experience p, .contact p, .about h2,.projects h2, .experience h2, .contact h2, .about .buttons,  .contact .buttons {
+    margin-right: calc(100vw / 7);
+    margin-left: calc(100vw / 7);
+}
+
+.about h2,.projects h2, .experience h2, .contact h2 {
+    margin-top: calc(100vw / 15);
+}
+
+.about .buttons, .contact .buttons {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: calc(100vw / 15);
+}
+
+@media only screen and (min-width: 1200px) {
+    .about p,.projects p, .experience p, .contact p, .about h2,.projects h2, .experience h2, .contact h2, .about .buttons, .contact .buttons {
+        margin-right: calc(100vw / 3);
+        margin-left: calc(100vw / 3);
+    }
+    .about h2,.projects h2, .experience h2, .contact h2 {
+        margin-top: calc(100vw / 25);
+    }
+    
+    .about .buttons {
+        margin-bottom: calc(100vw / 25);
+    }    
+}
+
+.button {
+    display: flex;
+    flex-direction: row;
+    background-color: var(--secondary-text);
+    color: var(--secondary-color);
+    font-size: 25;
+    align-items: center;
+    height: 40px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.button a {
+    padding-left: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.6em;
+    font-weight: 600;
+}
+
+.projects .list {
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    overflow-x: auto;
+    margin-right: calc(100vw / 10);
+    margin-left: calc(100vw / 10);
+    margin-bottom: calc(100vw / 15);
+}
+
+.projects .project {
+    padding-right: 10px;
+    align-self: flex-start;
+    padding-bottom: 20px;
+}
+
+.projects .list h3 {
+    max-width: fit-content;
+    font-size: 1.2em;
+    color: var(--primary-text);
+    font-family: 'Cormorant', serif;
+    width: 320px;
+}
+
+.pbuttons {
+    display: flex;
+    flex-direction: row;
+}
+
+.about, .experience, .projects, .contact {
+    width: 100%;
+}
+
+h1, .title p{
+    font-family: 'VT323', monospace;
+    font-size: 2em;
+    letter-spacing: -1px;
+}
+
+h2 {
+    color: var(--secondary-text);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2em;
+    font-weight: 600;
+    margin-bottom: -5px;
+}
