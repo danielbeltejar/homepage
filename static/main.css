@@ -147,7 +147,8 @@ header .banner {
     overflow-x: auto;
     margin-right: calc(100vw / 10);
     margin-left: calc(100vw / 10);
-    margin-bottom: calc(100vw / 15);
+    margin-bottom: calc(100vw / 20);
+    margin-top: calc(100vw / 40);
 }
 
 .projects .project {
