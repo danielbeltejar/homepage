@@ -147,27 +147,39 @@ header .banner {
     overflow-x: auto;
     margin-right: calc(100vw / 10);
     margin-left: calc(100vw / 10);
-    margin-bottom: calc(100vw / 30);
+    margin-bottom: calc(100vw / 15);
 }
 
 .projects .project {
-    padding-right: 10px;
+    display: flex;
+    flex-direction: column;
     align-self: flex-start;
-    padding-bottom: 20px;
+    margin-right: 20px;
     width: 320px;
+    height: 600px;
+    background-color: #E2DED1;
+    border-radius: 1em;
+}
+
+.project video {
+    scale: 0.8;
+    margin-bottom: auto;
 }
 
 .projects .list p {
+    padding: 15px 20px;
     max-width: fit-content;
-    font-size: 1em;
+    font-size: 1.05em;
     color: var(--primary-text);
     margin:0;
 }
 
 .pbuttons {
+    margin-left: 20px;
+    margin-bottom: 20px;
     display: flex;
     flex-direction: row;
-    margin-top: 10px;
+    margin-top: auto;
 }
 
 .about, .experience, .projects, .contact {
