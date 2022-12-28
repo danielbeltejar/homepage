@@ -129,7 +129,6 @@ header .banner {
     flex-direction: row;
     background-color: var(--secondary-text);
     color: var(--secondary-color);
-    font-size: 25;
     align-items: center;
     height: 40px;
     padding-left: 10px;
