@@ -80,6 +80,11 @@ header .banner {
     font-size: 0.8em!important;
 }
 
+.banner-text p:hover {
+    border-bottom: 2px solid var(--secondary-color);
+    padding-top: 2px;
+  }
+
 .about, .contact {
     background-color: var(--secondary-color);
 }
@@ -140,6 +145,11 @@ header .banner {
     font-weight: 600;
 }
 
+.row-justify {
+    display: flex;
+    justify-content: center;
+}
+
 .projects .list {
     display: flex;
     flex-direction: row;
@@ -165,6 +175,12 @@ header .banner {
 .project video {
     scale: 0.8;
     margin-bottom: auto;
+    object-fit: cover;
+}
+
+.video-container {
+    width: 320px; 
+    height: 240px;
 }
 
 .projects .list p {
