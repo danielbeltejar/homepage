@@ -119,10 +119,19 @@ header .banner {
     margin-left: 0;
     margin-bottom: calc(100vw / 20);
     margin-top: calc(100vw / 40);
+    gap: 20px;
 }
 
 .first-project {
-    margin-left: 30px;
+    margin-left: 20px;
+ }
+
+ .pbuttons {
+    margin-left: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    margin-top: auto;
 }
 
 @media only screen and (min-width: 1200px) {
@@ -153,7 +162,14 @@ header .banner {
     .first-project {
         margin-left: 0;
     }
-    
+
+    .pbuttons {
+        margin-left: 20px;
+        margin-bottom: calc(100vw / 40);
+        display: flex;
+        flex-direction: row;
+        margin-top: auto;
+    }
 }
 
 .button {
@@ -184,7 +200,6 @@ header .banner {
     display: flex;
     flex-direction: column;
     align-self: flex-start;
-    margin-right: 20px;
     width: 320px;
     height: 100%;
     background-color: #E2DED1;
@@ -210,13 +225,7 @@ header .banner {
     margin:0;
 }
 
-.pbuttons {
-    margin-left: 20px;
-    margin-bottom: calc(100vw / 40);
-    display: flex;
-    flex-direction: row;
-    margin-top: auto;
-}
+
 
 .about, .experience, .projects, .contact {
     width: 100%;
