@@ -110,18 +110,50 @@ header .banner {
     margin-bottom: calc(100vw / 15);
 }
 
+.projects .list {
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    overflow-x: auto;
+    margin-right: 0;
+    margin-left: 0;
+    margin-bottom: calc(100vw / 20);
+    margin-top: calc(100vw / 40);
+}
+
+.first-project {
+    margin-left: 30px;
+}
+
 @media only screen and (min-width: 1200px) {
     .about p,.projects p, .experience p, .contact p, .about h2,.projects h2, .experience h2, .contact h2, .about .buttons, .contact .buttons {
         margin-right: calc(100vw / 3);
         margin-left: calc(100vw / 3);
     }
+
     .about h2,.projects h2, .experience h2, .contact h2 {
         margin-top: calc(100vw / 25);
     }
     
     .about .buttons {
         margin-bottom: calc(100vw / 25);
-    }    
+    }
+    
+    .projects .list {
+        display: flex;
+        flex-direction: row;
+        align-items:center;
+        overflow-x: auto;
+        margin-right: calc(100vw / 10);
+        margin-left: calc(100vw / 10);
+        margin-bottom: calc(100vw / 20);
+        margin-top: calc(100vw / 40);
+    }
+
+    .first-project {
+        margin-left: 0;
+    }
+    
 }
 
 .button {
@@ -146,17 +178,6 @@ header .banner {
 .row-justify {
     display: flex;
     justify-content: center;
-}
-
-.projects .list {
-    display: flex;
-    flex-direction: row;
-    align-items:center;
-    overflow-x: auto;
-    margin-right: calc(100vw / 10);
-    margin-left: calc(100vw / 10);
-    margin-bottom: calc(100vw / 20);
-    margin-top: calc(100vw / 40);
 }
 
 .projects .project {
