@@ -12,10 +12,11 @@ html {
 
 .projects .list::-webkit-scrollbar, html::-webkit-scrollbar {
     width: 12px;               /* width of the entire scrollbar */
+    height: 12px;
   }
   
 .projects .list::-webkit-scrollbar-track, html::-webkit-scrollbar-track {
-    background: var(--secondary-color);        /* color of the tracking area */
+    background: var(--primary-color);        /* color of the tracking area */
   }
   
 .projects .list::-webkit-scrollbar-thumb, html::-webkit-scrollbar-thumb {
@@ -117,6 +118,7 @@ header .banner {
     overflow-x: auto;
     margin-right: 0;
     margin-left: 0;
+    padding-bottom: 10px;
     margin-bottom: calc(100vw / 20);
     margin-top: calc(100vw / 40);
     gap: 20px;
@@ -156,6 +158,7 @@ header .banner {
         margin-right: calc(100vw / 10);
         margin-left: calc(100vw / 10);
         margin-bottom: calc(100vw / 20);
+        padding-bottom: 0;
         margin-top: calc(100vw / 40);
     }
 
