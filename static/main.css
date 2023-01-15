@@ -1,46 +1,190 @@
-:root {
-    --primary-color: #f1efe9;
-    --secondary-color: #E2DED1;
-    --primary-text: #282828;
-    --secondary-text: #452b1a;
-}
-
-html {
-    overflow: -moz-scrollbars-horizontal; 
-    overflow-y: scroll;
-}
-
-.projects .list::-webkit-scrollbar, html::-webkit-scrollbar {
-    width: 12px;               /* width of the entire scrollbar */
-    height: 12px;
-  }
-  
-.projects .list::-webkit-scrollbar-track, html::-webkit-scrollbar-track {
-    background: var(--primary-color);        /* color of the tracking area */
-  }
-  
-.projects .list::-webkit-scrollbar-thumb, html::-webkit-scrollbar-thumb {
-    background-color: var(--secondary-text);     /* color of the scroll thumb */
-  }
-
 body {
     background-color: var(--primary-color);
-    display: flex;
-    flex-direction: column;
-    align-items:center;
     height: 100vh;
     margin: 0;
+    --light-color: #f1efe9;
+    --dark-color: #E2DED1;
+    --text-color: #282828;
+    --accent-color: #452b1a;
 }
 
-header {
+.flex-row {
     display: flex;
-    width: 100%;
+    flex-direction: row;
+}
+
+.flex-column {
+    display: flex;
     flex-direction: column;
+}
+
+.flex-justify {
+    display: flex;
+    justify-content: center;
+}
+
+.background-light {
+    background-color: var(--light-color);
+}
+
+.background-dark {
+    background-color: var(--dark-color);
+}
+
+.background-accent {
+    background-color: var(--accent-color);
+}
+
+.color-accent {
+    color: var(--accent-color);
+}
+
+.color-text {
+    color: var(--text-color);
+}
+
+.color-dark {
+    color: var(--dark-color);
+}
+
+.color-light {
+    color: var(--light-color);
+}
+
+.gap-small {
+    gap: 10px;
+}
+
+.gap-medium {
+    gap: 20px;
+}
+
+.gap-big {
+    gap: 40px
+}
+
+.font-small {
+    font-size: 0.8em!important;
+} 
+
+.font-normal {
+    font-size: 1.05em!important;
+}
+
+.font-medium {
+    font-size: 2em!important;
+}
+
+.font-sans {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.font-serif {
+    font-family: 'Source Serif Pro', serif;
+}
+
+.width-fit {
+    width: fit-content;
+}
+
+.width-full {
+    width: 100%;
+}
+
+.height-full {
+    height: 100%;
+}
+
+.margin-top-auto {
+    margin-top: auto;
+}
+
+.cursor {
+    cursor: pointer;
+}
+
+.font-bold {
+    font-weight: bolder;
+}
+
+.radius-normal {
+    border-radius: 1em;
+}
+
+.radius-medium {
+    border-radius: 2em;
+}
+
+
+.overflow-x {
+    overflow-x: auto;
+}
+
+.center-items {
+    justify-items: center;
+    align-items: center;
+}
+
+.button {
+    height: 40px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.button:hover {
+    background-color: var(--light-color);
+    color: var(--secondary-text);
+    transition: background-color 0.5s, color 0.5s;
+}
+
+.project .button:hover {
+    background-color: var(--dark-color);
+}
+
+.first-project {
+    margin-left: 20px;
+ }
+
+ .project {
+    transition: background-color 0.5s;
+    max-width: 240px;
+    max-height: 654px;
+ }
+
+ .project:hover {
+    background-color: var(--light-color);
+}
+
+#background-transition:has(> .flex-row .project:hover){
+    background-color: var(--dark-color);
+ }
+
+#background-transition, #projects {
+    transition: background-color 0.5s;
+}
+
+.padding-normal {
+    padding: 20px;
+}
+
+.video-container {
+    width: 240px; 
+}
+
+.padding-auto {
+    padding-right: calc(100vw / 7);
+    padding-left: calc(100vw / 7);
+    padding-top: calc(100vw / 15);
+    padding-bottom: calc(100vw / 15);
+}
+
+.padding-bottom-auto {
+    padding-bottom: calc(100vw / 15);
 }
 
 header h1 {
     font-size:2.9em;
-    align-self: center;
+    letter-spacing: -1px;
     margin: 20px 0;
 }
 
@@ -48,205 +192,34 @@ header h1 {
     header h1 {
         font-size:3.5em;
     }
-}
 
-.about, .contact {
-    background-color: var(--secondary-color);
-}
-
-.about p,.projects p, .experience p, .contact p  {
-    font-size: 1.2em;
-    color: var(--primary-text);
-    margin-top: calc(100vh / 60);
-}
-
-.about p,.projects p, .experience p, .contact p, .about h2,.projects h2, .experience h2, .contact h2, .about .buttons,  .contact .buttons {
-    margin-right: calc(100vw / 7);
-    margin-left: calc(100vw / 7);
-}
-
-.about h2,.projects h2, .experience h2, .contact h2 {
-    margin-top: calc(100vw / 15);
-}
-
-.about .buttons, .contact .buttons {
-    display: flex;
-    flex-direction: row;
-    margin-bottom: calc(100vw / 15);
-}
-
-.projects {
-    transition: background-color 0.5s;
-}
- 
-.projects .list {
-    display: flex;
-    flex-direction: row;
-    align-items:center;
-    overflow-x: auto;
-    margin-right: 0;
-    margin-left: 0;
-    padding-bottom: 10px;
-    margin-bottom: calc(100vw / 20);
-    margin-top: calc(100vw / 40);
-    gap: 20px;
-}
-
-.first-project {
-    margin-left: 20px;
- }
-
- .pbuttons {
-    margin-left: 20px;
-    margin-bottom: 20px;
-    display: flex;
-    flex-direction: row;
-    margin-top: auto;
-}
-
-@media only screen and (min-width: 1200px) {
-    .about p,.projects p, .experience p, .contact p, .about h2,.projects h2, .experience h2, .contact h2, .about .buttons, .contact .buttons {
-        margin-right: calc(100vw / 3);
-        margin-left: calc(100vw / 3);
+    .padding-auto {
+        padding-right: calc(100vw / 3);
+        padding-left: calc(100vw / 3);
+        padding-top: calc(100vw / 25);
+        padding-bottom: calc(100vw / 25);
     }
 
-    .about h2,.projects h2, .experience h2, .contact h2 {
-        margin-top: calc(100vw / 25);
+    .padding-bottom-auto {
+        padding-bottom: calc(100vw / 25);
     }
     
-    .about .buttons {
-        margin-bottom: calc(100vw / 25);
-    }
-    
-    .projects .list {
-        display: flex;
-        flex-direction: row;
-        align-items:center;
-        overflow-x: auto;
-        margin-right: calc(100vw / 10);
-        margin-left: calc(100vw / 10);
-        margin-bottom: calc(100vw / 20);
-        padding-bottom: 0;
-        margin-top: calc(100vw / 40);
-    }
-
-    .first-project {
-        margin-left: 0;
-    }
-
-    .pbuttons {
-        margin-left: 20px;
-        display: flex;
-        flex-direction: row;
-        margin-top: auto;
-    }
-}
-
-.button {
-    display: flex;
-    flex-direction: row;
-    background-color: var(--secondary-text);
-    color: var(--secondary-color);
-    align-items: center;
-    height: 40px;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-right: 20px;
-    cursor: pointer;
-}
-
-.button:hover {
-    background-color: var(--primary-color);
-    color: var(--secondary-text);
-    transition: background-color 0.5s, color 0.5s;
-}
-
-.button a {
-    padding-left: 10px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 600;
-}
-
-.row-justify {
-    display: flex;
-    justify-content: center;
-}
-
-
-
-.project {
-    display: flex;
-    flex-direction: column;
-    align-self: flex-start;
-    width: 320px;
-    height: 100%;
-    background-color: var(--bg);
-    border-radius: 1em;
-    transition: background-color 0.5s;
-}
-
-.projects:has(> .row-justify .list .project:hover){
-   background-color: var(--secondary-color);
-}
-
-.project:hover {
-    background-color: var(--primary-color);
-}
-
-.project .pbuttons .button:hover {
-    background-color: var(--secondary-color);
 }
 
 .project video {
-    margin-top: 10px;
-    scale: 0.8;
     margin-bottom: auto;
-    object-fit: cover;
+    object-fit:contain;
     border-radius: 1em;
 }
 
-.video-container {
-    width: 320px; 
-    height: 240px;
-}
-
-.projects .list p {
-    padding: 15px 20px;
-    max-width: fit-content;
-    font-size: 1.05em;
-    color: var(--primary-text);
-    margin:0;
-}
-
-.about, .experience, .projects, .contact {
-    width: 100%;
-}
-
-h1 {
-    color: var(--secondary-text);
-    font-family: 'Source Serif Pro', serif;
-    font-weight: bolder;
-    letter-spacing: -1px;
-    margin: 0px;
-}
 
 h2 {
-    color: var(--secondary-text);
-    font-family: 'Source Serif Pro', serif;
-    font-size: 2em;
-    font-weight: 600;
-    margin-bottom: -5px;
+    margin: 0;
     padding-bottom: 3px;
     width: fit-content;
-    cursor: pointer
 }
 
 h2:hover {
-    border-bottom: 3px solid var(--secondary-text);
+    border-bottom: 3px solid var(--accent-color);
     padding-bottom: 0px;
-}
-
-p {
-    font-size: 1.05em!important; 
-    font-family: Arial, Helvetica, sans-serif;
 }
