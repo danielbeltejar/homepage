@@ -1,0 +1,35 @@
+.banner {
+    background-color: var(--accent-color);
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.banner .circle-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1em;
+    height: 20px;
+    width: 40px;
+    border: 2px solid var(--light-color);
+    margin-right: 10px;
+}
+
+.banner .circle-button p {
+    color: var(--light-color);
+}
+
+.banner p {
+    color: var(--light-color);
+    margin: 0;
+    font-size: 0.8em!important;
+}
+
+.banner-text p:hover {
+    border-bottom: 2px solid var(--light-color);
+    padding-top: 2px;
+  }
