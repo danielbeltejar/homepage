@@ -14,7 +14,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro&display=swap" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet">
 
-        <link rel="stylesheet" href="/static/main.css">
+        <link rel="stylesheet" href="/static/main.new.css">
+        <link rel="stylesheet" href="/static/banner.css">
         
         <title>Daniel Beltejar</title>
         
@@ -34,127 +35,128 @@
         <link rel="manifest" href="/manifest.webmanifest">
     </head>
     <body>
-        <header>
-            <div onclick="location.href='https://blog.danielbeltejar.es/game-dev-log-1-introduction-top-my-mmorts-backyard-monsters/';" class="banner">
-                <div class="circle-button">
-                    <p>Blog</p>
+        <header class="flex-column center-items width-full background-light">
+            <div onclick="location.href='https://blog.danielbeltejar.es/game-dev-log-1-introduction-top-my-mmorts-backyard-monsters/';" class="banner width-full">
+                <div class="circle-button font-sans">
+                        <p>Blog</p>
                 </div>
-                <div  class="banner-text">
+                <div  class="banner-text font-sans">
                     <p>
                         Introduction to my first MMORTS - learn more
                     </p>
-                </div>
-                
-            </div>
-            <h1>Daniel Beltejar</h1>
+                </div>    
+            </div>    
+            <h1 class="font-big font-serif color-accent">Daniel Beltejar</h1>
         </header>
-        <div id="about" class="about">
-            <h2 onclick="location.href='#about';" >About</h2>
-            <p> Welcome to my personal web page. I started my journey as a self-taught programmer and system administrator who has been working in the field for many years.
+        <div class="background-dark padding-auto" id="about">
+            <h2  class="font-serif font-medium color-accent cursor" onclick="location.href='#about';" >About</h2>
+            <p class="font-sans color-text font-normal"> Welcome to my personal web page. I started my journey as a self-taught programmer and system administrator who has been working in the field for many years.
                 Later on I set up with a friend a small project and began to educate in the field of networks and telecommunications.
                 My main areas of expertise include systems administration and operations, automations, monitoring, Java, Python, C#, web programming. Also know about databases both sequential and non-sequential. I use Python for process automation and monitoring. I have
                 knowledge of CI and CD tools and meteologies, Jenkins, Git, proxies, reverse proxies, virtualization and containers like Docker or Kubernetes. Both administration and deployment of on-premise and cloud servers, apps, operating systems and networks as well as the
                 installation, develompent and maintenance of services or applications.
             </p>
-            <div class="buttons">
-                <div onclick="location.href='https://www.linkedin.com/in/daniel-beltejar-sancho/';" class="button">
+            <div class="flex-row gap-medium">
+                <div class="background-accent color-dark flex-row center-items gap-small button cursor font-bold font-sans font-normal" onclick="location.href='https://www.linkedin.com/in/daniel-beltejar-sancho/';" class="button">
                     <i class="fa-brands fa-linkedin"></i>
                     <a >Connect</a>
                 </div>
-                <div onclick="location.href='https://blog.danielbeltejar.es';" class="button">
+                <div class="background-accent color-dark flex-row center-items gap-small button cursor font-bold font-sans font-normal" onclick="location.href='https://blog.danielbeltejar.es';" class="button">
                     <i class="fa-solid fa-square-rss"></i>
                     <a>Blog</a>
                 </div>
-                <div onclick="location.href='mailto:contacto@danielbeltejar.es';" class="button">
-                    <i class="fa-regular fa-at"></i>
+                <div class="background-accent color-dark flex-row center-items gap-small button cursor font-bold font-sans font-normal" onclick="location.href='mailto:contacto@danielbeltejar.es';" class="button">
+                    <i class="fa-solid fa-at"></i>
                 </div>
             </div>
         </div>
-        <div id="projects" class="projects">
-            <h2 onclick="location.href='#projects';">Projects</h2>
-            <p>I also have a number of personal projects that I work on in my free time. These projects allow me to explore new and emerging technologies and to expand my
+        <div class="background-light padding-auto" id="projects">
+            <h2 class="font-serif font-medium color-accent cursor" onclick="location.href='#projects';">Projects</h2>
+            <p class="font-sans color-text font-normal">I also have a number of personal projects that I work on in my free time. These projects allow me to explore new and emerging technologies and to expand my
                  skillset in a variety of different areas. Through these projects, I have gained valuable experience and knowledge that I can apply to my professional work. I am always looking for new and exciting opportunities to learn and grow, and my personal projects are an important part of that journey.
             </p>
-            <div class="row-justify">   
-                <div class="list">
-                    <div class="project first-project">
+        </div> 
+        <div class="flex-justify background-light width-full padding-bottom-auto" id="background-transition">  
+                <div class="flex-row gap-medium overflow-x">
+                    <div class="flex-column padding-normal background-dark radius-medium project first-project">
                         <div class="video-container">
-                            <video autoplay="autoplay" width="320" height="240" preload autoplay muted loop playsinline poster="">
+                            <video class="radius-normal" autoplay="autoplay" width="240" preload autoplay muted loop playsinline poster="">
                                 <source src="/static/fym.webm" type="video/webm">
                                 <source src="/static/fym.mp4" type="video/mp4">
                                 Sorry, your browser does not support HTML5 video.
                             </video>                   
                         </div>   
-                        <p>A self-made online MMORTS inspired by the art style and mechanics of an old flash game. This game was built using C#, Blender, Python, Redis, and MongoDB, offering a unique blend of retro and modern elements that provide an engaging and immersive experience for players. This project was made to inquire into creating and implementing a complex online game system using a range of modern technologies.</h3>
-                        <div class="pbuttons">
-                            <div onclick="location.href='https://fym.danielbeltejar.es/';" class="button">
+                        <p class="font-sans font-normal">A self-made online MMORTS inspired by the art style and mechanics of an old flash game. This game was built using C#, Blender, Python, Redis, and MongoDB, offering a unique blend of retro and modern elements that provide an engaging and immersive experience for players. This project was made to inquire into creating and implementing a complex online game system using a range of modern technologies.</h3>
+                        <div class="flex-row gap-medium margin-top-auto">
+                            <div onclick="location.href='https://fym.danielbeltejar.es/';" class="background-accent color-dark flex-row center-items gap-small button cursor font-bold font-sans font-normal">
                                 <i class="fa-solid fa-arrow-up-right-from-square"></i>
                                 <a >Visit</a>
                             </div>
-                            <div onclick="location.href='https://github.com/danielbeltejar';" class="button">
+                            <div onclick="location.href='https://github.com/danielbeltejar';" class="background-accent color-dark flex-row center-items gap-small button cursor font-bold font-sans font-normal">
                                 <i class="fa-brands fa-square-github"></i>
                                 <a>Github</a>
                             </div>
                         </div>        
                     </div>
-                    <div class="project">
+                    <div class="flex-column padding-normal background-dark radius-medium project">
                         <div class="video-container">
-                            <video autoplay="autoplay" width="320" height="240" preload autoplay muted loop playsinline poster="">
+                            <video class="radius-normal" autoplay="autoplay" width="240" preload autoplay muted loop playsinline poster="">
                                 <source src="/static/comugamers.webm" type="video/webm">
                                 <source src="/static/comugamers.mp4" type="video/mp4">
                                 Sorry, your browser does not support HTML5 video.
                             </video>
                         </div>          
-                        <p>A Java-based solution developed in 2016 for storing and managing the data of 6 million users. This solution allows for the storage of players' data, statistics, leaderboards, and game mechanics, all linked together to provide a comprehensive system for managing user data. Redis and MySQL were used to enable efficient and scalable data storage and management. This solution has proven effective in providing a robust and reliable way to handle thousands of simultaneous users.</h3>
-                        <div class="pbuttons">
-                            <div onclick="location.href='https://github.com/comugamerses';" class="button">
+                        <p class="font-sans font-normal">A Java-based solution developed in 2016 for storing and managing the data of 6 million users. This solution allows for the storage of players' data, statistics, leaderboards, and game mechanics, all linked together to provide a comprehensive system for managing user data. Redis and MySQL were used to enable efficient and scalable data storage and management. This solution has proven effective in providing a robust and reliable way to handle thousands of simultaneous users.</h3>
+                        <div class="flex-row gap-medium margin-top-auto">
+                            <div onclick="location.href='https://github.com/comugamerses';" class="background-accent color-dark flex-row center-items gap-small button cursor font-bold font-sans font-normal">
                                 <i class="fa-solid fa-arrow-up-right-from-square"></i>
                                 <a >Visit</a>
                             </div>
-                            <div onclick="location.href='https://github.com/danielbeltejar/ComuGlobal';" class="button">
+                            <div onclick="location.href='https://github.com/danielbeltejar/ComuGlobal';" class="background-accent color-dark flex-row center-items gap-small button cursor font-bold font-sans font-normal">
                                 <i class="fa-brands fa-square-github"></i>
                                 <a>Github</a>
                             </div>
                         </div>        
                     </div>
-                    <div class="project">
+                    <div class="flex-column padding-normal background-dark radius-medium project">
                         <div class="video-container">    
-                            <video autoplay="autoplay" width="320" height="240" preload autoplay muted loop playsinline poster="">
+                            <video autoplay="autoplay" width="240" preload autoplay muted loop playsinline poster="">
                                 <source src="/static/kafka.webm" type="video/webm">
                                 <source src="/static/kafka.mp4" type="video/mp4">
                                 Sorry, your browser does not support HTML5 video.
                             </video>
                         </div>                      
-                        <p>A self-made project that collects public data on Spanish real estate to analyze the evolution of housing prices over time. This project uses Apache Spark, Python, HTML, Typescript, and CSS to gather, process, and present data in a user-friendly format. This project demonstrates the skill in working with big data and web technologies to create a valuable resource for understanding trends in the housing market.
+                        <p class="font-sans font-normal">A self-made project that collects public data on Spanish real estate to analyze the evolution of housing prices over time. This project uses Apache Spark, Python, HTML, Typescript, and CSS to gather, process, and present data in a user-friendly format. This project demonstrates the skill in working with big data and web technologies to create a valuable resource for understanding trends in the housing market.
                         </p>
-                        <div class="pbuttons">
-                            <div onclick="location.href='https://es.realstate.danielbeltejar.es/';" class="button">
+                        <div class="flex-row gap-medium margin-top-auto">
+                            <div onclick="location.href='https://es.realstate.danielbeltejar.es/';" class="background-accent color-dark flex-row center-items gap-small button cursor font-bold font-sans font-normal">
                                 <i class="fa-solid fa-arrow-up-right-from-square"></i>
                                 <a >Visit</a>
                             </div>
-                            <div onclick="location.href='https://github.com/danielbeltejar/es-realstate-kafka';" class="button">
+                            <div onclick="location.href='https://github.com/danielbeltejar/es-realstate-kafka';" class="background-accent color-dark flex-row center-items gap-small button cursor font-bold font-sans font-normal">
                                 <i class="fa-brands fa-square-github"></i>
                                 <a>Github</a>
                             </div>
                         </div>        
                     </div>
                 </div>
-            </div>  
-        </div>          
-        <div id="contact" class="contact">
-            <h2 onclick="location.href='#contact';">Contact me</h2>
-            <p>
+            
+        </div>         
+        <div id="contact" class="background-dark padding-auto">
+            <h2 class="font-serif font-medium color-accent cursor" onclick="location.href='#contact';">Contact me</h2>
+            <p class="font-sans color-text font-normal">
                 Thank you for visiting my personal web page. If you have any questions or would like to get in touch, please feel free to to write to one of the next options. I look forward to hearing from you!
             </p>
-            <div class="buttons">
-                <div onclick="location.href='https://www.linkedin.com/in/daniel-beltejar-sancho/';" class="button">
+            <div class="flex-row gap-medium">
+                <div onclick="location.href='https://www.linkedin.com/in/daniel-beltejar-sancho/';" class="background-accent color-dark flex-row center-items gap-small button cursor font-bold font-sans font-normal">
                     <i class="fa-brands fa-linkedin"></i>
                     <a>Linkedin</a>
                 </div>
-                <div onclick="location.href='mailto:contacto@danielbeltejar.es';" class="button">
-                    <i class="fa-regular fa-at"></i>
+                <div onclick="location.href='mailto:contacto@danielbeltejar.es';" class="background-accent color-dark flex-row center-items gap-small button cursor font-bold font-sans font-normal">
+                    <i class="fa-solid fa-at"></i>
                     <a>Mail</a>
                 </div>
             </div>
         </div>
+        <script src="static/hover.js"></script>
     </body>

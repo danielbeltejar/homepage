@@ -50,42 +50,6 @@ header h1 {
     }
 }
 
-header .banner {
-    background-color: var(--secondary-text);
-    height: 40px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-}
-
-.banner .circle-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 1em;
-    height: 20px;
-    width: 40px;
-    border: 2px solid var(--secondary-color);
-    margin-right: 10px;
-}
-
-.banner .circle-button p {
-    color: var(--secondary-color);
-}
-
-.banner p {
-    color: var(--primary-color);
-    margin: 0;
-    font-size: 0.8em!important;
-}
-
-.banner-text p:hover {
-    border-bottom: 2px solid var(--secondary-color);
-    padding-top: 2px;
-  }
-
 .about, .contact {
     background-color: var(--secondary-color);
 }
@@ -112,7 +76,7 @@ header .banner {
 }
 
 .projects {
-    transition: background-color 0.4s;
+    transition: background-color 0.5s;
 }
  
 .projects .list {
@@ -194,7 +158,7 @@ header .banner {
 .button:hover {
     background-color: var(--primary-color);
     color: var(--secondary-text);
-    transition: background-color 0.4s, color 0.4s;
+    transition: background-color 0.5s, color 0.5s;
 }
 
 .button a {
@@ -208,15 +172,17 @@ header .banner {
     justify-content: center;
 }
 
+
+
 .project {
     display: flex;
     flex-direction: column;
     align-self: flex-start;
     width: 320px;
     height: 100%;
-    background-color: var(--secondary-color);
+    background-color: var(--bg);
     border-radius: 1em;
-    transition: background-color 0.4s;
+    transition: background-color 0.5s;
 }
 
 .projects:has(> .row-justify .list .project:hover){
