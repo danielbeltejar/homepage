@@ -1,4 +1,3 @@
-console.log("AAA")
 const projectDiv = document.getElementsByClassName("project");
 const projectsDiv = document.getElementById("projects");
 

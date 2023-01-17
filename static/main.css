@@ -129,12 +129,12 @@ body {
     height: 40px;
     padding-left: 10px;
     padding-right: 10px;
+    transition: background-color 0.5s, color 0.5s;
 }
 
 .button:hover {
     background-color: var(--light-color);
     color: var(--secondary-text);
-    transition: background-color 0.5s, color 0.5s;
 }
 
 .project .button:hover {
@@ -221,5 +221,5 @@ h2 {
 
 h2:hover {
     border-bottom: 3px solid var(--accent-color);
-    padding-bottom: 0px;
+    padding-bottom: 0;
 }
