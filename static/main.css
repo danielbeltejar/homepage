@@ -126,6 +126,7 @@ body {
 }
 
 .button {
+    text-decoration: none;
     height: 40px;
     padding-left: 10px;
     padding-right: 10px;
@@ -135,6 +136,10 @@ body {
 .button:hover {
     background-color: var(--light-color);
     color: var(--secondary-text);
+}
+
+.button p {
+    margin-block-end: 0.9em;
 }
 
 .project .button:hover {
