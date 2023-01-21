@@ -135,7 +135,7 @@ body {
 
 .button:hover {
     background-color: var(--light-color);
-    color: var(--secondary-text);
+    color: var(--accent-color);
 }
 
 .button p {
