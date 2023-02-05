@@ -7,6 +7,13 @@ body {
     --text-color: #282828;
     --accent-color: #452b1a;
 }
+.display-hide {
+    display: none;
+}
+
+.display-block {
+    display: block;
+}
 
 .flex-row {
     display: flex;
@@ -169,11 +176,13 @@ body {
     background-color: var(--light-color);
 }
 
-#background-transition:has(> .flex-row .project:hover){
+#bg-transition:has(> .flex-row .project:hover){
     background-color: var(--dark-color);
  }
 
-#background-transition, #projects {
+
+
+#bg-transition, #projects {
     transition: background-color 0.5s;
 }
 
@@ -233,7 +242,11 @@ h2 {
     width: fit-content;
 }
 
-h2:hover {
+#title:hover h2 {
     border-bottom: 3px solid var(--accent-color);
     padding-bottom: 0;
 }
+
+#title:hover a {
+    display: block;
+ }
