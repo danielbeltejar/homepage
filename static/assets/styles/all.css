@@ -68,7 +68,7 @@ body {
 } 
 
 .font-normal {
-    font-size: 1.05em!important;
+    font-size: 1.1em!important;
 }
 
 .font-medium {
@@ -76,11 +76,20 @@ body {
 }
 
 .font-sans {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif !important;
 }
 
 .font-serif {
-    font-family: 'Source Serif Pro', serif;
+    font-family: 'Source Serif Pro', serif !important;
+}
+
+.font-sans-serif {
+    font-family: ColfaxAI,Helvetica,sans-serif !important;
+}
+
+.text-hyphen {
+    text-align: justify;
+    hyphens: auto;
 }
 
 .width-fit {
@@ -199,8 +208,8 @@ header h1 {
     }
 
     .padding-auto {
-        padding-right: calc(100vw / 3);
-        padding-left: calc(100vw / 3);
+        padding-right: calc(100vw / 3.5);
+        padding-left: calc(100vw / 3.5);
         padding-top: calc(100vw / 25);
         padding-bottom: calc(100vw / 25);
     }
