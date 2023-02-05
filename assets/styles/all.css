@@ -23,15 +23,15 @@ body {
     justify-content: center;
 }
 
-.background-light {
+.bg-light {
     background-color: var(--light-color);
 }
 
-.background-dark {
+.bg-dark {
     background-color: var(--dark-color);
 }
 
-.background-accent {
+.bg-accent {
     background-color: var(--accent-color);
 }
 
