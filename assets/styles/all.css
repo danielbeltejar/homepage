@@ -11,6 +11,11 @@ body {
     display: none;
 }
 
+.display-opacity {
+    opacity: 0%;
+    transition: opacity 0.5s, 0.5s;
+}
+
 .display-block {
     display: block;
 }
@@ -91,7 +96,7 @@ body {
 }
 
 .font-sans-serif {
-    font-family: ColfaxAI,Helvetica,sans-serif !important;
+    font-family: Helvetica,sans-serif !important;
 }
 
 .text-hyphen {
@@ -180,8 +185,6 @@ body {
     background-color: var(--dark-color);
  }
 
-
-
 #bg-transition, #projects {
     transition: background-color 0.5s;
 }
@@ -235,18 +238,24 @@ header h1 {
     border-radius: 1em;
 }
 
-
 h2 {
     margin: 0;
-    padding-bottom: 3px;
     width: fit-content;
+    transition: border-bottom 0.5s, color 0.5s;
+}
+
+#bg-dark {
+    border-bottom: 3px solid var(--dark-color);
+}
+
+#bg-light {
+    border-bottom: 3px solid var(--light-color);
 }
 
 #title:hover h2 {
-    border-bottom: 3px solid var(--accent-color);
-    padding-bottom: 0;
+    border-bottom: 3px solid var(--accent-color)!important;
 }
 
 #title:hover a {
-    display: block;
+    opacity: 100%;
  }
