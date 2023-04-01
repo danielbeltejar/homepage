@@ -124,6 +124,10 @@ body {
     cursor: pointer;
 }
 
+.absolute {
+    position: absolute;
+}
+
 .font-bold {
     font-weight: bolder;
 }
@@ -242,18 +246,21 @@ h2 {
     margin: 0;
     width: fit-content;
     transition: border-bottom 0.5s, color 0.5s;
+    transition: padding-left 0.5s;
 }
 
-#bg-dark {
-    border-bottom: 3px solid var(--dark-color);
+#bg-dark h2 {
+    text-decoration: 3px underline var(--dark-color);
 }
 
-#bg-light {
-    border-bottom: 3px solid var(--light-color);
+#bg-light h2 {
+    text-decoration: 3px underline var(--light-color);
 }
 
 #title:hover h2 {
-    border-bottom: 3px solid var(--accent-color)!important;
+    text-decoration: 3px underline var(--accent-color);
+    text-underline-offset: 6px;
+    padding-left: 30px;
 }
 
 #title:hover a {
