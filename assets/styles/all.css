@@ -151,8 +151,10 @@ body {
 }
 
 .button {
+    box-sizing: border-box;
     text-decoration: none;
     height: 40px;
+    min-width: 40px;
     padding-left: 10px;
     padding-right: 10px;
     transition: background-color 0.5s, color 0.5s;
@@ -287,4 +289,8 @@ h2 {
 
  .button p {
     padding-bottom: 2px;
+ }
+
+  a,p {
+    text-decoration: none;
  }
