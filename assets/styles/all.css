@@ -266,3 +266,25 @@ h2 {
 #title:hover a {
     opacity: 100%;
  }
+
+#hidden-mail {
+    position:relative;
+    left: -37px;
+    z-index: 1;
+    transition: left 0.5s;
+    scale: 0;
+}
+
+#mail-button:hover #hidden-mail {
+    left: 0px;
+    width: auto;
+    scale: 1;
+}
+
+#mail {
+    z-index: 2;
+}
+
+ .button p {
+    padding-bottom: 2px;
+ }
