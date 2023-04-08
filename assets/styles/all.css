@@ -276,6 +276,10 @@ h2 {
     transition: left 0.5s;
 }
 
+#mail {
+    width: 40px;
+}
+
 @media only screen and (min-width: 1200px) {
     #mail-button:hover #hidden-mail {
         left: 0px;
