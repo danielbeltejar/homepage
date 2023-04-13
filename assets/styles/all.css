@@ -140,6 +140,9 @@ body {
     border-radius: 2em;
 }
 
+.minus-gap {
+    margin-left: -20px;
+}
 
 .overflow-x {
     overflow-x: auto;
