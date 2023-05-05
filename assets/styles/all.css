@@ -148,6 +148,11 @@ body {
     overflow-x: auto;
 }
 
+.no-overflow {
+    overflow: hidden;
+    overflow: -moz-hidden-unscrollable;
+}
+
 .center-items {
     justify-items: center;
     align-items: center;
@@ -178,6 +183,10 @@ body {
 
 .first-project {
     margin-left: 20px;
+ }
+
+ .last-project {
+    margin-right: 20px;
  }
 
  .project {
