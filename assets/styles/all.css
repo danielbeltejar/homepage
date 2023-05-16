@@ -165,7 +165,7 @@ body {
     padding-left: 10px;
     padding-right: 10px;
     z-index: 2;
-    transition: background-color 0.5s, color 0.5s;
+    transition: background-color 0.5s, color 0.5s, height 0.5s;
 }
 
 .button:hover {
@@ -181,6 +181,10 @@ body {
     background-color: var(--dark-color);
 }
 
+.project .button {
+    border-radius: 0.75em;
+}
+
 .first-project {
     margin-left: 20px;
  }
@@ -190,21 +194,31 @@ body {
  }
 
  .project {
-    transition: background-color 0.5s;
+    transition: background-color 0.5s, max-width 0.5s;
     max-width: 240px;
     max-height: 654px;
+    min-height: 540px;
  }
 
  .project:hover {
     background-color: var(--light-color);
+    max-width: 320px;
 }
+
+.project:hover video {
+    width: 320px;
+}
+
+.project:hover .button {
+    height: 4em;
+  }
 
 #bg-transition:has(> .flex-row .project:hover){
     background-color: var(--dark-color);
  }
 
 #bg-transition, #projects {
-    transition: background-color 0.5s;
+    transition: background-color 0.5s, padding-bottom 0.5s;
 }
 
 .padding-normal {
@@ -213,6 +227,10 @@ body {
 
 .video-container {
     width: 240px; 
+}
+
+.video-container video {
+    transition: width 0.5s;
 }
 
 .padding-auto {
@@ -283,7 +301,7 @@ h2 {
 
 #hidden-mail {
     position:relative;
-    left: -179px;
+    left: -181px;
     z-index: 0;
     transition: left 0.5s;
 }
