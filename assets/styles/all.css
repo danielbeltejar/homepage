@@ -165,7 +165,9 @@ body {
     padding-left: 10px;
     padding-right: 10px;
     z-index: 2;
-    transition: background-color 0.5s, color 0.5s, height 0.5s;
+    width: fit-content;
+    transition: all 500ms;
+    transition-property: background-color, width, height, color;
 }
 
 .button:hover {
@@ -209,9 +211,7 @@ body {
     width: 320px;
 }
 
-.project:hover .button {
-    height: 4em;
-  }
+
 
 #bg-transition:has(> .flex-row .project:hover){
     background-color: var(--dark-color);
