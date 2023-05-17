@@ -154,7 +154,11 @@ body {
 }
 
 .center-items {
-    justify-items: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.center {
     align-items: center;
 }
 
@@ -168,6 +172,10 @@ body {
     width: fit-content;
     transition: all 500ms;
     transition-property: background-color, width, height, color;
+}
+
+.project .button {
+    flex:1;
 }
 
 .button:hover {
@@ -207,8 +215,10 @@ body {
     max-width: 320px;
 }
 
-.project:hover video {
-    width: 320px;
+@media only screen and (min-width: 1024px) {
+    .project:hover video {
+        width: 320px;
+    }
 }
 
 

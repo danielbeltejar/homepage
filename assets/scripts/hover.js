@@ -6,7 +6,9 @@ for (let i = 0; i < projectDiv.length; i++) {
     projectDiv[i].addEventListener("mouseover", () => {
         projectsDiv.style.backgroundColor = "var(--dark-color)";
 
-
+        if (window.innerWidth < 1024) {
+            return
+        }
         buttons = projectDiv[i].getElementsByClassName("button");
         for (let j = 0; j < buttons.length; j++) {
             width = buttons[j].offsetWidth;
@@ -20,6 +22,9 @@ for (let i = 0; i < projectDiv.length; i++) {
     projectDiv[i].addEventListener("mouseout", () => {
         projectsDiv.style.backgroundColor = "var(--light-color)";
 
+        if (window.innerWidth < 1024) {
+            return
+        }
         buttons = projectDiv[i].getElementsByClassName("button");
         for (let j = 0; j < buttons.length; j++) {
             buttons[j].style.height = null;
