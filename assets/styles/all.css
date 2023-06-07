@@ -217,6 +217,9 @@ body {
 
 @media only screen and (min-width: 1024px) {
     .project:hover video {
+        width: 100%;
+    }
+    .project:hover .video-container {
         width: 320px;
     }
 }
@@ -237,6 +240,7 @@ body {
 
 .video-container {
     width: 240px; 
+    transition: width 0.5s;
 }
 
 .video-container video {
