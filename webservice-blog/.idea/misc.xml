@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Black">
+    <option name="executionMode" value="BINARY" />
+    <option name="pathToExecutable" value="/opt/homebrew/bin/black" />
+    <option name="sdkUUID" value="b7f586e3-ef6a-4882-90b0-dd1d108e2f03" />
+  </component>
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.10 (webservice-today)" project-jdk-type="Python SDK" />
+</project>
