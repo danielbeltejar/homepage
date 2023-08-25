@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from src.routers.HealthRouter import health_router
-from src.routers.TodayForecast import latest_blog_entry
+from src.routers.LatestBlogEntryRouter import latest_blog_entry
 
 app = FastAPI()
 app.include_router(health_router)
