@@ -2,7 +2,7 @@ import requests
 
 
 def get_latest_wordpress_blog_entry():
-    base_url = "https://blog.danielbeltejar.es/wp-json/wp/v2"
+    base_url = "http://wordpress-service.pro-wordpress-blog.svc.cluster.local"
 
     endpoint = "/posts?per_page=1&_embed"
 
