@@ -1,0 +1,9 @@
+{
+    "name": "daniel-beltejar",
+    "short_name": "daniel-beltejar",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#E2DED1",
+    "lang": "en",
+    "scope": "/"
+}
