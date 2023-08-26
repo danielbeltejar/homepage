@@ -19,6 +19,7 @@ function typeWriter() {
 if (window.innerWidth < 1024) {
     typeWriter();
   } else {
+    document.getElementById("type-effect").innerHTML = "Daniel Beltejar"
     setTimeout(typeWriter, 2200);
   }
   
