@@ -16,4 +16,9 @@ function typeWriter() {
     }
 }
 
-setTimeout(typeWriter, 2200);
+if (window.innerWidth < 1024) {
+    typeWriter();
+  } else {
+    setTimeout(typeWriter, 2200);
+  }
+  
