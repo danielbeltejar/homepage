@@ -8,7 +8,7 @@ health_router = APIRouter()
 logger = logging.getLogger()
 
 
-@health_router.get('/health',
+@health_router.get('/healthz',
                    status_code=status.HTTP_200_OK)
-def heath_check():
+async def heath_check():
     return HTTPStatus.OK
