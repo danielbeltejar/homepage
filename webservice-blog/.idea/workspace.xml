@@ -28,6 +28,7 @@
       <change beforePath="$PROJECT_DIR$/../client-old/static/banner.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../webservice-blog-go/go.mod" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../webservice-blog-go/main.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
     </list>
@@ -74,7 +75,7 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
   }
 }</component>
-  <component name="RunManager" selected="Go Build.go build webservice-blog">
+  <component name="RunManager" selected="Go Build.go build webservice-blog/cmd">
     <configuration default="true" type="DjangoTestsConfigurationType">
       <module name="webservice-blog" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -189,12 +190,12 @@
       <option name="docutils_open_in_browser" value="false" />
       <method v="2" />
     </configuration>
-    <configuration name="go build webservice-blog" type="GoApplicationRunConfiguration" factoryName="Go Application" nameIsGenerated="true">
+    <configuration name="go build webservice-blog/cmd" type="GoApplicationRunConfiguration" factoryName="Go Application" nameIsGenerated="true">
       <module name="webservice-blog" />
       <working_directory value="$PROJECT_DIR$" />
-      <kind value="PACKAGE" />
+      <kind value="DIRECTORY" />
       <package value="webservice-blog" />
-      <directory value="$PROJECT_DIR$" />
+      <directory value="$PROJECT_DIR$/cmd" />
       <filePath value="$PROJECT_DIR$" />
       <method v="2" />
     </configuration>
@@ -205,7 +206,7 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Go Build.go build webservice-blog" />
+      <item itemvalue="Go Build.go build webservice-blog/cmd" />
       <item itemvalue="HTTP Request.test | #2" />
       <item itemvalue="HTTP Request.test | #1" />
     </list>
