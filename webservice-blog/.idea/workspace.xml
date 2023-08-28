@@ -29,8 +29,7 @@
       <change beforePath="$PROJECT_DIR$/../webservice-blog-go/go.mod" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../webservice-blog-go/main.go" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/handlers/latest_entry.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/handlers/latest_entry.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/wordpress/wordpress.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/wordpress/wordpress.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmd/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/main.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
