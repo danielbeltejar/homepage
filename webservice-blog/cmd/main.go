@@ -14,8 +14,6 @@ func main() {
 	r.HandleFunc("/healthz", handlers.HealthHandler).Methods("GET")
 	http.Handle("/", r)
 
-	http.Handle("/", r)
-
 	fmt.Println("Listening on :8080...")
 	http.ListenAndServe(":8080", nil)
 }
