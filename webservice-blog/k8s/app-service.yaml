@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: homepage-blog-ws-service
+  namespace: homepage
+  labels:
+    app: homepage-blog-ws-service
+spec:
+  ports:
+    - port: 8000
+      targetPort: httpport
+      name: http
+  selector:
+    app: homepage-blog-ws-service

@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: homepage-blog-ws-deployment
+  namespace: homepage
+  labels:
+    app: homepage-blog-ws-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: homepage-blog-ws-deployment
+  template:
+    metadata:
+      labels:
+        app: homepage-blog-ws-deployment
+    spec:
+      containers:
+        - name: myapp-app
+          image: localhost/homepage-webservice-blog:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: httpport
+              containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            successThreshold: 2
+            failureThreshold: 3
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 15
+            timeoutSeconds: 5
+            failureThreshold: 3
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "50m"
+            limits:
+              memory: "128Mi"
+              cpu: "200m"

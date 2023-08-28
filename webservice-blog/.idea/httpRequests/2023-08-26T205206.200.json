@@ -1,0 +1,112 @@
+[
+  {
+    "_links": {
+      "about": [
+        {
+          "href": "https://blog.danielbeltejar.es/wp-json/wp/v2/types/post"
+        }
+      ],
+      "author": [
+        {
+          "embeddable": true,
+          "href": "https://blog.danielbeltejar.es/wp-json/wp/v2/users/1"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://blog.danielbeltejar.es/wp-json/wp/v2/posts"
+        }
+      ],
+      "curies": [
+        {
+          "href": "https://api.w.org/{rel}",
+          "name": "wp",
+          "templated": true
+        }
+      ],
+      "predecessor-version": [
+        {
+          "href": "https://blog.danielbeltejar.es/wp-json/wp/v2/posts/28/revisions/116",
+          "id": 116
+        }
+      ],
+      "replies": [
+        {
+          "embeddable": true,
+          "href": "https://blog.danielbeltejar.es/wp-json/wp/v2/comments?post=28"
+        }
+      ],
+      "self": [
+        {
+          "href": "https://blog.danielbeltejar.es/wp-json/wp/v2/posts/28"
+        }
+      ],
+      "version-history": [
+        {
+          "count": 5,
+          "href": "https://blog.danielbeltejar.es/wp-json/wp/v2/posts/28/revisions"
+        }
+      ],
+      "wp:attachment": [
+        {
+          "href": "https://blog.danielbeltejar.es/wp-json/wp/v2/media?parent=28"
+        }
+      ],
+      "wp:featuredmedia": [
+        {
+          "embeddable": true,
+          "href": "https://blog.danielbeltejar.es/wp-json/wp/v2/media/111"
+        }
+      ],
+      "wp:term": [
+        {
+          "embeddable": true,
+          "href": "https://blog.danielbeltejar.es/wp-json/wp/v2/categories?post=28",
+          "taxonomy": "category"
+        },
+        {
+          "embeddable": true,
+          "href": "https://blog.danielbeltejar.es/wp-json/wp/v2/tags?post=28",
+          "taxonomy": "post_tag"
+        }
+      ]
+    },
+    "author": 1,
+    "categories": [
+      1
+    ],
+    "comment_status": "closed",
+    "content": {
+      "protected": false,
+      "rendered": "\r\n<p>Front Yard Monster is a base builder, tactical strategy and tower defence game. The roots of the game are based on an old flash game and first <a href=\"https://en.wikipedia.org/wiki/Massively_multiplayer_online_real-time_strategy_game\">MMORTS</a> called <a href=\"https://backyardmonsters.fandom.com/wiki/Backyard_Monsters\">Backyard Monsters</a> now discontinued. We are waiting for you to join the community, and together we will make this project take off. The game would be released first on web browser, but launching on android and iOS is also planned. You can join our <a href=\"https://discord.gg/U3gaHKHAwq\">Discord</a> to get a free gift when the game launches and visit the game <a href=\"https://deficreatures.com/\">web page</a>.</p>\r\n\r\n\r\n\r\n<p>All information and images on this page are not final and may be subject to change.</p>\r\n<p>&nbsp;</p>\r\n\r\n\r\n\r\n<h3 class=\"wp-block-heading\">Models and characters</h3>\r\n\r\n\r\n\r\n<p>The 3D models are made from zero using Blender and rendered in sprite sheets taking into account the rotation if necessary and their animation. I have chosen this graphics model to have a classic atmosphere and to be able to have high quality visuals without having to resort to using 3D polygonal in-game models that would worsen the performance, especially on mobile devices.</p>\r\n\r\n\r\n\r\n<p>Most of the models follow the style of the game I have been inspired by, but I plan to keep improving them and add new mechanics not found in the original game.</p>\r\n<p><img decoding=\"async\" loading=\"lazy\" class=\"alignnone size-large wp-image-109\" src=\"https://blog.danielbeltejar.es/wp-content/uploads/2023/03/backyard-creatures-tesla-render-1024x291.jpg\" alt=\"\" width=\"800\" height=\"227\" srcset=\"https://blog.danielbeltejar.es/wp-content/uploads/2023/03/backyard-creatures-tesla-render-1024x291.jpg 1024w, https://blog.danielbeltejar.es/wp-content/uploads/2023/03/backyard-creatures-tesla-render-300x85.jpg 300w, https://blog.danielbeltejar.es/wp-content/uploads/2023/03/backyard-creatures-tesla-render-768x218.jpg 768w, https://blog.danielbeltejar.es/wp-content/uploads/2023/03/backyard-creatures-tesla-render.jpg 1257w\" sizes=\"(max-width: 800px) 100vw, 800px\" /></p>\r\n<p>&nbsp;</p>\r\n\r\n\r\n\r\n\r\n\r\n<h3 class=\"wp-block-heading\">Game technicals</h3>\r\n\r\n\r\n\r\n<p>The game is built using the Unity game engine, written entirely client-side in C#. The server side is written to work as microservices, to be easily scalable in the future if needed. To store the data we use non-relative databases, MongoDB and Regis for instant data streams. The game has anti-cheating checks from the client and the server. I am still studying whether to penalize the player if he is found repeatedly trying to exploit the game.</p>\r\n<p><img decoding=\"async\" loading=\"lazy\" class=\"alignnone size-full wp-image-110\" src=\"https://blog.danielbeltejar.es/wp-content/uploads/2023/03/resources.png\" alt=\"\" width=\"722\" height=\"220\" srcset=\"https://blog.danielbeltejar.es/wp-content/uploads/2023/03/resources.png 722w, https://blog.danielbeltejar.es/wp-content/uploads/2023/03/resources-300x91.png 300w\" sizes=\"(max-width: 722px) 100vw, 722px\" /></p>\r\n<p>&nbsp;</p>\r\n\r\n\r\n\r\n<h3 class=\"wp-block-heading\">Game Introduction</h3>\r\n\r\n\r\n\r\n<p>At the beginning of your adventure you will learn how to play, the game is based on collecting resources to advance, you can get them from your bases or stealing them from other players. As you progress you will get improvements in the gameplay as builders with different skills that affect your game, these can be exchanged with other players. You will be able to unlock new creatures, improve the existing ones, or even mutate them. When you are already an expert you will have the possibility to conquer other bases and undertake new adventures in other types of bases that will bring you new unlockables such as constructions, new creatures…</p>\r\n"
+    },
+    "date": "2023-03-14T18:07:41",
+    "date_gmt": "2023-03-14T17:07:41",
+    "excerpt": {
+      "protected": false,
+      "rendered": "<p>Front Yard Monster is a base builder, tactical strategy and tower defence game. The roots of the game are based on an old flash game and first MMORTS called Backyard Monsters now discontinued. We are waiting for you to join the community, and together we will make this project take off. The game would be released first on [&hellip;]</p>\n"
+    },
+    "featured_media": 111,
+    "format": "standard",
+    "guid": {
+      "rendered": "https://blog.danielbeltejar.es/?p=28"
+    },
+    "id": 28,
+    "link": "https://blog.danielbeltejar.es/28/game-dev-log-1-introduction-to-my-first-mmorts/",
+    "meta": {
+      "footnotes": ""
+    },
+    "modified": "2023-03-14T18:12:34",
+    "modified_gmt": "2023-03-14T17:12:34",
+    "ping_status": "open",
+    "slug": "game-dev-log-1-introduction-to-my-first-mmorts",
+    "status": "publish",
+    "sticky": false,
+    "tags": [],
+    "template": "",
+    "title": {
+      "rendered": "Game Dev Log #1 – Introduction to my first MMORTS"
+    },
+    "type": "post"
+  }
+]
