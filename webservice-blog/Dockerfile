@@ -10,7 +10,7 @@ RUN go mod download
 
 COPY . .
 
-RUN go build -ldflags '-w -s' -a -o ./cmd/api
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o app ./cmd
 
 
 # Deployment environment
