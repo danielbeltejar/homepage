@@ -1,6 +1,6 @@
 # Build environment
 # -----------------
-FROM golang:1.20-alpine as builder
+FROM golang:1.21-alpine as builder
 WORKDIR /app
 
 RUN apk add --no-cache gcc musl-dev
@@ -15,10 +15,10 @@ RUN go build -o app ./cmd
 
 # Deployment environment
 # ----------------------
-FROM alpine as runtime
-WORKDIR /app
+#FROM alpine as runtime
+#WORKDIR /app
 
-COPY --from=builder /app/app .
+#COPY --from=builder /app/app .
 
 EXPOSE 8080
 
