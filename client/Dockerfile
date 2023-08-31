@@ -1,5 +1,5 @@
 # Use the official Nginx image as the base image
-FROM nginx:latest
+FROM nginx:stable-alpine-slim
 
 # Copy your HTML website files to the Nginx webroot directory
 COPY ./public/ /usr/share/nginx/html
