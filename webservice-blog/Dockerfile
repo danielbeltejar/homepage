@@ -15,10 +15,10 @@ RUN go build -o app ./cmd
 
 # Deployment environment
 # ----------------------
-#FROM alpine
-#WORKDIR /app
+FROM alpine as runtime
+WORKDIR /app
 
-#COPY --from=builder /app/app .
+COPY --from=builder /app/app .
 
 EXPOSE 8080
 
