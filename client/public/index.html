@@ -108,7 +108,10 @@
                     </button>
                 </div>
                 <div class="flex-1 hidden self-center lg:block">
-                    <img src="assets/images/highlight.png" class="w-full h-auto" alt="Web Highlight">
+                    <picture>
+                        <source srcset="assets/images/highlight.avif" type="image/avif">
+                        <img src="assets/images/highlight.png"decoding="async" loading="lazy" class="w-full h-auto" alt="Web Highlight">
+                    </picture>
                 </div>
             </div>
         </main>
@@ -161,7 +164,8 @@
                 </div>
             </div>
         </article>
-        <article id="projects" class="text-text bg-window text-11 py-m px-l mt-xl mb-xs shadow-md lg:max-w-screen-xl w-full" >
+        <article id="projects"
+            class="text-text bg-window text-11 py-m px-l mt-xl mb-xs shadow-md lg:max-w-screen-xl w-full">
             <div class="flex flex-row align-middle items-center mt-xs group w-full">
                 <a href="#projects"
                     class="text-accent text-11 opacity-0 absolute group-hover:opacity-100 transition-opacity duration-300">
