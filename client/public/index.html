@@ -39,6 +39,27 @@
     <meta name="twitter:image:src" content="/assets/images/card.png" />
 
     <script src="assets/scripts/blog_ws.js"></script>
+    <!-- Matomo -->
+    <script>
+        var _paq = window._paq = window._paq || [];
+        /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+        _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+        _paq.push(["setCookieDomain", "*.danielbeltejar.es"]);
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function () {
+            var u = "//matomo.lab.danielbeltejar.es/";
+            _paq.push(['setTrackerUrl', u + 'matomo.php']);
+            _paq.push(['setSiteId', '2']);
+            var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+            g.async = true; g.src = u + 'matomo.js'; s.parentNode.insertBefore(g, s);
+        })();
+    </script>
+    <noscript>
+        <p><img src="//matomo.lab.danielbeltejar.es/matomo.php?idsite=2&amp;rec=1" style="border:0;" alt="" /></p>
+    </noscript>
+    <!-- End Matomo Code -->
+    <!-- Clarity -->
     <script type="text/javascript">
         (function (c, l, a, r, i, t, y) {
             c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
@@ -46,6 +67,7 @@
             y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
         })(window, document, "clarity", "script", "6n7dkmur2b");
     </script>
+    <!-- End Clarity Code -->
 </head>
 
 <body class="bg-background">
@@ -110,7 +132,8 @@
                 <div class="flex-1 hidden self-center lg:block">
                     <picture>
                         <source srcset="assets/images/highlight.avif" type="image/avif">
-                        <img src="assets/images/highlight.png"decoding="async" loading="lazy" class="w-full h-auto" alt="Web Highlight">
+                        <img src="assets/images/highlight.png" decoding="async" loading="lazy" class="w-full h-auto"
+                            alt="Web Highlight">
                     </picture>
                 </div>
             </div>
