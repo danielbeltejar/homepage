@@ -23,6 +23,7 @@
 
     <link rel="stylesheet" href="assets/css/extras.css">
     <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/skeleton.css">
 
     <meta name="msapplication-TileColor" content="#E2DED1">
     <meta name="theme-color" content="#E2DED1">
@@ -134,8 +135,10 @@
                 <div class="flex-1 hidden self-center lg:block">
                     <picture>
                         <source srcset="assets/images/highlight.avif" type="image/avif">
+                        <source srcset="assets/images/highlight.png" type="image/png">
                         <img src="assets/images/highlight.png" decoding="async" loading="lazy" class="w-full h-auto"
-                            alt="Web Highlight">
+                            alt="Web Highlight"
+                            style="background-size: cover;background-repeat: no-repeat; background-image: url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABsaGikdKUEmJkFCLy8vQkc/Pj4/R0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0f/2wBDAR0pKTQmND8oKD9HPzU/R0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0f/wAARCAAuAFADASIAAhEBAxEB/8QAGgAAAwEBAQEAAAAAAAAAAAAAAwQFAgABBv/EAC4QAAEDAgUCAwgDAAAAAAAAAAEAAhEDIQQSMUFREyJhcYEUIzKRobHR8ULh8P/EABgBAQEBAQEAAAAAAAAAAAAAAAMCBAAB/8QAIhEBAAICAQQCAwAAAAAAAAAAAQACAxEhEjFBYSJRE0JS/9oADAMBAAIRAxEAPwD6NcsF/Cw+u1muvClsHLKBe08xOIGHZnd5ftHUbF1XVgBFgZ/abp4wCz7eKEy1X1Fcbr35jpIGqFN5RbOvql62IZStq7j8pV1yww3wRgGV6p4xbzoAAt+0CoMruwndGZavEpx2I6uSlN9TqZTdonbaBBzbk8JtKO5CanjnZQSdlFzkkk3JKqVnWLOWn6Kc2GkO4KyZnaV8TRiNCxgYafiN0B1I0ze45TNSn1SHA2/1xcXWar+mwM+IxH9le2x1K/XudW9twdOu5gLRpt4IZaXGBclCDsuqNQrZXdwsd1mPkhZ4jJ07Q5hmYWBc3QKg6Zgoz8MXEmRczofztsh1KjahDWmTTs7zWjJSpXcKlleYzhapyZT/AB+ybDgUpgxdxTqfErUWDk11MWn30eCTxDDSMgS37J5sdU85R8lp+qJK2Hqf2fUsUTR4JIpuI0JARAC4wLpo9KdkVuWO2PRF+P8AqxqL1/VXcAzDNg5rl308kF1I07G45T65JatE1sJBa49mTMxFgSEOicxOTuMwfTlUD0pvCUoNaKbspkSJjmAiaAfK2yJ1b7HMq0mCmMu+pRFMa09TV2b10+WiprXjt1HBo8TJY08vM//Z');">
                     </picture>
                 </div>
             </div>
@@ -211,17 +214,21 @@
                     class="h-full flex lg:flex-row lg:flex-wrap lg:content-start gap-s lg:justify-center lg:overflow-x-auto overflow-x-scroll">
                     <project
                         class="group group-hover:shadow-md flex flex-col h-96 w-80 transition-all duration-500 hyphens-auto text-justify bg-background hover:bg-secondary-button px-s py-s rounded-3xl shadow-inner">
-                        <div class="rounded-xl w-[280px] h-[161px] overflow-hidde group-hover:hidden">
-                            <video class="rounded-xl group-hover:scale-110 transition-all " autoplay="autoplay"
-                                width=auto preload autoplay muted loop playsinline poster=""
-                                style="background-size: cover;background-repeat: no-repeat; background-color: rgb(0, 109, 0); background-image: url('data:image/jpeg;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAAAAAAD/4QMtaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLwA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA3LjEtYzAwMCA3OS5kYWJhY2JiLCAyMDIxLzA0LzE0LTAwOjM5OjQ0ICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgMjMuMCAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MzcwMzBGMzkxMkIxMTFFRUFBNDVBQkJBMzkwOUQ1QTciIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MzcwMzBGM0ExMkIxMTFFRUFBNDVBQkJBMzkwOUQ1QTciPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDozNzAzMEYzNzEyQjExMUVFQUE0NUFCQkEzOTA5RDVBNyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDozNzAzMEYzODEyQjExMUVFQUE0NUFCQkEzOTA5RDVBNyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pv/uAA5BZG9iZQBkwAAAAAH/2wCEABsaGikdKUEmJkFCLy8vQkc/Pj4/R0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0cBHSkpNCY0PygoP0c/NT9HR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR//AABEIADwAUAMBIgACEQEDEQH/xABiAAACAwEAAAAAAAAAAAAAAAABAgADBAUBAAMBAAAAAAAAAAAAAAAAAAABAgMQAAICAwEAAwAAAAAAAAAAAAABEQIhEgMxQSIEEQEBAQEBAQEAAAAAAAAAAAAAAREhUTEC/9oADAMBAAIRAxEAPwDO+VrrBTb89kdPl4L18MbxecYKVa9HZAEsRAyJBdZGATCLVDBQA4oRBoXVVQl+myKrKAFL2/EARgEgUx5KwpgCqzTLG5FcMiHemIQAJIXaSFq4tjLiylZVESHU1Lk4EfMBjMQutyayUsRYhABAhQRQpiDYr6offBRWYLMwW3i/m9iW5NsTnt8Fv3BROldamBqTZ22jJl5+5FWX6VasOrNmCKALJ6x6sOjg14DaIAZPX//Z');">
-                                <source src="assets/videos/fym.webm" type="video/webm">
-                                <source src="assets/videos/fym.mp4" type="video/mp4">
-                                Sorry, your browser does not support HTML5 video.
-                            </video>
+                        <div class="relative">
+                            <div
+                                class="rounded-xl w-[280px] h-[161px] overflow-hidde group-hover:hidden skeleton absolute">
+                            </div>
+                            <div class="rounded-xl w-[280px] h-[161px] overflow-hidde group-hover:hidden absolute">
+                                <video class="rounded-xl group-hover:scale-110 transition-all" autoplay="autoplay"
+                                    width=auto preload autoplay muted loop playsinline poster="">
+                                    <source src="assets/videos/fym.webm" type="video/webm">
+                                    <source src="assets/videos/fym.mp4" type="video/mp4">
+                                    Sorry, your browser does not support HTML5 video.
+                                </video>
+                            </div>
                         </div>
                         <div
-                            class="flex flex-wrap mt-xs gap-2xs justify-start h-[6rem] content-start group-hover:hidden">
+                            class="flex flex-wrap mt-xs gap-2xs justify-start h-[6rem] content-start group-hover:hidden pt-[161px]">
                             <p
                                 class="text-text h-fit text-12 flex align-middle justify-center items-center bg-slate-50 px-2xs rounded-full shadow-md">
                                 C#
