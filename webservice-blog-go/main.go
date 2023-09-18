@@ -1,1 +1,0 @@
-package webservice_blog_go
