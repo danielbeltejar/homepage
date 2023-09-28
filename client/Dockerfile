@@ -1,5 +1,5 @@
 # Use the official Nginx image as the base image
-FROM nginx-unprivileged:stable-alpine-slim
+FROM ghcr.io/nginxinc/nginx-unprivileged:stable-alpine-slim
 
 # Copy your HTML website files to the Nginx webroot directory
 COPY ./public/ /usr/share/nginx/html
