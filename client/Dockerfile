@@ -9,6 +9,8 @@ COPY ./nginx.conf /etc/nginx/nginx.conf
 
 RUN mkdir -p /var/cache/nginx
 
+USER root
+
 RUN apk --no-cache add shadow && usermod -u 10001 nginx && \
     groupmod -g 10001 nginx
 
