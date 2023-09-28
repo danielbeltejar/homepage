@@ -9,8 +9,8 @@ COPY ./nginx.conf /etc/nginx/nginx.conf
 
 RUN mkdir -p /var/cache/nginx
 
-RUN apk --no-cache add shadow && usermod -u 10014 nginx && \
-    groupmod -g 10014 nginx
+RUN apk --no-cache add shadow && usermod -u 10001 nginx && \
+    groupmod -g 10001 nginx
 
 RUN apk del shadow
 
