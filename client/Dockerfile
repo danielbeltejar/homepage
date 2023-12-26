@@ -1,5 +1,5 @@
 # Use the official Nginx image as the base image
-FROM nginx:stable-alpine-slim
+FROM cgr.dev/chainguard/nginx:latest
 
 # Copy your HTML website files to the Nginx webroot directory
 COPY ./public/ /usr/share/nginx/html
@@ -8,7 +8,7 @@ COPY ./public/ /usr/share/nginx/html
 COPY ./nginx.conf /etc/nginx/nginx.conf
 
 # Expose port 80 for Nginx
-EXPOSE 80
+EXPOSE 8080 
 
 # Start Nginx when the container starts
-CMD ["nginx", "-g", "daemon off;"]
+# CMD ["nginx", "-g", "daemon off;"]
