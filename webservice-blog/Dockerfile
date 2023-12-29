@@ -16,7 +16,6 @@ RUN go build -o app ./cmd
 # Deployment environment
 # ----------------------
 FROM cgr.dev/chainguard/static:latest
-WORKDIR /app
 
 COPY --from=builder /app/app .
 
