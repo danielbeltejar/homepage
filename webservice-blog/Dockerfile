@@ -18,6 +18,7 @@ RUN go build -o app ./cmd
 FROM cgr.dev/chainguard/static:latest
 
 COPY --from=builder /app/app .
+RUN ls
 
 EXPOSE 8080
 
