@@ -3,7 +3,7 @@
 FROM cgr.dev/chainguard/go:latest-dev as builder
 WORKDIR /app
 
-RUN apk add --no-cache gcc musl-dev
+#RUN apk add --no-cache gcc musl-dev
 
 COPY go.mod go.sum ./
 RUN go mod download
