@@ -15,10 +15,10 @@ RUN go build -o app ./cmd
 
 # Deployment environment
 # ----------------------
-#FROM cgr.dev/chainguard/static:latest
+#FROM alpine as runtime
+#WORKDIR /app
 
 #COPY --from=builder /app/app .
-#RUN ls
 
 EXPOSE 8080
 
