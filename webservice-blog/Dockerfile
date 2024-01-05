@@ -15,10 +15,10 @@ RUN go build -o app ./cmd
 
 # Deployment environment
 # ----------------------
-FROM cgr.dev/chainguard/static:latest
+#FROM cgr.dev/chainguard/static:latest
 
-COPY --from=builder /app/app .
-RUN ls
+#COPY --from=builder /app/app .
+#RUN ls
 
 EXPOSE 8080
 
