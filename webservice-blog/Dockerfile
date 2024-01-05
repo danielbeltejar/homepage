@@ -1,6 +1,6 @@
 # Build environment
 # -----------------
-FROM golang:1.21-alpine as builder
+FROM cgr.dev/chainguard/go:latest-dev as builder
 WORKDIR /app
 
 RUN apk add --no-cache gcc musl-dev
