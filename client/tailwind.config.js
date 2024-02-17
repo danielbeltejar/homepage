@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./public/*.{html,js,svg}"],
+  darkMode: 'class', // Enable dark mode
   theme: {
     extend: {
       colors: {
@@ -10,6 +11,12 @@ module.exports = {
         'window': '#f8f7f2',
         'secondary-button': '#E2DED1',
         'accent': '#452b1a',
+        'dark-text': '#a99a90', // Text color in dark mode
+        'dark-background': '#121212', // Background color in dark mode
+        'dark-primary-button': '#bb9681', // Button color in dark mode
+        'dark-window': '#2d2a28', // Window color in dark mode
+        'dark-secondary-button': '#E2DED1', // Secondary button color in dark mode
+        'dark-accent': '#6c5546', // Accent color in dark mode
       },
       spacing: {
         '3xs': 'var(--space-3xs)',
