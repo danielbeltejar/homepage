@@ -7,7 +7,7 @@ import (
 )
 
 func GetLatestWordpressBlogEntry() ([]byte, error) {
-	apiUrl := "https://blog.danielbeltejar.es/wp-json/wp/v2/posts?per_page=1&orderby=date"
+	apiUrl := "http://wordpress-service.pro-wordpress-blog.svc.cluster.local/wp-json/wp/v2/posts?per_page=1&orderby=date"
 
 	response, err := http.Get(apiUrl)
 	if err != nil {
