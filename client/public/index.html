@@ -40,6 +40,8 @@
     <meta name="twitter:image:src" content="/assets/images/card.png" />
 
     <script src="assets/scripts/blog_ws.js"></script>
+    <script src="assets/scripts/dark_mode.js"></script>
+
     <!-- Matomo -->
     <script>
         var _paq = window._paq = window._paq || [];
@@ -73,9 +75,9 @@
 
 <body class="bg-background dark:bg-dark-background">
     <main class="flex flex-col items-center">
-        <main
+        <section
             class="text-text dark:text-dark-text bg-window dark:bg-dark-window text-11 py-m px-l mb-xs shadow-md lg:w-[740px]">
-            <div class="flex flex-row w-full justify-center mb-m lg:mb-xl">
+            <div class="flex flex-row w-full justify-center mb-m lg:mb-xl items-center">
                 <div id="title-effect" style="opacity: 0;"
                     class="transition-opacity ease-in-out duration-700 text-2 font-extrabold text-accent dark:text-dark-accent flex-row align-middle justify-center items-center pl-3xs py-3xs w-fit px-xs mt-xs mr-auto hidden lg:block">
                     <h1>Daniel Beltejar</h1>
@@ -143,8 +145,8 @@
                     </picture>
                 </div>
             </div>
-        </main>
-        <article
+        </section>
+        <section
             class="hidden text-text dark:text-dark-text bg-window dark:bg-dark-window text-11 py-m px-l mt-xl mb-xs shadow-md lg:w-[740px]">
             <div class="flex flex-row h-32 overflow-hidden gap-8">
                 <div>
@@ -193,9 +195,9 @@
 
                 </div>
             </div>
-        </article>
-        <article id="projects"
-            class="text-text dark:text-dark-text bg-window dark:bg-dark-window text-11 py-m px-l mt-xl mb-xs shadow-md lg:w-[740px] w-full">
+        </section>
+        <section id="projects"
+            class="text-text dark:text-dark-text bg-window dark:bg-dark-window text-11 py-m pb-xl px-l mt-xl mb-xs shadow-md lg:w-[740px] w-full">
             <div class="flex flex-row align-middle items-center mt-xs group w-full">
                 <a href="#projects"
                     class="text-accent dark:text-dark-accent text-11 opacity-0 absolute group-hover:opacity-100 transition-opacity duration-300">
@@ -253,7 +255,7 @@
                             </p>
                         </div>
                         <p
-                            class="text-11 max-h-0 w-[280px] overflow-hidden group-hover:max-h-80 lg:text-secondary-button dark:lg:text-dark-background group-hover:text-black dark:group-hover:text-slate-50 transition-colors duration-700">
+                            class="text-11 max-h-0 w-[280px] overflow-hidden group-hover:max-h-80 lg:text-secondary-button dark:lg:text-dark-background group-hover:text-black dark:group-hover:text-dark-text transition-colors duration-700">
                             A self-made online game inspired by the art style and mechanics of an old flash game.
                             Offering a unique blend of retro
                             and modern elements that provide an engaging and immersive experience for players. This
@@ -315,7 +317,7 @@
                             </p>
                         </div>
                         <p
-                            class="text-11 max-h-0 w-[280px] overflow-hidden group-hover:max-h-80 lg:text-secondary-button dark:lg:text-dark-background group-hover:text-black dark:group-hover:text-slate-50 transition-colors duration-700">
+                            class="text-11 max-h-0 w-[280px] overflow-hidden group-hover:max-h-80 lg:text-secondary-button dark:lg:text-dark-background group-hover:text-black dark:group-hover:text-dark-text transition-colors duration-700">
                             Developed a web scraping project that extracted pricing data from Uber Eats across
                             different countries. Using web scraping techniques, I retrieved food prices and
                             organized
@@ -379,7 +381,7 @@
 
                         </div>
                         <p
-                            class="text-11 max-h-0 w-[280px] overflow-hidden group-hover:max-h-80 lg:text-secondary-button dark:lg:text-dark-background group-hover:text-black dark:group-hover:text-slate-50 transition-colors duration-700">
+                            class="text-11 max-h-0 w-[280px] overflow-hidden group-hover:max-h-80 lg:text-secondary-button dark:lg:text-dark-background group-hover:text-black dark:group-hover:text-dark-text transition-colors duration-700">
                             Created a Pokémon Weather Map app that displays real-time weather info for Spanish
                             provinces, linking Pokémon characters to weather conditions. It retrieves data from
                             OpenWeatherMap API, generating a color-coded map based on temperature. Pokémon are
@@ -441,7 +443,7 @@
                             </p>
                         </div>
                         <p
-                            class="text-11 max-h-0 w-[280px] overflow-hidden group-hover:max-h-80 lg:text-secondary-button dark:lg:text-dark-background group-hover:text-black dark:group-hover:text-slate-50 transition-colors duration-700">
+                            class="text-11 max-h-0 w-[280px] overflow-hidden group-hover:max-h-80 lg:text-secondary-button dark:lg:text-dark-background group-hover:text-black dark:group-hover:text-dark-text transition-colors duration-700">
                             A small project to test differents languages made backends for a single web app. It can
                             encode
                             and decode text to emojis on the two ways in realtime while typing as other public big
@@ -492,7 +494,7 @@
                             </p>
                         </div>
                         <p
-                            class="text-11 max-h-0 w-[280px] overflow-hidden group-hover:max-h-80 lg:text-secondary-button dark:lg:text-dark-background group-hover:text-black dark:group-hover:text-slate-50 transition-colors duration-700">
+                            class="text-11 max-h-0 w-[280px] overflow-hidden group-hover:max-h-80 lg:text-secondary-button dark:lg:text-dark-background group-hover:text-black dark:group-hover:text-dark-text transition-colors duration-700">
                             A solution for storing and managing the data of 6 million users. Allows for the
                             manipulation of users data, statistics, leaderboards and game mechanics, to
                             provide a comprehensive system for managing user data. Redis was used to enable
@@ -548,7 +550,7 @@
                             </p>
                         </div>
                         <p
-                            class="text-11 max-h-0 w-[280px] overflow-hidden group-hover:max-h-80 lg:text-secondary-button dark:lg:text-dark-background group-hover:text-black dark:group-hover:text-slate-50 transition-colors duration-700">
+                            class="text-11 max-h-0 w-[280px] overflow-hidden group-hover:max-h-80 lg:text-secondary-button dark:lg:text-dark-background group-hover:text-black dark:group-hover:text-dark-text transition-colors duration-700">
                             A self-made project that collects public data on spanish real estate to analyze the
                             evolution of
                             housing prices over time. Gather, process, and present data in a user-friendly format.
@@ -575,9 +577,9 @@
                     </project>
                 </div>
             </div>
-        </article>
+        </section>
         <footer id="contact"
-            class="text-text dark:text-dark-text bg-window dark:bg-dark-window text-11 py-m px-l mt-xl mb-xs lg:pb-2xl shadow-md lg:w-[740px]">
+            class="text-text dark:text-dark-text bg-window dark:bg-dark-window text-11 py-m px-l mt-xl lg:pb-2xl shadow-md lg:w-[740px] mb-0">
             <div class="flex flex-row align-middle items-center mt-xs group w-full">
                 <a href="#contact"
                     class="text-accent dark:text-dark-accent text-11 opacity-0 absolute group-hover:opacity-100 transition-opacity duration-300">
@@ -619,5 +621,4 @@
         </footer>
     </main>
     <script src="assets/scripts/type_effect.js"></script>
-    <script src="assets/scripts/dark_mode.js"></script>
 </body>
