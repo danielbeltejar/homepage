@@ -1,13 +1,13 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
+  name: {{ printf "%s-ingress" .Chart.Name | trunc 63 | trimSuffix "-" }}
+  namespace: {{ .Values.namespace }}
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt
     ingress.kubernetes.io/force-ssl-redirect: "true"
     nginx.ingress.kubernetes.io/proxy-set-header: X-Real-IP $remote_addr
     nginx.ingress.kubernetes.io/use-forwarded-headers: "true"
-  name: { { printf "%s-ingress" .Chart.Name | trunc 63 | trimSuffix "-" } }
-  namespace: { { .Values.namespace } }
 spec:
   ingressClassName: nginx
   rules:
@@ -16,9 +16,9 @@ spec:
         paths:
           - backend:
               service:
-                name: { { printf "%s-service" .Chart.Name | trunc 63 | trimSuffix "-" } }
+                name: {{ printf "%s-service" .Chart.Name | trunc 63 | trimSuffix "-" }}
                 port:
-                  number: { { .Values.containerPort } }
+                  number: {{ .Values.containerPort }}
             path: /
             pathType: Prefix
   tls:
