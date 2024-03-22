@@ -1,0 +1,75 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ printf "%s-deployment" .Chart.Name | trunc 63 | trimSuffix "-" }}
+  namespace: {{ .Values.namespace }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Chart.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Chart.Name }}
+    spec:
+      securityContext:
+        fsGroup: 10003
+      automountServiceAccountToken: false
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 100
+            podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: app
+                  operator: In
+                  values:
+                  - {{ .Chart.Name }}
+              topologyKey: kubernetes.io/hostname
+      containers:
+        - name: {{ .Chart.Name }}-container
+          image: "{{ .Values.registry }}/{{ .Chart.Name }}:{{ .Chart.AppVersion }}"
+          imagePullPolicy: Always
+          env:
+          {{- range $key, $val := .Values.env }}
+            - name: {{ $key }}
+              value: {{ $val | quote }}
+          {{- end }}
+          ports:
+            - containerPort: {{ .Values.containerPort }}
+          securityContext:
+            capabilities:
+              drop:
+              - ALL
+            runAsNonRoot: true
+            readOnlyRootFilesystem: true
+            runAsUser: 10001
+            runAsGroup: 10002
+            allowPrivilegeEscalation: false
+            seccompProfile:
+              type: RuntimeDefault
+          resources:
+            requests:
+              memory: "32Mi"
+            limits:
+              cpu: 500m
+              memory: "128Mi"
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: {{ .Values.containerPort }}
+            periodSeconds: 30
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: {{ .Values.containerPort }}
+            periodSeconds: 30
+          startupProbe:
+            httpGet:
+              path: /healthz
+              port: {{ .Values.containerPort }}
+            periodSeconds: 5
+            initialDelaySeconds: 10
+      restartPolicy: Always
