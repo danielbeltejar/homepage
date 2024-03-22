@@ -44,7 +44,7 @@ spec:
               drop:
               - ALL
             runAsNonRoot: true
-            readOnlyRootFilesystem: true
+            readOnlyRootFilesystem: false
             runAsUser: 10001
             runAsGroup: 10002
             allowPrivilegeEscalation: false
