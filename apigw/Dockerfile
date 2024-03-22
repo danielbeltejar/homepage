@@ -22,4 +22,4 @@ RUN ls -l
 RUN pwd
 EXPOSE 8080
 
-CMD ["./app"]
+CMD ["sleep infinity"]
