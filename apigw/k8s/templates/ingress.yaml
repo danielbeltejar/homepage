@@ -15,13 +15,13 @@ spec:
     - host: danielbeltejar.es
       http:
         paths:
-          - backend:
+          - path: /api(/|$)(.*)
+            pathType: Prefix
+            backend:
               service:
                 name: {{ printf "%s-service" .Chart.Name | trunc 63 | trimSuffix "-" }}
                 port:
                   number: {{ .Values.containerPort }}
-            path: /api(/|$)(.*)
-            pathType: Prefix
   tls:
     - hosts:
         - danielbeltejar.es

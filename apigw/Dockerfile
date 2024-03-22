@@ -18,7 +18,8 @@ FROM alpine as runtime
 WORKDIR /app
 
 COPY --from=builder /app/app .
-
+RUN ls -l
+RUN pwd
 EXPOSE 8080
 
 CMD ["./app"]
