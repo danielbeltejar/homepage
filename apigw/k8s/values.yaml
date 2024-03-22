@@ -6,4 +6,4 @@ env:
 containerPort: 8080
 registry: registry.server.local:5000
 
-namespace: pro-homepage-back
+namespace: pro-homepage-front

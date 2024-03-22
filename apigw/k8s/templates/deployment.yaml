@@ -19,30 +19,30 @@ spec:
       affinity:
         podAntiAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
-          - weight: 100
-            podAffinityTerm:
-              labelSelector:
-                matchExpressions:
-                - key: app
-                  operator: In
-                  values:
-                  - {{ .Chart.Name }}
-              topologyKey: kubernetes.io/hostname
+            - weight: 100
+              podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                    - key: app
+                      operator: In
+                      values:
+                        - {{ .Chart.Name }}
+                topologyKey: kubernetes.io/hostname
       containers:
         - name: {{ .Chart.Name }}-container
           image: "{{ .Values.registry }}/{{ .Chart.Name }}:{{ .Chart.AppVersion }}"
           imagePullPolicy: Always
           env:
           {{- range $key, $val := .Values.env }}
-            - name: {{ $key }}
-              value: {{ $val | quote }}
+          - name: {{ $key }}
+            value: {{ $val | quote }}
           {{- end }}
           ports:
             - containerPort: {{ .Values.containerPort }}
           securityContext:
             capabilities:
               drop:
-              - ALL
+                - ALL
             runAsNonRoot: true
             readOnlyRootFilesystem: true
             runAsUser: 10001
@@ -72,4 +72,11 @@ spec:
               port: {{ .Values.containerPort }}
             periodSeconds: 5
             initialDelaySeconds: 10
-      restartPolicy: Always
+          volumeMounts:
+            - name: config-volume
+              mountPath: /app
+              readOnly: true
+      volumes:
+        - name: config-volume
+          configMap:
+            name: {{ printf "%s-config" .Chart.Name | trunc 63 | trimSuffix "-" }}

@@ -7,6 +7,7 @@ RUN apk add --no-cache gcc musl-dev
 
 COPY src/ ./
 COPY go.mod go.sum ./
+
 RUN go mod download
 RUN go build -o app ./cmd
 
