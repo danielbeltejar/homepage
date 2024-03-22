@@ -20,7 +20,7 @@ spec:
                 name: {{ printf "%s-service" .Chart.Name | trunc 63 | trimSuffix "-" }}
                 port:
                   number: {{ .Values.containerPort }}
-          - path: /api(/|$)(.*)
+            path: /api(/|$)(.*)
             pathType: Prefix
   tls:
     - hosts:
