@@ -89,7 +89,7 @@ func main() {
 	g := NewGateway()
 
 	// Load configuration
-	g.LoadConfig("config.yaml")
+	g.LoadConfig("config/config.yaml")
 
 	// Set the backend application handler
 	g.SetBackendApp(getBackendApp())
