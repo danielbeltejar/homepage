@@ -94,6 +94,11 @@ func main() {
 	// Set the backend application handler
 	g.SetBackendApp(getBackendApp())
 
+	http.HandleFunc("/healthz", func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(http.StatusOK)
+		fmt.Fprintf(w, "OK")
+	})
+
 	log.Println("API Gateway listening on port 8080...")
 	log.Fatal(http.ListenAndServe(":8080", g))
 }
