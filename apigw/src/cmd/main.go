@@ -86,6 +86,21 @@ func (g *Gateway) SetBackendApp(backendApp http.Handler) {
 }
 
 func main() {
+	// Add health check endpoint
+	http.HandleFunc("/healthz", func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(http.StatusOK)
+		fmt.Fprintf(w, "OK")
+	})
+
+	// Start serving health check endpoint
+	go func() {
+		log.Println("Health check server listening on port 8081...")
+		if err := http.ListenAndServe(":8081", nil); err != nil {
+			log.Fatalf("Failed to start health check server: %v", err)
+		}
+	}()
+
+	// Initialize your Gateway
 	g := NewGateway()
 
 	// Load configuration
@@ -94,12 +109,14 @@ func main() {
 	// Set the backend application handler
 	g.SetBackendApp(getBackendApp())
 
-	http.HandleFunc("/healthz", func(w http.ResponseWriter, r *http.Request) {
-		w.WriteHeader(http.StatusOK)
-		fmt.Fprintf(w, "OK")
-	})
-
+	// Start serving Gateway
 	log.Println("API Gateway listening on port 8080...")
+
+	// Print registered routes for debugging
+	for _, route := range g.Routes {
+		log.Printf("Registered route: %s\n", route.Pattern)
+	}
+
 	log.Fatal(http.ListenAndServe(":8080", g))
 }
 
