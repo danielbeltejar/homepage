@@ -1,27 +1,5 @@
 routes:
-  - pattern: "/api/users"
+  - pattern: "/api/news"
     method:
       - "GET"
-      - "POST"
-    backend_dns: "http://localhost:8001"
-
-  - pattern: "/api/posts"
-    method:
-      - "GET"
-      - "POST"
-      - "PUT"
-      - "DELETE"
-    backend_dns: "http://localhost:8002"
-
-  - pattern: "/api/comments"
-    method:
-      - "GET"
-      - "POST"
-      - "PUT"
-    backend_dns: "http://localhost:8003"
-
-  - pattern: "/api/messages"
-    method:
-      - "GET"
-      - "POST"
-    backend_dns: "http://localhost:8004"
+    backend_dns: "http://news-api-service.pro-homepage-back.svc.cluster.local:8080"

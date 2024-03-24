@@ -1,6 +1,6 @@
 async function fetchData() {
     try {
-        const response = await fetch('https://danielbeltejar.es/v1/blog/latest');
+        const response = await fetch('https://danielbeltejar.es/api/news');
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }

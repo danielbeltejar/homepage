@@ -10,7 +10,7 @@ import (
 
 func main() {
 	r := mux.NewRouter()
-	r.HandleFunc("/latest", handlers.LatestBlogEntryHandler).Methods("GET")
+	r.HandleFunc("/news", handlers.LatestBlogEntryHandler).Methods("GET")
 	r.HandleFunc("/healthz", handlers.HealthHandler).Methods("GET")
 	http.Handle("/", r)
 
