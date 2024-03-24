@@ -6,6 +6,9 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"net/http/httputil"
+	"net/url"
+	"strings"
 )
 
 type RouteConfig struct {
@@ -20,8 +23,7 @@ type GatewayConfig struct {
 
 type Route struct {
 	Pattern        string
-	BackendDNS     string
-	BackendApp     http.Handler
+	BackendAppURL  *url.URL
 	AllowedMethods []string
 }
 
@@ -34,11 +36,23 @@ func NewGateway() *Gateway {
 }
 
 func (g *Gateway) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	clientAddr := r.RemoteAddr
+	requestPath := r.URL.Path
+	requestURL := r.URL.String()
+	requestMethod := r.Method
+
+	log.Printf("Incoming request from client %s: %s %s", clientAddr, requestMethod, requestURL)
+
 	for _, route := range g.Routes {
-		if r.URL.Path == route.Pattern {
+		if strings.HasPrefix(requestPath, route.Pattern) {
+			trimmedPath := strings.TrimPrefix(requestPath, "/api")
+			if trimmedPath == "" {
+				trimmedPath = "/"
+			}
+
 			methodAllowed := false
 			for _, method := range route.AllowedMethods {
-				if r.Method == method {
+				if requestMethod == method {
 					methodAllowed = true
 					break
 				}
@@ -48,7 +62,20 @@ func (g *Gateway) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				return
 			}
 
-			route.BackendApp.ServeHTTP(w, r)
+			backendURL := *route.BackendAppURL
+			backendURL.Path = trimmedPath
+
+			proxy := httputil.NewSingleHostReverseProxy(&backendURL)
+			proxy.Director = func(req *http.Request) {
+				req.Host = backendURL.Host
+				req.URL.Host = backendURL.Host
+				req.URL.Scheme = backendURL.Scheme
+				req.URL.Path = trimmedPath
+
+				log.Printf("Proxying request to backend: %s %s", req.Method, req.URL.String())
+			}
+
+			proxy.ServeHTTP(w, r)
 			return
 		}
 	}
@@ -69,9 +96,13 @@ func (g *Gateway) LoadConfig(filename string) {
 
 	var routes []Route
 	for _, routeConfig := range gatewayConfig.Routes {
+		backendURL, err := url.Parse(routeConfig.BackendDNS)
+		if err != nil {
+			log.Fatalf("Error parsing backend DNS URL for route %s: %v", routeConfig.Pattern, err)
+		}
 		routes = append(routes, Route{
 			Pattern:        routeConfig.Pattern,
-			BackendDNS:     routeConfig.BackendDNS,
+			BackendAppURL:  backendURL,
 			AllowedMethods: routeConfig.Method,
 		})
 	}
@@ -79,20 +110,12 @@ func (g *Gateway) LoadConfig(filename string) {
 	g.Routes = routes
 }
 
-func (g *Gateway) SetBackendApp(backendApp http.Handler) {
-	for i := range g.Routes {
-		g.Routes[i].BackendApp = backendApp
-	}
-}
-
 func main() {
-	// Add health check endpoint
 	http.HandleFunc("/healthz", func(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusOK)
 		fmt.Fprintf(w, "OK")
 	})
 
-	// Start serving health check endpoint
 	go func() {
 		log.Println("Health check server listening on port 8081...")
 		if err := http.ListenAndServe(":8081", nil); err != nil {
@@ -100,28 +123,15 @@ func main() {
 		}
 	}()
 
-	// Initialize your Gateway
 	g := NewGateway()
 
-	// Load configuration
 	g.LoadConfig("config/config.yaml")
 
-	// Set the backend application handler
-	g.SetBackendApp(getBackendApp())
-
-	// Start serving Gateway
 	log.Println("API Gateway listening on port 8080...")
 
-	// Print registered routes for debugging
 	for _, route := range g.Routes {
 		log.Printf("Registered route: %s\n", route.Pattern)
 	}
 
 	log.Fatal(http.ListenAndServe(":8080", g))
-}
-
-func getBackendApp() http.Handler {
-	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintf(w, "Backend App")
-	})
 }
