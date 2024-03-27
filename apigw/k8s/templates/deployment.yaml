@@ -30,7 +30,7 @@ spec:
                 topologyKey: kubernetes.io/hostname
       containers:
         - name: {{ .Chart.Name }}-container
-          image: "{{ .Values.registry }}/{{ .Chart.Name }}:{{ .Chart.AppVersion }}"
+          image: core.harbor.domain/danielbeltejar/common/apigw:latest 
           imagePullPolicy: Always
           env:
           {{- range $key, $val := .Values.env }}
