@@ -51,10 +51,8 @@ spec:
             seccompProfile:
               type: RuntimeDefault
           volumeMounts:
-          #- name: tmpfs-var-lib-nginx-tmp
-          #  mountPath: /var/lib/nginx/tmp
-          #- name: tmpfs-var-run
-          #  mountPath: /var/run
+          - name: tmpfs-var-lib-nginx-tmp
+            mountPath: /var/lib/nginx/tmp
           - name: tmpfs-run-nginx
             mountPath: /run/nginx
           resources:
@@ -82,9 +80,6 @@ spec:
       restartPolicy: Always
       volumes:
       - name: tmpfs-var-lib-nginx-tmp
-        emptyDir:
-          medium: Memory
-      - name: tmpfs-var-run
         emptyDir:
           medium: Memory
       - name: tmpfs-run-nginx
