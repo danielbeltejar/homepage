@@ -53,8 +53,8 @@ spec:
           volumeMounts:
           - name: tmpfs-var-lib-nginx-tmp
             mountPath: /var/lib/nginx/tmp
-          - name: tmpfs-var-run
-            mountPath: /var/run
+          #- name: tmpfs-var-run
+          #  mountPath: /var/run
           - name: tmpfs-run-nginx
             mountPath: /run/nginx
           resources:
