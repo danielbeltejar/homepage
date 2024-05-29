@@ -44,12 +44,17 @@ spec:
               drop:
               - ALL
             runAsNonRoot: true
-            readOnlyRootFilesystem: false
+            readOnlyRootFilesystem: true
             runAsUser: 65532
             runAsGroup: 10002
             allowPrivilegeEscalation: false
             seccompProfile:
               type: RuntimeDefault
+          volumeMounts:
+          - name: tmpfs-var-lib-nginx-tmp
+            mountPath: /var/lib/nginx/tmp
+          - name: tmpfs-var-run
+            mountPath: /var/run
           resources:
             requests:
               memory: "32Mi"
@@ -73,3 +78,10 @@ spec:
             periodSeconds: 5
             initialDelaySeconds: 10
       restartPolicy: Always
+      volumes:
+      - name: tmpfs-var-lib-nginx-tmp
+        emptyDir:
+          medium: Memory
+      - name: tmpfs-var-run
+        emptyDir:
+          medium: Memory
