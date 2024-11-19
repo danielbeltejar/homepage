@@ -31,7 +31,6 @@ spec:
       containers:
         - name: {{ .Chart.Name }}-container
           image: "{{ .Values.registry }}/{{ .Chart.Name }}:{{ .Chart.AppVersion }}"
-          imagePullPolicy: Always
           env:
           {{- range $key, $val := .Values.env }}
             - name: {{ $key }}
