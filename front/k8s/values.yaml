@@ -4,6 +4,6 @@ env:
   TZ: "UTC"
 
 containerPort: 8080
-registry: registry.server.local:5000
+registry: harbor.server.local
 
 namespace: pro-homepage-front
