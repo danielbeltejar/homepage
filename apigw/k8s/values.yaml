@@ -5,6 +5,6 @@ env:
 
 containerPort: 8080
 healthPort: 8081
-registry: registry.server.local:5000
+registry: harbor.server.local
 
 namespace: pro-homepage-front
