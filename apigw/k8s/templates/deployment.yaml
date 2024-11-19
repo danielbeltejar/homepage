@@ -31,7 +31,6 @@ spec:
       containers:
         - name: {{ .Chart.Name }}-container
           image: core.harbor.domain/danielbeltejar/common/apigw:latest 
-          imagePullPolicy: Always
           env:
           {{- range $key, $val := .Values.env }}
           - name: {{ $key }}
