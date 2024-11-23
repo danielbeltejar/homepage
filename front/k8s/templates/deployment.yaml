@@ -56,10 +56,11 @@ spec:
             mountPath: /run/nginx
           resources:
             requests:
+              cpu: 100m
               memory: "32Mi"
             limits:
-              cpu: 500m
-              memory: "128Mi"
+              cpu: 200m
+              memory: "64Mi"
           readinessProbe:
             httpGet:
               path: /healthz
@@ -74,8 +75,8 @@ spec:
             httpGet:
               path: /healthz
               port: {{ .Values.containerPort }}
-            periodSeconds: 5
-            initialDelaySeconds: 10
+            periodSeconds: 1
+            initialDelaySeconds: 3
       restartPolicy: Always
       volumes:
       - name: tmpfs-var-lib-nginx-tmp

@@ -51,10 +51,11 @@ spec:
               type: RuntimeDefault
           resources:
             requests:
-              memory: "32Mi"
+              cpu: 10m
+              memory: "16Mi"
             limits:
-              cpu: 500m
-              memory: "128Mi"
+              cpu: 20m
+              memory: "24Mi"
           readinessProbe:
             httpGet:
               path: /healthz
@@ -69,6 +70,6 @@ spec:
             httpGet:
               path: /healthz
               port: {{ .Values.containerPort }}
-            periodSeconds: 5
-            initialDelaySeconds: 10
+            periodSeconds: 1
+            initialDelaySeconds: 3
       restartPolicy: Always
