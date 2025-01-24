@@ -1,6 +1,6 @@
 $$$
 title: My Test Blog Post
-date: 2023-10-19
+date: 2000-10-19
 author: Daniel Beltejar 
 $$$
 
