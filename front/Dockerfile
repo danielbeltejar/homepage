@@ -1,11 +1,25 @@
-# Use the official Nginx image as the base image
+# Etapa 1: Construcción de la aplicación Node.js
+FROM cgr.dev/chainguard/node as build
+
+#ENV NODE_ENV=production
+
+COPY --chown=node:node ["./", "/app/"]
+
+
+WORKDIR /app
+
+RUN npm install --legacy-peer-deps
+
+RUN npm run build
+
+# Etapa 2: Configuración de Nginx
 FROM cgr.dev/chainguard/nginx:latest
 
-# Copy your HTML website files to the Nginx webroot directory
-COPY ./public/ /usr/share/nginx/html
+# Copiar la aplicación construida desde la etapa anterior
+COPY --from=build /app/build /usr/share/nginx/html
 
-# Copy your custom nginx.conf to the Nginx configuration directory
+# Copiar la configuración personalizada de Nginx
 COPY ./nginx.conf /etc/nginx/nginx.conf
 
-# Expose port 8080 for Nginx
+# Exponer el puerto 8080 para Nginx
 EXPOSE 8080

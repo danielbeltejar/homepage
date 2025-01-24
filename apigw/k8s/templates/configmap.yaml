@@ -10,3 +10,7 @@ data:
         method:
           - "GET"
         backend_dns: "http://news-api-service.pro-homepage-back.svc.cluster.local:8080"
+      - pattern: "/api/posts"
+        method:
+          - "GET"
+        backend_dns: "http://posts-service.pro-homepage-back.svc.cluster.local:8000"

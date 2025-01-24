@@ -1,0 +1,9 @@
+replicaCount: 1
+
+env:
+  TZ: "UTC"
+
+containerPort: 8000
+registry: registry.server.local:5000
+
+namespace: pro-homepage-back
