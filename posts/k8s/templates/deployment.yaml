@@ -72,11 +72,5 @@ spec:
               port: {{ .Values.containerPort }}
             periodSeconds: 5
             initialDelaySeconds: 10
-          volumeMounts:
-          - name: images-volume
-            mountPath: /app/images
       restartPolicy: Always
-      volumes:
-        - name: images-volume
-          persistentVolumeClaim:
-            claimName: images-pvc
+  

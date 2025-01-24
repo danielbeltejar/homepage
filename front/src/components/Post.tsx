@@ -19,7 +19,7 @@ export default function Post() {
     useEffect(() => {
         const fetchPost = async () => {
             try {
-                const response = await fetch(`http://127.0.0.1:8000/posts/${filename}.md`);
+                const response = await fetch(`https://danielbeltejar.es/api/posts/${filename}.md`);
 
                 if (!response.ok) {
                     throw new Error('Failed to fetch post');
