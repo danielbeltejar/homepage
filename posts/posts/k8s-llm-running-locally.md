@@ -1,3 +1,9 @@
+$$$
+title: Running LLM locally on a Kubernetes cluster
+date: 2024-01-25
+author: Daniel Beltejar 
+$$$
+
 Configuré un clúster Kubernetes optimizado para IA acelerada por GPU. Instalé el plugin de dispositivo NVIDIA, creé una RuntimeClass personalizada y desplegué DeepSeek-R1 con ollama, como API LLM local.  
 
 ## Pasos  
