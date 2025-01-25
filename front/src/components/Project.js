@@ -13,7 +13,7 @@ const projects = [
     githubLink: "https://github.com/danielbeltejar?tab=repositories&q=frontyardmonsters&type=&language=&sort=/"
   },
   {
-    videoSrc: "assets/images/bigmac-index.webm",
+    videoSrc: "assets/videos/bigmac-index.webm",
     description: "Developed a web scraping project that extracted pricing data from Uber Eats across different countries. Using web scraping techniques, I retrieved food prices and organized and stored the data. Additionally, I implemented an Rest endpoint that allows the data to be retrieved and presented in a styled format on a webpage.",
     technologies: ["Python", "FastAPI", "BeautifulSoup", "PostgreSQL", "JavaScript", "K8s"],
     visitLink: "https://bigmac.danielbeltejar.es/",
