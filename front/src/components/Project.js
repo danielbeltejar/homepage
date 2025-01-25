@@ -20,7 +20,7 @@ const projects = [
     githubLink: "https://github.com/danielbeltejar?tab=repositories&q=bigmac-index&type=&language=&sort="
   },
   {
-    videoSrc: "assets/videos/weathermap.webm",
+    videoSrc: "assets/videos/pokemon-weather-map.webm",
     description: "Created a Pokémon Weather Map app that displays real-time weather info for Spanish provinces, linking Pokémon characters to weather conditions. It retrieves data from OpenWeatherMap API, generating a color-coded map based on temperature. Pokémon are assigned based on local weather and shown on the map, offering an engaging and informative user experience.",
     technologies: ["Python", "Pillow", "FastAPI", "JavaScript", "K8s"],
     visitLink: "https://weather.danielbeltejar.es/",

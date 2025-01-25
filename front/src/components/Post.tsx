@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLink } from '@fortawesome/free-solid-svg-icons';
 import ReactMarkdown from 'react-markdown';
 
-interface Post {
+interface PostObject {
     title: string;
     content: string;
     publishedDate: string;
@@ -12,9 +12,8 @@ interface Post {
 }
 
 export default function Post() {
-    const [post, setPost] = useState<Post | null>(null);
+    const [post, setPost] = useState<PostObject | null>(null);
     const { filename } = useParams<{ filename: string }>();
-    const [isMoved, setIsMoved] = useState(false);
 
     useEffect(() => {
         const fetchPost = async () => {

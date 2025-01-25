@@ -23,6 +23,7 @@ const ProjectCard = ({ videoSrc, description, technologies, visitLink, githubLin
             loop
             muted
             playsInline
+            preload="none"
             poster={videoSrc}
             className="w-full h-full object-cover rounded-xl group-hover:scale-110 transition-all"
           >
