@@ -1,11 +1,12 @@
 async function fetchData() {
     try {
-        const response = await fetch('https://danielbeltejar.es/api/news');
+        const response = await fetch('https://danielbeltejar.es/api/posts/newest');
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
         const data = await response.json();
-        updateLink(data.url, data.title);
+        const url = `https://danielbeltejar.es/posts/${data.filename.replace('.md', '')}`;
+        updateLink(url, data.title);
     } catch (error) {
         console.error('Error:', error);
     }
@@ -13,19 +14,14 @@ async function fetchData() {
 
 function updateLink(url, title) {
     const linkElement = document.getElementById("blog-link");
-    linkElement.style.opacity = "1";
     if (linkElement) {
+        linkElement.style.opacity = "1";
         linkElement.href = url;
         const titleElement = linkElement.querySelector('.max-h-4');
         if (titleElement) {
-            titleElement.textContent = title + " - learn more";
+            titleElement.textContent = `${title}`;
         }
     }
 }
 
 fetchData();
-
-
-
-
-
