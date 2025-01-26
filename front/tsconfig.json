@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+      "jsx": "react-jsx",  // o "react"
+      "module": "ESNext",
+      "target": "ESNext",
+      "moduleResolution": "node",
+      "strict": true,
+      "esModuleInterop": true,
+      "skipLibCheck": true,
+      "forceConsistentCasingInFileNames": true,
+      "allowJs": true,
+      "allowImportingTsExtensions": true,  // Añadir esta línea
+      "noEmit": true  // Añadir esta línea
+    },
+    "include": [
+      "src"
+    ]
+  }
+  

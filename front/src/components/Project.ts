@@ -1,5 +1,5 @@
 import React from 'react';
-import ProjectCard from './ProjectCard.tsx';
+import ProjectCard from "./ProjectCard";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLink } from '@fortawesome/free-solid-svg-icons';
 
