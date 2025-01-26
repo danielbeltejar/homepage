@@ -1,7 +1,7 @@
 # Etapa 1: Construcción de la aplicación Node.js
 FROM cgr.dev/chainguard/node as build
 
-#ENV NODE_ENV=production
+ENV NODE_ENV=production
 
 COPY --chown=node:node ["./", "/app/"]
 
