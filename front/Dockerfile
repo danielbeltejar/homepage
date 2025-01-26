@@ -8,7 +8,7 @@ COPY --chown=node:node ["./", "/app/"]
 
 WORKDIR /app
 
-RUN npm install --legacy-peer-deps
+RUN npm install
 
 RUN npm run build
 
