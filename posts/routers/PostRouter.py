@@ -1,6 +1,8 @@
 import glob
 import logging
 import os
+from datetime import datetime
+
 import yaml
 from fastapi import APIRouter
 
@@ -19,14 +21,13 @@ def get_post(file_name: str):
 def get_posts():
     posts = []
 
-    for file in glob.glob(os.path.join(POSTS_DIR, "**/*.md")):
+    for file in glob.glob(os.path.join(POSTS_DIR, "**/*.md"), recursive=True):
         with open(file, 'r', encoding='utf-8') as f:
             content = f.read()
 
-        # Extract YAML front matter (optional)
         front_matter = {}
-        if content.startswith('---'):
-            end = content.find('\n---')
+        if content.startswith('$$$'):
+            end = content.find('\n$$$')
             front_matter_content = content[3:end].strip()
             front_matter = yaml.safe_load(front_matter_content)
 
@@ -52,6 +53,22 @@ def get_front_matter(file_name: str):
 @post_router.get("/posts")
 async def get_all_posts():
     return {"posts": get_posts()}
+
+
+@post_router.get("/posts/newest")
+def get_newest_post():
+    posts = get_posts()
+    if not posts:
+        return {"message": "No posts available"}, 404
+
+    # Filtra por la fecha más reciente (si existe)
+    newest_post = max(posts, key=lambda post: post.get('date') or datetime.min)
+    content = get_post(newest_post["filename"])
+    return {
+        "filename": newest_post["filename"],
+        "content": content.split("$$$")[2],
+        **newest_post
+    }
 
 
 @post_router.get("/posts/{filename}")
