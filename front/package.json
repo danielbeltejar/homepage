@@ -52,6 +52,7 @@
     "autoprefixer": "^10.4.20",
     "eslint": "^9.18.0",
     "eslint-plugin-react": "^7.37.4",
-    "typescript": "^4.9.5"
+    "typescript": "^4.9.5",
+    "vite-plugin-compression": "^0.5.1"
   }
 }
