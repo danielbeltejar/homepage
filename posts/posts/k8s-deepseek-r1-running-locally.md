@@ -4,7 +4,9 @@ date: 2024-01-25
 author: Daniel Beltejar 
 $$$
 
-Configuré un clúster de Kubernetes optimizado con GPU, integrando el plugin NVIDIA y una RuntimeClass personalizada para desplegar DeepSeek-R1 como API LLM local. Este enfoque elimina la dependencia de servicios externos, reduciendo gastos y ofreciendo control total sobre el modelo.
+Configuré un clúster de Kubernetes con GPU, integrando el plugin NVIDIA y una RuntimeClass personalizada para desplegar DeepSeek-R1 como API LLM local. Este enfoque elimina la dependencia de servicios externos, reduciendo gastos y ofreciendo control total sobre el modelo y dato.
+
+![Open Web UI](https://danielbeltejar.es/assets/images/posts/1/open-web-ui-deepseek.png)
 
 ### 1. Instalación del toolkit de NVIDIA
 - Instalé `nvidia-container-toolkit` y los drivers de `cuda` en un sistema operativo basado en Red Hat.
@@ -32,9 +34,8 @@ Con esta configuración, **DeepSeek-R1** genera aproximadamente **40 tokens por 
 
 ---
 
-Prueba de llamada a la API 
+![Ollama Python API calls](https://danielbeltejar.es/assets/images/posts/1/ollama-python-api-calls-deepseek.png)
 
-###
 
 ## Ventajas de utilizar DeepSeek-R1 en local
 
