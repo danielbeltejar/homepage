@@ -3,12 +3,8 @@ title: Running DeepSeek-R1 locally on a Kubernetes cluster
 date: 2024-01-25
 author: Daniel Beltejar 
 $$$
-#  Running DeepSeek-R1 locally on a Kubernetes cluster
 
 Configuré un clúster de Kubernetes optimizado con GPU, integrando el plugin NVIDIA y una RuntimeClass personalizada para desplegar DeepSeek-R1 como API LLM local. Este enfoque elimina la dependencia de servicios externos, reduciendo gastos y ofreciendo control total sobre el modelo.
----
-
-## Pasos realizados
 
 ### 1. Instalación del toolkit de NVIDIA
 - Instalé `nvidia-container-toolkit` y los drivers de `cuda` en un sistema operativo basado en Red Hat.
