@@ -7,6 +7,7 @@ module.exports = {
     extend: {
       colors: {
         'text': '#010a01',
+        'text-light': '#010a01',
         'background': '#f1efe9',
         'primary-button': '#bb9681',
         'window': '#f8f7f2',
@@ -21,6 +22,8 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 }
 

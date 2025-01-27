@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLink } from '@fortawesome/free-solid-svg-icons';
 import ReactMarkdown from 'react-markdown';
+import rehypeRaw from "rehype-raw";
+import remarkGfm from "remark-gfm";
 
 interface PostObject {
     title: string;
@@ -70,7 +72,7 @@ export default function Post() {
                     <p>At {post.publishedDate}</p>
                 </div>
             </div>
-            <p className="mt-4 mb-10 text-12 post">
+            <p className="mt-4 mb-10 text-12 post post prose prose-strong:text-text-light prose-strong:dark:text-dark-text prose-code:text-text-light prose-code:dark:text-dark-text  prose-headings:text-accent prose-headings:dark:text-dark-accent dark:text-dark-text">
                 <ReactMarkdown>
                     {post.content}</ReactMarkdown>
             </p>

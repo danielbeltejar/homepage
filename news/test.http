@@ -1,5 +1,0 @@
-###
-GET http://localhost:8080/latest
-
-###
-GET http://localhost:8080/healthz

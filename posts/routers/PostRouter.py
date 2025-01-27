@@ -55,13 +55,13 @@ async def get_all_posts():
     return {"posts": get_posts()}
 
 
+# TODO: Add cache and remove post content from the response
 @post_router.get("/posts/newest")
 def get_newest_post():
     posts = get_posts()
     if not posts:
         return {"message": "No posts available"}, 404
 
-    # Filtra por la fecha más reciente (si existe)
     newest_post = max(posts, key=lambda post: post.get('date') or datetime.min)
     content = get_post(newest_post["filename"])
     return {

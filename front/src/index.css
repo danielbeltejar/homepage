@@ -26,26 +26,3 @@ h3 {
         background-position: right -90px top 0;
     }
 }
-
-.post > p {
-    margin-bottom: 18px;
-}
-
-.post > h1 {
-    margin-top: 20px;
-    font-weight: 700;
-    font-size: 1.3rem;
-}
-
-.post > h2 {
-    margin-top: 20px;
-    font-weight: 700;
-    font-size: 1.2rem;
-}
-
-.post > h3 {
-    margin-top: 20px;
-    font-weight: 700;
-    font-size: 1.1rem;
-
-}
