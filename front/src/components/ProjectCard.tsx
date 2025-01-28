@@ -42,7 +42,7 @@ const ProjectCard = ({ videoSrc, description, technologies, visitLink, githubLin
       </div>
 
       <p
-        className="text-11 max-h-0 w-[280px] overflow-hidden group-hover:max-h-80 text-secondary-button dark:text-dark-background group-hover:text-black dark:group-hover:text-dark-text transition-colors duration-700"
+        className="text-11 max-h-0 w-[280px] overflow-hidden group-hover:max-h-80 text-background dark:text-dark-background group-hover:text-black dark:group-hover:text-dark-text transition-colors duration-700"
         style={{ maxHeight: '12rem' }}
       >
         {description}

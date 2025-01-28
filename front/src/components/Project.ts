@@ -51,7 +51,7 @@ const projects = [
 
 const Projects = () => {
   return (
-    <div className='bg-window dark:bg-dark-window mt-16 mb-16 p-10'>
+    <div className='bg-window dark:bg-dark-window mt-16 mb-16 p-10 shadow-md'>
       <div class="flex flex-row align-middle items-center mt-xs group w-full">
         <a href="#projects"
           class="text-accent dark:text-dark-accent opacity-0 absolute group-hover:opacity-100 transition-opacity duration-300">

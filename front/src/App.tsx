@@ -13,9 +13,9 @@ function App() {
 
     <div className="flex flex-col items-center">
       <Router>
-        <div className="App flex flex-col text-text dark:text-dark-text text-11 shadow-md lg:w-[740px] w-full">
-          <Header />
-          <Hero />
+        <div className="App flex flex-col text-text dark:text-dark-text text-11 lg:w-[740px] w-full">
+          <div className='shadow-md'><Header />
+          <Hero /></div>
           <Routes>
             <Route path="/post/:filename" element={<Post />} />
             <Route path="/" element={<Project />} />

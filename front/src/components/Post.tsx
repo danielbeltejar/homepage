@@ -50,7 +50,7 @@ export default function Post() {
 
     if (!post) {
         return (
-            <div className='bg-window dark:bg-dark-window mt-16 mb-16 p-10'>
+            <div className='bg-window dark:bg-dark-window mt-16 mb-16 p-10 shadow-md'>
                 <div className="flex flex-row h-[1000px] align-middle items-center mt-xs group w-full">
                 </div>
             </div>
@@ -58,7 +58,7 @@ export default function Post() {
     }
 
     return (
-        <div className='bg-window dark:bg-dark-window mt-16 mb-16 p-10 '>
+        <div className='bg-window dark:bg-dark-window mt-16 mb-16 p-10 shadow-md'>
             <div className="flex flex-col align-middle items-start mt-xs group w-full">
                 <a href={filename}
                     className="text-accent dark:text-dark-accent opacity-0 absolute group-hover:opacity-100 transition-opacity duration-300">
@@ -72,7 +72,7 @@ export default function Post() {
                     <p>At {post.publishedDate}</p>
                 </div>
             </div>
-            <p className="mt-4 mb-10 text-12 post post prose prose-strong:text-text-light prose-strong:dark:text-dark-text prose-code:text-text-light prose-code:dark:text-dark-text  prose-headings:text-accent prose-headings:dark:text-dark-accent dark:text-dark-text">
+            <p className="mt-4 mb-10 post post prose prose-strong:text-text-light prose-strong:dark:text-dark-text prose-code:text-text-light prose-code:dark:text-dark-text  prose-headings:text-accent prose-headings:dark:text-dark-accent dark:text-dark-text dark:prose-a:text-dark-text text-black">
                 <ReactMarkdown>
                     {post.content}</ReactMarkdown>
             </p>
