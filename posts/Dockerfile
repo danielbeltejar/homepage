@@ -1,6 +1,8 @@
 FROM python:3.12-alpine AS builder
 ARG PYTHON_VERSION=3.12
 
+USER root
+
 RUN pip install --upgrade pip
 
 COPY requirements.txt .
