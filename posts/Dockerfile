@@ -1,4 +1,4 @@
-FROM python:3.11-alpine AS builder
+FROM --platform=linux/amd64 python:3.11-alpine AS builder
 
 RUN pip install --upgrade pip
 
