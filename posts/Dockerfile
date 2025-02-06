@@ -22,5 +22,5 @@ EXPOSE 8000
 
 ENV PYTHONPATH=/usr/local/lib/python${PYTHON_VERSION}/site-packages
 
-CMD ["/app/uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["/app/uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 ENV PYTHONPATH=/usr/local/lib/python${PYTHON_VERSION}/site-packages
