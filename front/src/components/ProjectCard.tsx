@@ -16,7 +16,7 @@ const ProjectCard = ({ videoSrc, description, technologies, visitLink, githubLin
   return (
     <div className="project group group-hover:shadow-md pt-5 pb-5 pl-5 pr-5 flex flex-col h-96 w-80 transition-all duration-500 hyphens-auto text-justify bg-background dark:bg-dark-background px-s py-s rounded-3xl shadow-inner">
       <div className="relative">
-        <div className='rounded-xl w-[280px] h-[161px] overflow-hidde group-hover:hidden skeleton absolute'></div>
+        <div className='rounded-xl w-[280px] h-[161px] overflow-hidde group-hover:hidden skeleton-simple absolute'></div>
         <div className='rounded-xl w-[280px] h-[161px] overflow-hidde group-hover:hidden absolute'>
           <video
             autoPlay

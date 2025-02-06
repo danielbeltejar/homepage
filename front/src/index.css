@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@font-face {
+    font-family: 'Source Serif 4';
+    src: url('/assets/fonts/source-serif-4.woff2') format('woff2');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('/assets/fonts/roboto.woff2') format('woff2');
+    font-display: swap;
+}
+
+
 body {
     font-family: 'Roboto', sans-serif;
 }
@@ -9,10 +23,37 @@ body {
 h1,
 h2,
 h3 {
-    font-family: 'Source Serif Pro', serif;
+    font-family: 'Source Serif 4', serif;
+}
+
+
+.post :is(img) {
+    max-height: 400px;
+    object-fit: initial;
+    display: block;
+    position: relative;
+    z-index: 1;
+}
+
+.image-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    max-height: 400px;
+    overflow: hidden;
 }
 
 .skeleton {
+    background-color: #e2e5e7;
+    background-image: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0));
+    background-size: 90px 100%;
+    background-repeat: no-repeat;
+    background-position: left -90px top 0;
+    animation: shine 1s ease-in-out infinite;
+    z-index: 2;
+}
+
+.skeleton-simple {
     background-color: #e2e5e7;
     background-image: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0));
     background-size: 90px 100%;

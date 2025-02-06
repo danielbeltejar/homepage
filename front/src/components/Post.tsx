@@ -3,8 +3,6 @@ import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLink } from '@fortawesome/free-solid-svg-icons';
 import ReactMarkdown from 'react-markdown';
-import rehypeRaw from "rehype-raw";
-import remarkGfm from "remark-gfm";
 
 interface PostObject {
     title: string;
@@ -26,7 +24,6 @@ export default function Post() {
                     throw new Error('Failed to fetch post');
                 }
 
-                // Read the markdown content
                 const jsonResponse = await response.json();
                 const content = jsonResponse.content;
 
@@ -47,6 +44,55 @@ export default function Post() {
 
         fetchPost();
     }, [filename]);
+
+
+    useEffect(() => {
+        const images = document.querySelectorAll('.post img');
+    
+        const lazyLoadImage = (img: HTMLImageElement) => {
+            const src = img.dataset.src;
+            if (src) {
+                img.src = src; 
+                img.onload = () => {
+                    const wrapper = img.parentElement;
+                    if (wrapper?.classList.contains('skeleton')) {
+                        wrapper.classList.remove('skeleton');
+                    }
+                    img.style.opacity = '1'; 
+                };
+            }
+        };
+    
+        const observer = new IntersectionObserver(
+            (entries, obs) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target as HTMLImageElement;
+                        lazyLoadImage(img);
+                        obs.unobserve(img); 
+                    }
+                });
+            },
+            { rootMargin: '100px' }
+        );
+    
+        images.forEach((img) => {
+            const wrapper = document.createElement('div');
+            wrapper.classList.add('image-wrapper', 'skeleton', 'rounded-3xl');
+            img.parentNode?.insertBefore(wrapper, img);
+            wrapper.appendChild(img);
+    
+            img.dataset.src = img.src;
+            img.src = ''; 
+            img.style.opacity = '0';
+            observer.observe(img); 
+        });
+    
+        return () => {
+            observer.disconnect();
+        };
+    }, [post]);
+    
 
     if (!post) {
         return (
@@ -78,4 +124,5 @@ export default function Post() {
             </p>
         </div>
     );
+
 }
