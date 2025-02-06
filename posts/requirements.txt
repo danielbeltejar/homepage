@@ -1,4 +1,5 @@
 fastapi==0.115.7
 PyYAML==6.0.2
 uvicorn
+pydantic
 pydantic-core 
