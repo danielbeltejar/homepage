@@ -1,5 +1,4 @@
-FROM python:3.12-alpine AS builder
-ARG PYTHON_VERSION=3.12
+FROM python:3.11-alpine AS builder
 
 RUN pip install --upgrade pip
 
@@ -8,7 +7,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 FROM gcr.io/distroless/python3:nonroot
-ARG PYTHON_VERSION=3.12
+ARG PYTHON_VERSION=3.11
 
 ENV PYTHONUNBUFFERED 1
 
