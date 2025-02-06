@@ -1,41 +1,26 @@
-FROM python:3.12-alpine
+FROM python:3.12-alpine AS builder
+ARG PYTHON_VERSION=3.12
 
-USER root
+RUN pip install --upgrade pip
 
-# Create a non-root user to run the application
-RUN adduser -D appuser
+COPY requirements.txt .
 
-# Add 'shadow' package, update 'appuser' user ID and group ID
-RUN apk --no-cache add shadow && usermod -u 10001 appuser && groupmod -g 10001 appuser
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Remove the 'shadow' package to reduce image size
-RUN apk del shadow
+FROM gcr.io/distroless/python3.12:nonroot
+ARG PYTHON_VERSION=3.12
 
-# Set environment variables
 ENV PYTHONUNBUFFERED 1
 
-# Install system dependencies
-RUN apk update \
-    && apk add --no-cache mariadb-connector-c-dev gcc musl-dev \
-    && rm -rf /var/cache/apk/*
+COPY --from=builder /usr/local/lib/python${PYTHON_VERSION}/site-packages /usr/local/lib/python${PYTHON_VERSION}/site-packages
+COPY --from=py-build /usr/local/bin/uvicorn /app/uvicorn
 
-# Create the app directory
-RUN mkdir /app
 COPY . /app
 WORKDIR /app
 
-# Change ownership of directories and files
-RUN chown -R appuser:appuser /app
-
-# Copy the requirements file and install project dependencies
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Expose the port
 EXPOSE 8000
 
-# Switch to the non-root user
-USER appuser
+ENV PYTHONPATH=/usr/local/lib/python${PYTHON_VERSION}/site-packages
 
-# Run the application with uvicorn
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["/app/uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
+ENV PYTHONPATH=/usr/local/lib/python${PYTHON_VERSION}/site-packages
