@@ -1,4 +1,4 @@
-FROM python:3.11-slim AS builder
+FROM mirror.gcr.io/library/python:3.11-slim AS builder
 
 RUN pip install --upgrade pip
 
