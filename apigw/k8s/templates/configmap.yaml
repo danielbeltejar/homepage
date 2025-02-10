@@ -6,7 +6,9 @@ metadata:
 data:
   config.yaml: |
     routes:
-      - pattern: {{ .Values.config.routes.0.pattern | quote }}
+      {{- range .Values.config.routes }}
+      - pattern: {{ .pattern | quote }}
         method: 
-          {{- toYaml .Values.config.routes.0.method | nindent 10 }}
-        backend_dns: {{ .Values.config.routes.0.backend_dns | quote }}
+          {{- toYaml .method | nindent 10 }}
+        backend_dns: {{ .backend_dns | quote }}
+      {{- end }}
