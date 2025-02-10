@@ -31,7 +31,7 @@ spec:
                   - {{ include "app.fullname" . }}
               topologyKey: kubernetes.io/hostname
       containers:
-        - name: "{{ include \"app.fullname\" . }}-container"
+        - name: '{{ include "app.fullname" . }}-container'
           image: "{{ .Values.registry }}/{{ .Chart.Name }}:{{ .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
