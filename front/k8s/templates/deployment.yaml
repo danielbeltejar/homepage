@@ -1,17 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Chart.Name }}
+  name: {{ include "app.fullname" . }}
   namespace: {{ .Values.namespace }}
+  labels:
+    {{- include "app.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ .Chart.Name }}
+      {{- include "app.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       labels:
-        app: {{ .Chart.Name }}
+        {{- include "app.selectorLabels" . | nindent 8 }}
     spec:
       securityContext:
         fsGroup: 10003
@@ -26,19 +28,22 @@ spec:
                 - key: app
                   operator: In
                   values:
-                  - {{ .Chart.Name }}
+                  - {{ include "app.fullname" . }}
               topologyKey: kubernetes.io/hostname
       containers:
-        - name: {{ .Chart.Name }}-container
+        - name: '{{ include "app.fullname" . }}-container'
           image: "{{ .Values.registry }}/{{ .Chart.Name }}:{{ .Chart.AppVersion }}"
-          imagePullPolicy: Always
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
-          {{- range $key, $val := .Values.env }}
-            - name: {{ $key }}
-              value: {{ $val | quote }}
-          {{- end }}
+            {{- with .Values.extraEnv }}
+              {{- toYaml . | nindent 12 }}
+            {{- end }}
+          envFrom:
+            {{- with .Values.extraEnvFrom }}
+              {{- toYaml . | nindent 12 }}
+            {{- end }}
           ports:
-            - containerPort: {{ .Values.containerPort }}
+            - containerPort: {{ .Values.service.targetPort }}
           securityContext:
             capabilities:
               drop:
@@ -50,38 +55,30 @@ spec:
             allowPrivilegeEscalation: false
             seccompProfile:
               type: RuntimeDefault
-          volumeMounts:
-          - name: tmpfs-var-lib-nginx-tmp
-            mountPath: /var/lib/nginx/tmp
-          - name: tmpfs-run-nginx
-            mountPath: /run/nginx
           resources:
-            requests:
-              memory: "32Mi"
-            limits:
-              cpu: 500m
-              memory: "128Mi"
+            {{- toYaml .Values.resources | nindent 12 }}
           readinessProbe:
             httpGet:
               path: /healthz
-              port: {{ .Values.containerPort }}
+              port: {{ .Values.service.targetPort }}
             periodSeconds: 30
           livenessProbe:
             httpGet:
               path: /healthz
-              port: {{ .Values.containerPort }}
+              port: {{ .Values.service.targetPort }}
             periodSeconds: 30
           startupProbe:
             httpGet:
               path: /healthz
-              port: {{ .Values.containerPort }}
+              port: {{ .Values.service.targetPort }}
             periodSeconds: 5
             initialDelaySeconds: 10
-      restartPolicy: Always
+          volumeMounts:
+          {{- with .Values.volumeMounts }}
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
       volumes:
-      - name: tmpfs-var-lib-nginx-tmp
-        emptyDir:
-          medium: Memory
-      - name: tmpfs-run-nginx
-        emptyDir:
-          medium: Memory
+      {{- with .Values.volumes }}
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      restartPolicy: Always

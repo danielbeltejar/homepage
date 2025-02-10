@@ -50,7 +50,7 @@ spec:
               - ALL
             runAsNonRoot: true
             readOnlyRootFilesystem: true
-            runAsUser: 10001
+            runAsUser: 65532
             runAsGroup: 10002
             allowPrivilegeEscalation: false
             seccompProfile:
@@ -73,4 +73,12 @@ spec:
               port: {{ .Values.service.targetPort }}
             periodSeconds: 5
             initialDelaySeconds: 10
+          volumeMounts:
+          {{- with .Values.volumeMounts }}
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+      volumes:
+      {{- with .Values.volumes }}
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       restartPolicy: Always

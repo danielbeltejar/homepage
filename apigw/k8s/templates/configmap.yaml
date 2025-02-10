@@ -6,11 +6,7 @@ metadata:
 data:
   config.yaml: |
     routes:
-      - pattern: "/api/news"
-        method:
-          - "GET"
-        backend_dns: "http://news-service.pro-homepage-back.svc.cluster.local:8080"
       - pattern: "/api/posts"
         method:
           - "GET"
-        backend_dns: "http://posts-service.pro-homepage-back.svc.cluster.local:8000"
+        backend_dns: "http://posts-service.pro-homepage-back.svc.cluster.local:80"

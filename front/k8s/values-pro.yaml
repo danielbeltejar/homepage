@@ -15,6 +15,7 @@ resources:
   requests:
     memory: "32Mi"
   limits:
+    cpu: 500m
     memory: "128Mi"
 volumes:
 - name: tmpfs-var-lib-nginx-tmp
@@ -29,4 +30,12 @@ volumeMounts:
 - name: tmpfs-run-nginx
   mountPath: /run/nginx
 ingress:
-  enabled: false
+  enabled: true
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+    ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/proxy-set-header: X-Real-IP $remote_addr
+    nginx.ingress.kubernetes.io/use-forwarded-headers: "true"
+  class: "nginx"
+  host: "danielbeltejar.es"
+  tls: true
