@@ -34,5 +34,5 @@ ingress:
     nginx.ingress.kubernetes.io/proxy-set-header: X-Real-IP $remote_addr
     nginx.ingress.kubernetes.io/use-forwarded-headers: "true"
   class: "nginx"
-  host: "homepage.pro.server.local"
+  host: "homepage.pre.server.local"
   tls: false
