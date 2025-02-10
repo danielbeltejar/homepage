@@ -8,7 +8,7 @@ const Header = () => {
     useEffect(() => {
         async function fetchData() {
             try {
-                const response = await fetch('https://danielbeltejar.es/api/posts/newest');
+                const response = await fetch(`${window.location.origin}/api/posts/newest`);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
