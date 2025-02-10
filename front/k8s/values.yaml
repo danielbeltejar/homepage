@@ -35,4 +35,4 @@ ingress:
     nginx.ingress.kubernetes.io/use-forwarded-headers: "true"
   class: "nginx"
   host: "homepage.pre.server.local"
-  tls: false
+  tls: true
