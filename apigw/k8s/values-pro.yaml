@@ -1,0 +1,34 @@
+replicaCount: 1
+namespace: pro-homepage-front
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 8080
+image:
+  pullPolicy: Always
+extraEnv:
+- name: "TZ"
+  value: "UTC"
+extraEnvFrom: []
+resources:
+  requests:
+    memory: "16Mi"
+  limits:
+    cpu: 20m
+    memory: "24Mi"
+ingress:
+  enabled: true
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+    ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/proxy-set-header: X-Real-IP $remote_addr
+    nginx.ingress.kubernetes.io/use-forwarded-headers: "true"
+  class: "nginx"
+  host: "danielbeltejar.es"
+  tls: true
+config:
+  routes:
+  - pattern: "/api/posts"
+    method:
+    - "GET"
+    backend_dns: "http://posts-service.pro-homepage-back.svc.cluster.local:80"

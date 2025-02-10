@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ printf "%s-config" .Chart.Name | trunc 63 | trimSuffix "-" }}
+  name: {{ include "app.fullname" . }}-config
   namespace: {{ .Values.namespace }}
 data:
   config.yaml: |
     routes:
-      - pattern: "/api/posts"
-        method:
-          - "GET"
-        backend_dns: "http://posts-service.pro-homepage-back.svc.cluster.local:80"
+      - pattern: {{ .Values.config.routes.0.pattern | quote }}
+        method: 
+          {{- toYaml .Values.config.routes.0.method | nindent 10 }}
+        backend_dns: {{ .Values.config.routes.0.backend_dns | quote }}

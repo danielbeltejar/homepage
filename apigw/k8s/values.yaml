@@ -1,10 +1,25 @@
 replicaCount: 1
-
-env:
-  TZ: "UTC"
-
-containerPort: 8080
-healthPort: 8081
-registry: harbor.server.local
-
-namespace: pro-homepage-front
+namespace: pre-homepage-front
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 8080
+image:
+  pullPolicy: Always
+extraEnv:
+- name: "TZ"
+  value: "UTC"
+extraEnvFrom: []
+resources:
+  requests:
+    memory: "16Mi"
+  limits:
+    memory: "24Mi"
+ingress:
+  enabled: false
+config:
+  routes:
+  - pattern: "/api/posts"
+    method:
+    - "GET"
+    backend_dns: "http://posts-service.pre-homepage-back.svc.cluster.local:80"
