@@ -29,4 +29,10 @@ volumeMounts:
 - name: tmpfs-run-nginx
   mountPath: /run/nginx
 ingress:
-  enabled: false
+  enabled: true
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-set-header: X-Real-IP $remote_addr
+    nginx.ingress.kubernetes.io/use-forwarded-headers: "true"
+  class: "nginx"
+  host: "homepage.pro.server.local"
+  tls: false
