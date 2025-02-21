@@ -38,7 +38,7 @@
     background: url('/assets/images/neuphormism-bg.jpg') repeat center center;
     background-size: cover;
     filter: blur(20px);
-    opacity: 0.4;
+    opacity: 0.35;
     pointer-events: none;
     z-index: -2;
 }
