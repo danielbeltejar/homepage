@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
 
@@ -27,11 +28,11 @@ const Header = () => {
 
     return (
         <header className="flex flex-row w-full bg-window dark:bg-dark-window p-10 justify-center lg:pt-12 lg:pb-8 items-center">
-            <a id="title-effect" style={{ opacity: 0 }}
-                href="/"
+            <Link id="title-effect" style={{ opacity: 0 }}
+                to="/"
                 className="transition-opacity text-3xl ease-in-out duration-700 font-bold text-accent dark:text-dark-accent flex-row align-middle justify-center items-center w-fit mr-auto hidden lg:block">
                 <h1>Daniel Beltejar</h1>
-            </a>
+            </Link>
             <a target="_blank" id="blog-link" style={{ opacity: blogUrl ? 1 : 0 }}
             href={blogUrl}                
             rel="noreferrer"

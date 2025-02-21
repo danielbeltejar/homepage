@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRssSquare } from '@fortawesome/free-solid-svg-icons';
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons"
 import Button from './Button';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
 useEffect(() => {
@@ -38,14 +39,14 @@ if (i < txt.length) { typeEffectElem.innerHTML +=txt.charAt(i); i++; setTimeout(
       for various systems, task automations, and applications.
       </p>
       < div className="flex flex-row gap-x-5 h-12">
-        <Button icon={ faLinkedin } text="Connect" url="https://www.linkedin.com/in/daniel-beltejar-sancho/" />
-        <Button icon={ faRssSquare } url="https://blog.danielbeltejar.es/" />
+        <Button icon={ faLinkedin } text="Connect" url="https://www.linkedin.com/in/daniel-beltejar-sancho/" newTab={true} />
+        <Button icon={ faRssSquare } url="/posts" newTab={false} />
         <div className="group flex flex-row gap-2 relative">
           <Button text="@" url="mailto:contacto@danielbeltejar.es" />
-          <a href="mailto:contacto@danielbeltejar.es"
+          <Link to="mailto:contacto@danielbeltejar.es"
             className="absolute lg:group-hover:left-[35px] pl-6 h-12 -left-40 flex  rounded-xl text-accent  border-gray-200 border-2 min-w-12 transition-all duration-300 flex-row gap-2    text-11 px-[10px] py-1 justify-center items-center  bg-background ">
             <p>hi@danielbeltejar.es</p>
-          </a>
+          </Link>
           < p
             className="absolute left-[-156px] flex flex-row h-12  gap-2 text-window dark:text-dark-window text-11 px-[10px] py-1 justify-center items-center cursor-default bg-window dark:bg-dark-window">
             hi@danielbeltejar.es

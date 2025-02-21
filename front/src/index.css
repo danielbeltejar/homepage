@@ -38,11 +38,17 @@
     background: url('/assets/images/neuphormism-bg.jpg') repeat center center;
     background-size: cover;
     filter: blur(20px);
-    opacity: 0.35;
+    opacity: 0;
     pointer-events: none;
     z-index: -2;
+    animation: fadeInOut 6s infinite;
 }
 
+.neuphormism-image.rotate-180 {
+    transform: rotate(180deg);
+    opacity: 0.4;
+    animation-delay: 3s;
+}
 
 body {
     font-family: 'Roboto', sans-serif;
@@ -98,5 +104,14 @@ h3 {
 @keyframes shine {
     to {
         background-position: right -90px top 0;
+    }
+}
+
+@keyframes fadeInOut {
+    0%, 100% {
+        opacity: 0.4;
+    }
+    50% {
+        opacity: 0.0; 
     }
 }

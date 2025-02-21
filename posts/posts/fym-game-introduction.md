@@ -1,5 +1,5 @@
 $$$
-title: My Test Blog Post
+title: Developing a game in C# 
 date: 2023-03-01
 author: Daniel Beltejar 
 $$$
@@ -9,7 +9,7 @@ Front Yard Monster is an exciting blend of base-building, tactical strategy, and
 The game is currently in development and will be released first on web browsers, with plans for mobile releases on both Android and iOS in the future. Stay tuned for updates and be sure to join our Discord server to receive a special gift when the game launches! You can also visit our official website for more information.
 
 You can test it in https://fym.danielbeltejar.es  
-![Screenshot from Frontyard Monsters](https://blog.danielbeltejar.es/wp-content/uploads/2023/03/thumbnail-monsters-backyard-creatures-1024x576.jpg)
+![Screenshot from Frontyard Monsters](https://danielbeltejar.es/assets/images/posts/0/thumbnail-monsters-backyard-creatures.webp)
 ---
 
 ## Models and Characters
@@ -17,7 +17,7 @@ You can test it in https://fym.danielbeltejar.es
 All 3D models in the game are created from scratch using Blender, with careful attention paid to animation and rotation to ensure high-quality visuals. We chose this sprite-based approach to maintain a classic gaming atmosphere while avoiding potential performance issues that might arise from using 3D polygonal models, especially on mobile devices.
 
 While most of our models draw inspiration from *Backyard Monsters*, we’re continuously working to enhance them and introduce innovative mechanics not found in the original game.
-![Screenshot from tesla tower](https://blog.danielbeltejar.es/wp-content/uploads/2023/03/backyard-creatures-tesla-render-1024x291.jpg)
+![Screenshot from tesla tower](https://danielbeltejar.es/assets/images/posts/0/backyard-creatures-tesla-render.webp)
 ---
 
 ## Game Technicals
@@ -26,7 +26,7 @@ Front Yard Monster is built using the Unity game engine. The client-side code is
 
 For data storage, we’re using MongoDB and Regis to handle non-relative databases and provide instant data streams. Anti-cheating measures are in place on both client and server sides, with ongoing consideration for potential penalties for players attempting to exploit the game.
 
-![Screenshot from UI](https://blog.danielbeltejar.es/wp-content/uploads/2023/03/resources.png)
+![Screenshot from UI](https://danielbeltejar.es/assets/images/posts/0/resources.webp)
 ---
 
 ## Game Introduction
