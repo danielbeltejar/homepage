@@ -14,10 +14,10 @@ interface ProjectProps {
 
 const ProjectCard = ({ videoSrc, description, technologies, visitLink, githubLink }: ProjectProps) => {
   return (
-    <div className="project group group-hover:shadow-md pt-5 pb-5 pl-5 pr-5 flex flex-col h-96 w-80 transition-all duration-500 hyphens-auto text-justify bg-background dark:bg-dark-background px-s py-s rounded-3xl shadow-inner">
+    <div className="project group group-hover:shadow-md pt-5 pb-5 pl-5 pr-5 flex flex-col h-96 w-80 transition-all duration-500 hyphens-auto text-justify bg-background dark:bg-dark-background px-s py-s rounded-3xl shadow-inner-lg">
       <div className="relative">
         <div className='rounded-xl w-[280px] h-[161px] overflow-hidde group-hover:hidden skeleton-simple absolute'></div>
-        <div className='rounded-xl w-[280px] h-[161px] overflow-hidde group-hover:hidden absolute'>
+        <div className='rounded-xl w-[280px] h-[161px] overflow-hidde group-hover:hidden absolute shadow-md'>
           <video
             autoPlay
             loop
@@ -35,7 +35,7 @@ const ProjectCard = ({ videoSrc, description, technologies, visitLink, githubLin
 
       <div className="z-10 flex flex-wrap mt-4 gap-2 justify-start h-[6rem] content-start group-hover:hidden pt-[161px]">
         {technologies.map((tech, index) => (
-          <p key={index} className="text-sm text-center bg-slate-50 dark:bg-dark-accent px-2 rounded-full shadow-md">
+          <p key={index} className="text-sm text-center bg-slate-50 dark:bg-dark-accent px-2 rounded-full shadow-lg">
             {tech}
           </p>
         ))}
@@ -48,14 +48,13 @@ const ProjectCard = ({ videoSrc, description, technologies, visitLink, githubLin
         {description}
       </p>
 
-      <div className="flex flex-row gap-5 mt-auto ">
+      <div className="flex flex-row gap-5 mt-auto">
         <a
           target="_blank"
           rel="noreferrer"
           href={visitLink}
-          className="flex flex-row drop-shadow-md gap-2 flex-1 text-black  dark:text-dark-window dark:hover:text-dark-window transition-colors duration-300 rounded-md text-sm px-3 py-2 justify-center items-center bg-primary-button hover:bg-accent hover:dark:bg-dark-accent"
+          className=" flex flex-row drop-shadow-md gap-2 h-12 flex-1 text-black  transition-colors duration-300 rounded-xl text-sm px-3 py-2 justify-center items-center bg-primary-button hover:border-white hover:shadow-inner hover:bg-white hover:text-gray-500 shadow-lg border-gray-100 border-2"
         >
-
           <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
           Visit
         </a>
@@ -63,7 +62,7 @@ const ProjectCard = ({ videoSrc, description, technologies, visitLink, githubLin
           target="_blank"
           rel="noreferrer"
           href={githubLink}
-          className="flex flex-row drop-shadow-md gap-2 flex-1 text-black  dark:text-dark-window dark:hover:text-dark-window transition-colors duration-300 rounded-md text-sm px-3 py-2 justify-center items-center bg-primary-button hover:bg-accent hover:dark:bg-dark-accent"
+          className=" flex flex-row drop-shadow-md gap-2 h-12 flex-1 text-black  transition-colors duration-300 rounded-xl text-sm px-3 py-2 justify-center items-center bg-primary-button hover:border-white hover:shadow-inner hover:bg-white hover:text-gray-500 shadow-lg border-gray-100 border-2"
         >
           <FontAwesomeIcon icon={faGithub} />
           GitHub

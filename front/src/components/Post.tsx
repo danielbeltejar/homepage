@@ -96,7 +96,7 @@ export default function Post() {
 
     if (!post) {
         return (
-            <div className='bg-window dark:bg-dark-window mt-16 mb-16 p-10 shadow-md'>
+            <div className='bg-window dark:bg-dark-window mt-16 mb-16 p-10 shadow-lg'>
                 <div className="flex flex-row h-[1000px] align-middle items-center mt-xs group w-full">
                 </div>
             </div>
@@ -104,7 +104,7 @@ export default function Post() {
     }
 
     return (
-        <div className='bg-window dark:bg-dark-window mt-16 mb-16 p-10 shadow-md'>
+        <div className='bg-window dark:bg-dark-window mt-16 mb-16 p-10 shadow-lg'>
             <div className="flex flex-col align-middle items-start mt-xs group w-full">
                 <a href={filename}
                     className="text-accent dark:text-dark-accent opacity-0 absolute group-hover:opacity-100 transition-opacity duration-300">
