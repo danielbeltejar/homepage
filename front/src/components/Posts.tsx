@@ -22,7 +22,7 @@ export default function Posts() {
     useEffect(() => {
         const fetchPosts = async () => {
             try {
-                const response = await fetch(`https://danielbeltejar.es/api/posts`);
+                const response = await fetch(`${window.location.origin}/api/posts`);
 
                 if (!response.ok) {
                     throw new Error('Failed to fetch posts');
