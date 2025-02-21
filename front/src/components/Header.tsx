@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const Header = () => {
@@ -14,7 +14,7 @@ const Header = () => {
                     throw new Error('Network response was not ok');
                 }
                 const data = await response.json();
-                const url = `${window.location.origin}/post/${data.filename.replace('.md', '')}`;                
+                const url = `${window.location.origin}/post/${data.filename.replace('.md', '')}`;
                 setBlogUrl(url);
                 setBlogTitle(data.title);
             } catch (error) {
@@ -34,8 +34,8 @@ const Header = () => {
                 <h1>Daniel Beltejar</h1>
             </Link>
             <a target="_blank" id="blog-link" style={{ opacity: blogUrl ? 1 : 0 }}
-            href={blogUrl}                
-            rel="noreferrer"
+                href={blogUrl}
+                rel="noreferrer"
                 className="transition-opacity ease-in-out duration-1000 text-window dark:text-dark-text m-0">
                 <div
                     className="text-12 flex gap-2 font-bold bg-accent dark:bg-dark-accent overflow-hidden  px-1 flex-row align-middle items-center rounded-full h-[33px] m-0">

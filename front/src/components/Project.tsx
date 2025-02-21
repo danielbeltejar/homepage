@@ -1,7 +1,5 @@
-import React from 'react';
 import ProjectCard from "./ProjectCard";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLink } from '@fortawesome/free-solid-svg-icons';
+import SectionHeader from './SectionHeader';
 
 const projects = [
 
@@ -52,14 +50,7 @@ const projects = [
 const Projects = () => {
   return (
     <div className='bg-window dark:bg-dark-window mt-16 mb-16 p-10 shadow-lg'>
-      <div className="flex flex-row align-middle items-center mt-xs group w-full">
-        <a href="#projects"
-          className="text-accent dark:text-dark-accent opacity-0 absolute group-hover:opacity-100 transition-opacity duration-300">
-          <FontAwesomeIcon icon={faLink} />
-        </a>
-        <h2 className="text-accent dark:text-dark-accent font-bold text-2xl group-hover:cursor-pointer group-hover:pl-7 group-hover:underline underline-offset-4 transition-all duration-300"
-          onClick="location.href='#projects';">Projects</h2>
-      </div>
+      <SectionHeader title="Projects" link="#projects" />
 
       <p className="mt-4 mb-10 text-12">
         I also have a number of personal projects that I work on in my free time. These projects allow me to

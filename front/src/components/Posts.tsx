@@ -22,7 +22,7 @@ export default function Posts() {
     useEffect(() => {
         const fetchPosts = async () => {
             try {
-                const response = await fetch(`${window.location.origin}/api/posts`);
+                const response = await fetch(`https://danielbeltejar.es/api/posts`);
 
                 if (!response.ok) {
                     throw new Error('Failed to fetch posts');
@@ -56,7 +56,7 @@ export default function Posts() {
             </div>
 
             <p className="mt-4 mb-10 text-12">
-                Welcome to my blog! Here, I share insights into my personal projects, hobby projects, and various topics related to my career. Stay tuned for updates and feel free to explore the posts below.
+                New text
             </p>
             <div className="flex flex-col align-middle items-start mt-xs group w-ful gap-y-6">
                 {currentPosts.map((post) => (

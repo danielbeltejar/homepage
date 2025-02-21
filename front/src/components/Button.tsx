@@ -9,7 +9,7 @@ interface ButtonProps {
     url?: string;
     onClick?: () => void;
     newTab?: boolean;
-    primary?: boolean; // true => primary button, false => secondary
+    primary?: boolean;
 }
 
 const PredefinedButton: React.FC<ButtonProps> = ({ icon, text, url, onClick, newTab = true, primary = false }) => {
@@ -27,10 +27,10 @@ const PredefinedButton: React.FC<ButtonProps> = ({ icon, text, url, onClick, new
     };
 
     return (
-        <a 
-            target={newTab ? "_blank" : "_self"} 
-            rel={newTab ? "noreferrer" : ""} 
-            href={url} 
+        <a
+            target={newTab ? "_blank" : "_self"}
+            rel={newTab ? "noreferrer" : ""}
+            href={url}
             onClick={handleClick}
             className={`flex flex-row z-10 min-h-12 ${themeClass} drop-shadow-lg shadow-lg rounded-xl text-accent hover:text-gray-500 hover:border-white hover:shadow-inner border-gray-200 border-2 min-w-12 gap-2 transition-colors duration-300 text-11 px-[10px] py-1 justify-center items-center hover:bg-white`}
         >
