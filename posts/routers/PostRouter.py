@@ -61,8 +61,7 @@ def get_newest_post():
     posts = get_posts()
     if not posts:
         return {"message": "No posts available"}, 404
-
-    newest_post = max(posts, key=lambda post: post.get('date') or datetime.min)
+    newest_post = posts[0]
     content = get_post(newest_post["filename"])
     return {
         "filename": newest_post["filename"],
