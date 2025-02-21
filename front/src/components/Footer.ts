@@ -7,17 +7,17 @@ import Button from './Button';
 const Footer = () => {
 return (
 <footer id="contact"
-  class="text-text dark:text-dark-text bg-window dark:bg-dark-window text-11 p-10 lg:pb-24 shadow-lg lg:w-[740px] mb-0">
-  <div class="flex flex-row align-middle items-center group w-full">
+  className="text-text dark:text-dark-text bg-window dark:bg-dark-window text-11 p-10 lg:pb-24 shadow-lg lg:w-[740px] mb-0">
+  <div className="flex flex-row align-middle items-center group w-full">
     <a href="#contact"
-      class="text-accent dark:text-dark-accent text-11 opacity-0 absolute group-hover:opacity-100 transition-opacity duration-300">
+      className="text-accent dark:text-dark-accent text-11 opacity-0 absolute group-hover:opacity-100 transition-opacity duration-300">
       <FontAwesomeIcon icon={faLink} />
     </a>
     <h2
-      class="text-accent dark:text-dark-accent font-bold text-2xl group-hover:cursor-pointer group-hover:pl-7 group-hover:underline underline-offset-4 transition-all duration-300"
-      onclick="location.href='#contact';">Contact</h2>
+      className="text-accent dark:text-dark-accent font-bold text-2xl group-hover:cursor-pointer group-hover:pl-7 group-hover:underline underline-offset-4 transition-all duration-300"
+      onClick="location.href='#contact';">Contact</h2>
   </div>
-  <p class="mt-4 mb-10">
+  <p className="mt-4 mb-10">
     Thank you for visiting my personal web page. If you have any questions or would like to get in touch,
     please feel free to to write to one of the next options. I look forward to hearing from you!
   </p>

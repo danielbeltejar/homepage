@@ -26,7 +26,7 @@ const Header = () => {
 
 
     return (
-        <headers className="flex flex-row w-full bg-window dark:bg-dark-window p-10 justify-center lg:pt-12 lg:pb-8 items-center">
+        <header className="flex flex-row w-full bg-window dark:bg-dark-window p-10 justify-center lg:pt-12 lg:pb-8 items-center">
             <a id="title-effect" style={{ opacity: 0 }}
                 href="/"
                 className="transition-opacity text-3xl ease-in-out duration-700 font-bold text-accent dark:text-dark-accent flex-row align-middle justify-center items-center w-fit mr-auto hidden lg:block">
@@ -42,7 +42,7 @@ const Header = () => {
                     <p className="text-sm text-ellipsis overflow-hidden whitespace-nowrap max-w-[350px] mr-1">{blogTitle}</p>
                 </div>
             </a>
-        </headers>
+        </header>
     );
 };
 export default Header;

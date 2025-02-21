@@ -52,16 +52,16 @@ const projects = [
 const Projects = () => {
   return (
     <div className='bg-window dark:bg-dark-window mt-16 mb-16 p-10 shadow-lg'>
-      <div class="flex flex-row align-middle items-center mt-xs group w-full">
+      <div className="flex flex-row align-middle items-center mt-xs group w-full">
         <a href="#projects"
-          class="text-accent dark:text-dark-accent opacity-0 absolute group-hover:opacity-100 transition-opacity duration-300">
+          className="text-accent dark:text-dark-accent opacity-0 absolute group-hover:opacity-100 transition-opacity duration-300">
           <FontAwesomeIcon icon={faLink} />
         </a>
-        <h2 class="text-accent dark:text-dark-accent font-bold text-2xl group-hover:cursor-pointer group-hover:pl-7 group-hover:underline underline-offset-4 transition-all duration-300"
-          onclick="location.href='#projects';">Projects</h2>
+        <h2 className="text-accent dark:text-dark-accent font-bold text-2xl group-hover:cursor-pointer group-hover:pl-7 group-hover:underline underline-offset-4 transition-all duration-300"
+          onClick="location.href='#projects';">Projects</h2>
       </div>
 
-      <p class="mt-4 mb-10 text-12">
+      <p className="mt-4 mb-10 text-12">
         I also have a number of personal projects that I work on in my free time. These projects allow me to
         explore new and emerging technologies and to expand my
         skillset in a variety of different areas. Through these projects, I have gained valuable experience and
@@ -69,8 +69,8 @@ const Projects = () => {
         opportunities to learn and grow, and my personal projects are an important part of that journey.
       </p>
 
-      <div class="h-full flex justify-center w-full">
-        <div class="h-full flex lg:flex-row lg:flex-wrap lg:content-start gap-5 lg:justify-center lg:overflow-x-auto overflow-x-scroll">
+      <div className="h-full flex justify-center w-full">
+        <div className="h-full flex lg:flex-row lg:flex-wrap lg:content-start gap-5 lg:justify-center lg:overflow-x-auto overflow-x-scroll">
           {projects.map((project, index) => (
             <ProjectCard key={index} {...project} />
           ))}
