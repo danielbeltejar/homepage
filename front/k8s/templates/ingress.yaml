@@ -42,7 +42,7 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: {{ include "app.fullname" . }}-service26
+            name: {{ include "app.fullname" . }}-service
             port:
               name: http
   {{- end }}
