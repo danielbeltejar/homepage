@@ -15,9 +15,9 @@ module.exports = {
         'accent': '#452b1a',
       },
       boxShadow: {
-        'inner-lg': 'inset 0 4px 8px 0 rgba(0, 0, 0, 0.2)', // Increase opacity for better visibility in dark mode
-        'lg': '0 4px 8px 0 rgba(0, 0, 0, 0.2)', // Increase opacity for better visibility in dark mode
-        'inner-outer-lg': '0 4px 8px 0 rgba(0, 0, 0, 0.2), inset 0 4px 8px 0 rgba(0, 0, 0, 0.2)', // Increase opacity for better visibility in dark mode
+        'inner-lg': 'inset 0 4px 8px 0 rgba(0, 0, 0, 0.2)',
+        'lg': '0 4px 8px 0 rgba(0, 0, 0, 0.2)', 
+        'inner-outer-lg': '0 4px 8px 0 rgba(0, 0, 0, 0.2), inset 0 4px 8px 0 rgba(0, 0, 0, 0.2)',
       },
     },
   },

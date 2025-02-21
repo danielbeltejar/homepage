@@ -22,7 +22,7 @@ return (
     please feel free to to write to one of the next options. I look forward to hearing from you!
   </p>
 
-  <div className="flex flex-row  justify-self-end gap-x-6 h-12">
+  <div className="flex flex-row gap-x-6 h-12">
     <Button icon={ faLinkedin } text="LinkedIn" url="https://www.linkedin.com/in/daniel-beltejar-sancho/" />
         <div className="group flex flex-row gap-2 relative">
           <Button text="@" url="mailto:contacto@danielbeltejar.es" />

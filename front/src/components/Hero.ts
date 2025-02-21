@@ -37,7 +37,7 @@ if (i < txt.length) { typeEffectElem.innerHTML +=txt.charAt(i); i++; setTimeout(
       continuous improvement, enabling me to deliver efficient, reliable, and high - quality solutions
       for various systems, task automations, and applications.
       </p>
-      < div className="flex flex-row  justify-self-end gap-x-5 h-12">
+      < div className="flex flex-row gap-x-5 h-12">
         <Button icon={ faLinkedin } text="Connect" url="https://www.linkedin.com/in/daniel-beltejar-sancho/" />
         <Button icon={ faRssSquare } url="https://blog.danielbeltejar.es/" />
         <div className="group flex flex-row gap-2 relative">
