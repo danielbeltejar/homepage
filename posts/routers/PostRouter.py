@@ -20,7 +20,6 @@ def get_post(file_name: str):
 
 def get_posts():
     posts = []
-
     for file in glob.glob(os.path.join(POSTS_DIR, "**/*.md"), recursive=True):
         with open(file, 'r', encoding='utf-8') as f:
             content = f.read()
@@ -37,6 +36,7 @@ def get_posts():
             **front_matter
         })
 
+    posts.sort(key=lambda post: post.get('date') or datetime.min, reverse=True)
     return posts
 
 
