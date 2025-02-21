@@ -1,6 +1,6 @@
 import React from 'react';
 import Hero from '../components/Hero';
-import Project from '../components/Project';
+import Project from '../components/Projects';
 
 const Home: React.FC = () => {
   return (
