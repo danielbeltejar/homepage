@@ -56,7 +56,7 @@ export default function Posts() {
             </div>
 
             <p className="mt-4 mb-10 text-12">
-                New text
+                Welcome to my blog! Here, I share insights into my personal projects, hobby projects, and various topics related to my career. Stay tuned for updates and feel free to explore the posts below.
             </p>
             <div className="flex flex-col align-middle items-start mt-xs group w-ful gap-y-6">
                 {currentPosts.map((post) => (
