@@ -24,7 +24,7 @@ export default function PostCard({ title, date, content, onClick }: PostCardProp
                         <img
                             src={firstImageUrl}
                             alt="Post"
-                            className="w-full h-full object-cover transition-transform duration-500 scale-150"
+                            className="w-full h-full object-cover transition-transform duration-500 scale-150 skeleton-simple"
                         />
                     ) : (
                         <div className="w-full h-full bg-gray-300"></div>
