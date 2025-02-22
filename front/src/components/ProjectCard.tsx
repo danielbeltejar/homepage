@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 import { faGithub } from "@fortawesome/free-brands-svg-icons"
+import Button from './Button';
 
 interface ProjectProps {
   videoSrc: string;
@@ -46,25 +47,9 @@ const ProjectCard = ({ videoSrc, description, technologies, visitLink, githubLin
         {description}
       </p>
 
-      <div className="flex flex-row gap-5 mt-auto">
-        <a
-          target="_blank"
-          rel="noreferrer"
-          href={visitLink}
-          className=" flex flex-row drop-shadow-md gap-2 h-12 flex-1 text-black  transition-colors duration-300 rounded-xl text-sm px-3 py-2 justify-center items-center bg-primary-button hover:border-white hover:shadow-inner hover:bg-white hover:text-gray-500 shadow-lg border-gray-100 border-2"
-        >
-          <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
-          Visit
-        </a>
-        <a
-          target="_blank"
-          rel="noreferrer"
-          href={githubLink}
-          className=" flex flex-row drop-shadow-md gap-2 h-12 flex-1 text-black  transition-colors duration-300 rounded-xl text-sm px-3 py-2 justify-center items-center bg-primary-button hover:border-white hover:shadow-inner hover:bg-white hover:text-gray-500 shadow-lg border-gray-100 border-2"
-        >
-          <FontAwesomeIcon icon={faGithub} />
-          GitHub
-        </a>
+      <div className="flex flex-row gap-5 mt-auto w-full">
+        <Button icon={faArrowUpRightFromSquare} text="Visit" url={visitLink} primary={true} className="flex-grow max-h-[48px]" />
+        <Button icon={faGithub} text="GitHub" url={githubLink} primary={true} className="flex-grow max-h-[48px]" />
       </div>
     </div>
   );

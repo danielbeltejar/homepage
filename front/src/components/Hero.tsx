@@ -43,7 +43,7 @@ const Hero = () => {
         </p>
         < div className="flex flex-row gap-x-5 h-12">
           <Button icon={faLinkedin} text="Connect" url="https://www.linkedin.com/in/daniel-beltejar-sancho/" newTab={true} />
-          <Button icon={faRssSquare} url="/posts" newTab={false} />
+          <Button icon={faRssSquare} text="Blog" url="/posts" newTab={false} />
           <div className="group flex flex-row gap-2 relative">
             <Button text="@" url="mailto:contacto@danielbeltejar.es" />
             <Link to="mailto:contacto@danielbeltejar.es"

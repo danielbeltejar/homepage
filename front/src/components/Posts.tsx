@@ -5,6 +5,7 @@ import { faLink } from '@fortawesome/free-solid-svg-icons';
 import ReactMarkdown from 'react-markdown';
 import Button from './Button';
 import PostCard from './PostCard';
+import SectionHeader from './SectionHeader';
 
 interface PostObject {
     filename: string;
@@ -46,14 +47,7 @@ export default function Posts() {
 
     return (
         <div className='bg-window dark:bg-dark-window mt-16 mb-16 p-10 shadow-lg min-h-[800px]'>
-            <div className="flex flex-row align-middle items-center mt-xs group w-full">
-                <a href="/posts"
-                    className="text-accent dark:text-dark-accent opacity-0 absolute group-hover:opacity-100 transition-opacity duration-300">
-                    <FontAwesomeIcon icon={faLink} />
-                </a>
-                <h2 className="text-accent dark:text-dark-accent font-bold text-2xl group-hover:cursor-pointer group-hover:pl-7 group-hover:underline underline-offset-4 transition-all duration-300"
-                    onClick="location.href='/posts';">Posts</h2>
-            </div>
+            <SectionHeader title="Posts" link="/posts" />
 
             <p className="mt-4 mb-10 text-12">
                 Welcome to my blog! Here, I share insights into my personal projects, hobby projects, and various topics related to my career. Stay tuned for updates and feel free to explore the posts below.
