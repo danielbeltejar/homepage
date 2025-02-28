@@ -10,9 +10,11 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <>
-      <video autoPlay loop muted className="neuphormism-video">
-        <source src="/assets/videos/background.webm" type="video/webm" />
-      </video>
+      <div>
+        <video autoPlay loop muted className="neuphormism-video">
+          <source src="/assets/videos/background.webm" type="video/webm" />
+        </video>
+      </div>
       <div className="dot-grid"></div>
       <div className="App flex flex-col text-text dark:text-dark-text text-11 lg:w-[740px] w-full">
         <div className="shadow-lg">
