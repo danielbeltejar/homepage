@@ -1,62 +1,70 @@
-$$$
-title: Running DeepSeek-R1 locally on a Kubernetes cluster
-date: 2024-01-25
-author: Daniel Beltejar 
-$$$
+---
+title: "Running DeepSeek-R1 Locally on a Kubernetes Cluster: A Professional Case Study"
+date: "2024-01-25"
+author: "Daniel Beltejar"
+---
 
-Configuré un clúster de Kubernetes con GPU, integrando el plugin NVIDIA y una RuntimeClass personalizada para desplegar DeepSeek-R1 como API LLM local. Este enfoque elimina la dependencia de servicios externos, reduciendo gastos y ofreciendo control total sobre el modelo y dato.
+## Introduction
+
+This article explains how to configure a Kubernetes cluster with GPU support and run DeepSeek-R1 as a local API-powered large language model. By integrating NVIDIA's container toolkit, the Kubernetes NVIDIA device plugin, and a custom RuntimeClass, this setup offers a robust solution without reliance on external services. It provides complete control over the model and data while significantly reducing costs.
 
 ![Open Web UI](https://danielbeltejar.es/assets/images/posts/1/open-web-ui-deepseek.webp)
 
-### 1. Instalación del toolkit de NVIDIA
-- Instalé `nvidia-container-toolkit` y los drivers de `cuda` en un sistema operativo basado en Red Hat.
-- Esto permite la integración de contenedores con la GPU para aprovechar su aceleración.
+## The Setup
 
-### 2. Configuración del K8s Device Plugin de NVIDIA en Kubernetes
-- Instalé el plugin de dispositivo NVIDIA para habilitar la detección y el uso de GPUs dentro del clúster.
-- Este plugin permite la asignación precisa de recursos de GPU a los pods que los necesitan. Repositorio oficial: [NVIDIA/k8s-device-plugin](https://github.com/NVIDIA/k8s-device-plugin)
-- Definí una `RuntimeClass` específica para tareas que requieren GPU, garantizando que los pods se programen únicamente en nodos compatibles.
+### NVIDIA Toolkit Installation
 
-### 4. Despliegue de DeepSeek-R1
-- Desplegué **DeepSeek-R1** como una API local utilizando **ollama** con Helm. Chart oficial de Helm: [ollama-helm](https://artifacthub.io/packages/helm/ollama-helm/ollama)
-- El modelo se ejecuta directamente en la GPU, procesando peticiones con alta velocidad y baja latencia.
-- Este despliegue elimina cualquier dependencia de APIs externas, proporcionando un control absoluto sobre los datos y los resultados.
+- Installed the `nvidia-container-toolkit` along with the necessary CUDA drivers on a Red Hat-based system.
+- This setup integrates container workloads with GPU capabilities, enabling efficient hardware acceleration.
 
----
+### Configuring the Kubernetes Device Plugin for NVIDIA
 
-## Especificaciones del hardware del nodo
+- Deployed the NVIDIA device plugin to allow Kubernetes to detect and utilize GPUs within the cluster.
+- The plugin accurately assigns GPU resources to pods when needed.
+- Defined a specific RuntimeClass that ensures pods requiring GPUs are scheduled only on compatible nodes.
 
-- **RAM**: 64GB DDR5, ideal por el ancho de banda necesario cuando la VRAM de la GPU no es suficiente.
-- **CPU**: Intel i9-13900, diseñado para aprovechar su potencia en tareas paralelas y manejar prompts en un único núcleo, incluso cuando se usa la GPU.
-- **GPU**: NVIDIA RTX 3060 con 12GB de VRAM, suficiente para cargar y ejecutar en memoria el modelo **DeepSeek-R1** de manera eficiente.
+### Deploying DeepSeek-R1
 
-Con esta configuración, **DeepSeek-R1** genera aproximadamente **40 tokens por segundo**, manteniendo un rendimiento fluido incluso en tareas intensivas. x10 la velocidad de escritura de una persona.
+- Deployed **DeepSeek-R1** as a local API using Helm through the official [ollama-helm chart](https://artifacthub.io/packages/helm/ollama-helm/ollama).
+- The model leverages GPU acceleration to process requests with high speed and low latency.
+- By running DeepSeek-R1 locally, dependency on external APIs is eliminated, ensuring greater control over both data and outcomes.
 
----
+## Case Study: Hardware Specifications and Performance
+
+### Hardware Specifications
+
+- **RAM:** 64GB DDR5 – Sufficient bandwidth to support GPU operations when VRAM is limited.
+- **CPU:** Intel i9-13900 – Optimized for parallel tasks and capable of handling single-core prompt processing while utilizing GPU power.
+- **GPU:** NVIDIA RTX 3060 with 12GB VRAM – Adequate for loading and executing the DeepSeek-R1 model efficiently in-memory.
+
+### Performance Highlights
+
+- With this configuration, DeepSeek-R1 generates approximately **40 tokens per second**.
+- The performance is consistent and fluid even under intensive usage, delivering processing speed up to 10 times faster than an average human typist.
 
 ![Ollama Python API calls](https://danielbeltejar.es/assets/images/posts/1/ollama-python-api-calls-deepseek.webp)
 
+## Key Lessons
 
-## Ventajas de utilizar DeepSeek-R1 en local
+1. **Independence from External Services:**  
+   Running DeepSeek-R1 locally avoids the need for third-party APIs, enhancing data privacy, control, and reducing operational costs.
 
-1. **Independencia de servicios externos**:  
-   Ejecutar **DeepSeek-R1** localmente elimina la necesidad de conectarse a APIs de terceros, garantizando mayor privacidad, control sobre los datos y costes reducidos.
+2. **Consistent and Predictable Performance:**  
+   GPU acceleration ensures rapid responses and maintains performance even under heavy workloads.
 
-2. **Rendimiento consistente**:  
-   Gracias a la aceleración por GPU, las respuestas son rápidas y el rendimiento es predecible, incluso bajo cargas de trabajo intensivas.
+3. **Cost Efficiency:**  
+   Eliminating external APIs translates to unlimited usage without associated fees, making it a scalable solution for local deployments.
 
-3. **Coste reducido**:  
-   No hay costes asociados al uso de APIs externas (eg. OpenAI), lo que permite un uso ilimitado.
+4. **Customization and Control:**  
+   A local deployment provides the flexibility to customize and fine-tune the model according to specific use-cases and data requirements.
 
-4. **Alta velocidad de respuesta**:  
-   Genera **40 tokens por segundo** (con mi hardware), lo que es 10 veces más rápido que la escritura media de un humano.
+## Final Thoughts
 
----
+Deploying DeepSeek-R1 on a local Kubernetes cluster offers a powerful and cost-effective solution for businesses and professionals seeking robust LLM capabilities. The integration of GPU acceleration not only enhances performance but also ensures reliability and scalability. This approach is especially valuable in scenarios where data sensitivity and operational independence are critical.
 
-## Por qué elegir DeepSeek-R1
+## References
 
-**DeepSeek-R1** es una solución local diseñada para proporcionar una API LLM robusta y de alto rendimiento. Su despliegue en un entorno controlado como Kubernetes garantiza:
-- Seguridad y privacidad total sobre los datos.
-- Eliminación de gastos por uso.
-- Alta capacidad de personalización.
-- Modelo avanzado con capacidades de razonamiento.
+- [NVIDIA Container Toolkit](https://github.com/NVIDIA/nvidia-docker)
+- [Kubernetes NVIDIA Device Plugin](https://github.com/NVIDIA/k8s-device-plugin)
+- [Ollama Helm Chart](https://artifacthub.io/packages/helm/ollama-helm/ollama)
+- [Kubernetes Documentation](https://kubernetes.io/docs/)

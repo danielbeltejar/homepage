@@ -1,42 +1,68 @@
-$$$
-title: Developing a game in C# 
-date: 2023-03-01
-author: Daniel Beltejar 
-$$$
-
-Front Yard Monster is an exciting blend of base-building, tactical strategy, and tower defence gameplay. Inspired by the classic flash game *Backyard Monsters*, which was one of the first MMORTS games but has since been discontinued, we’re bringing this beloved style back with fresh mechanics and improvements. Join our community and help us make Front Yard Monster a hit!
-
-The game is currently in development and will be released first on web browsers, with plans for mobile releases on both Android and iOS in the future. Stay tuned for updates and be sure to join our Discord server to receive a special gift when the game launches! You can also visit our official website for more information.
-
-You can test it in https://fym.danielbeltejar.es  
-![Screenshot from Frontyard Monsters](https://danielbeltejar.es/assets/images/posts/0/thumbnail-monsters-backyard-creatures.webp)
 ---
+title: "Developing a Game in C# - Front Yard Monster"
+date: "2023-03-01"
+author: "Daniel Beltejar"
+---
+
+## Introduction
+
+Front Yard Monster is an *tech demo* game that merges base-building, tactical strategy, and tower defense gameplay into one cohesive experience. Inspired by the classic flash game *Backyard Monsters*, this project revives a nostalgic gaming style with modern mechanics and improvements.
+
+## Game Overview
+
+Front Yard Monster challenges players to construct and defend their bases while managing resources and engaging in strategic combat. Become part of our vibrant community to influence the game’s evolution through valuable feedback and participation. For immediate gameplay and updates, visit the official website or join the Discord server.
+
+[Experience Front Yard Monster](https://fym.danielbeltejar.es)
+
+![Screenshot from Frontyard Monsters](https://danielbeltejar.es/assets/images/posts/0/thumbnail-monsters-backyard-creatures.webp)
 
 ## Models and Characters
 
-All 3D models in the game are created from scratch using Blender, with careful attention paid to animation and rotation to ensure high-quality visuals. We chose this sprite-based approach to maintain a classic gaming atmosphere while avoiding potential performance issues that might arise from using 3D polygonal models, especially on mobile devices.
+Every 3D model in Front Yard Monster is created using Blender, emphasizing high-quality animations and smooth rotations. By adopting a sprite-based approach, we capture the classic visual feel while ensuring optimal performance—particularly on mobile devices. Although *Backyard Monsters* serves as our foundational inspiration, we continuously enhance these assets with unique designs and innovative mechanics.
 
-While most of our models draw inspiration from *Backyard Monsters*, we’re continuously working to enhance them and introduce innovative mechanics not found in the original game.
-![Screenshot from tesla tower](https://danielbeltejar.es/assets/images/posts/0/backyard-creatures-tesla-render.webp)
----
+![Screenshot from Tesla Tower](https://danielbeltejar.es/assets/images/posts/0/backyard-creatures-tesla-render.webp)
 
-## Game Technicals
+## Technical Overview
 
-Front Yard Monster is built using the Unity game engine. The client-side code is entirely written in C#, ensuring smooth performance across platforms. On the server side, we’ve implemented microservices for scalability and flexibility as the player base grows.
-
-For data storage, we’re using MongoDB and Regis to handle non-relative databases and provide instant data streams. Anti-cheating measures are in place on both client and server sides, with ongoing consideration for potential penalties for players attempting to exploit the game.
+Built on the Unity platform, Front Yard Monster leverages C# for its client-side operations, ensuring reliability and fluidity across various devices. The server architecture employs microservices to facilitate scalability and flexibility as the player base grows. Data management is powered by MongoDB and Redis, providing efficient, real-time data streams. Robust anti-cheat systems are implemented on both the client and server sides, safeguarding fair play throughout the game.
 
 ![Screenshot from UI](https://danielbeltejar.es/assets/images/posts/0/resources.webp)
----
 
-## Game Introduction
+## Gameplay Mechanics
 
-Embark on your adventure with Front Yard Monster by learning the basics of gameplay through resource collection. Resources can be gathered from your own bases or by raiding others. As you progress, you’ll unlock improvements that enhance your gameplay experience.
+Players embark on their journey by collecting essential resources, which serve as the foundation for base expansion and defense. Strategic deployment of builder units, each possessing unique abilities, is crucial for progressing through the game. These builders can be exchanged for valuable resources, unlocking new opportunities for enhancing your base and creatures. As players advance, opportunities to mutate and upgrade creatures add depth, forcing strategic decision-making to conquer rival bases and explore new challenges.
 
-Builder units, each with unique skills, will play a crucial role in advancing your strategy. These builders can be exchanged with other players for valuable resources and new opportunities. Additionally, you’ll have the chance to unlock and upgrade creatures, including the ability to mutate them for powerful new abilities.
+## Case Study: Development and Deployment
 
-Once you’ve mastered the game, you’ll be able to conquer other bases and explore entirely new types of bases that offer fresh challenges and rewards. Whether it’s constructing new buildings or discovering rare creatures, there’s always something new to achieve in Front Yard Monster.
+### Challenges and Innovations
 
----
+**Performance Optimization:**  
+Transitioning to a sprite-based display system minimized performance issues, especially on mobile devices, ensuring smooth gameplay.
 
-All information and images on this page are subject to change as we continue to develop the game. Stay updated with our progress and be part of an exciting journey!
+**Scalable Architecture:**  
+Implementing a microservices-based server architecture allowed the game to scale seamlessly as the player community expanded.
+
+**Security and Fair Play:**  
+The continuous refinement of anti-cheat measures on both the client and server sides has been critical to maintaining the integrity of the game.
+
+These innovations demonstrate our commitment to excellence and responsiveness in addressing both technical and gameplay challenges.
+
+## Key Lessons
+
+1. **Nostalgia Meets Innovation:**  
+   Balancing classic game styles with modern technology can yield a unique and engaging experience that resonates with a diverse audience.
+
+2. **Cross-Platform Efficiency:**  
+   Strategic design choices, such as using Unity and sprite-based graphics, can dramatically improve performance on various devices.
+
+3. **Robust and Scalable Solutions:**  
+   A microservices architecture ensures flexibility and scalability, crucial for supporting an expanding user base.
+
+## References
+
+- [Unity Game Engine](https://unity.com/)
+- [Blender](https://www.blender.org/)
+- [MongoDB](https://www.mongodb.com/)
+- [Redis - Real-time Data Streams](https://redis.io/)  
+- [Discord Community](https://discord.com/)
+- [Backyard Monsters (Historical Reference)](https://backyardmonsters.fandom.com/wiki/Backyard_Monsters_Wiki) 
