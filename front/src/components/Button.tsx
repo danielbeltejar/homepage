@@ -10,7 +10,7 @@ interface ButtonProps {
     onClick?: () => void;
     newTab?: boolean;
     primary?: boolean;
-    className?: string; // Añadido className
+    className?: string;
 }
 
 const PredefinedButton: React.FC<ButtonProps> = ({ icon, text, url, onClick, newTab = true, primary = false, className }) => {

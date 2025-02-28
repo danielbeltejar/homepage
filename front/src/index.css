@@ -17,7 +17,7 @@
 
 
 .dot-grid {
-    position: fixed;
+    position: fixed; 
     top: 0;
     left: 0;
     width: 100%;
@@ -26,35 +26,18 @@
     background-size: 20px 20px;
     opacity: 0.9;
     pointer-events: none;
+    z-index: 0; 
+}
+
+.neuphormism-video {
+    position: absolute;
+    object-fit: cover;
+    width: 100vw;
+    height: 100vw;
+    top: 0;
+    left: 0;
+    pointer-events: none;
     z-index: -1;
-}
-
-.neuphormism-image {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('/assets/images/neuphormism-bg.jpg') repeat center center;
-    background-size: cover;
-    background-attachment: fixed;
-    filter: blur(20px);
-    pointer-events: none;
-    z-index: -2;
-}
-
-.neuphormism-image-rotated {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('/assets/images/neuphormism-bg-rotated.jpg') repeat center center;
-    background-size: cover;
-    background-attachment: fixed;
-    filter: blur(20px);
-    pointer-events: none;
-    z-index: -2;
 }
 
 body {
@@ -62,6 +45,7 @@ body {
     background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(10px);
     position: relative;
+    z-index: 1; 
 }
 
 h1,
