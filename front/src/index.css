@@ -40,6 +40,7 @@
     z-index: -2;
     mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
     mask-size: 100% 100%;
+    pointer-events: none;
 }
 
 body {

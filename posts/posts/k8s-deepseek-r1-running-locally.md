@@ -1,8 +1,8 @@
----
+$$$
 title: "Running DeepSeek-R1 Locally on a Kubernetes Cluster: A Professional Case Study"
 date: "2024-01-25"
 author: "Daniel Beltejar"
----
+$$$
 
 ## Introduction
 
