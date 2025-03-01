@@ -11,7 +11,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <>
       <div>
-        <video autoPlay loop muted className="neuphormism-video">
+        <video autoPlay loop muted playsInline webkit-playsinline="true"  className="neuphormism-video">
           <source src="/assets/videos/background.webm" type="video/webm" />
         </video>
       </div>
