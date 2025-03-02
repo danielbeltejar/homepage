@@ -1,4 +1,4 @@
-import React, { useState, useEffect, ReactNode, useRef } from 'react';
+import React, { ReactNode } from 'react';
 import Header from './Header';
 import Hero from './Hero';
 import Footer from './Footer';

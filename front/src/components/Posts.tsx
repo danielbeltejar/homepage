@@ -1,8 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLink } from '@fortawesome/free-solid-svg-icons';
-import ReactMarkdown from 'react-markdown';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Button from './Button';
 import PostCard from './PostCard';
 import SectionHeader from './SectionHeader';
