@@ -36,7 +36,7 @@ const Header = () => {
             <a target="_blank" id="blog-link" style={{ opacity: blogUrl ? 1 : 0 }}
                 href={blogUrl}
                 rel="noreferrer"
-                className="transition-opacity ease-in-out duration-1000 text-window dark:text-dark-text m-0  max-w-full">
+                className="transition-opacity ease-in-out duration-1000 text-window dark:text-dark-text m-0 lg:max-w-[350px] max-w-full">
                 <div
                     className="text-12 flex gap-2 font-bold bg-accent dark:bg-dark-accent overflow-hidden  px-1 flex-row align-middle items-center rounded-full h-[33px] m-0">
                     <p className="border-2  border-window dark:border-dark-text text-[0.8rem] p-[0.5px] px-2 rounded-full mt-[1px] m-0">Blog</p>
