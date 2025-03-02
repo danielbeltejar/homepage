@@ -8,6 +8,8 @@ $$$
 
 Front Yard Monster is an *tech demo* game that merges base-building, tactical strategy, and tower defense gameplay into one cohesive experience. Inspired by the classic flash game *Backyard Monsters*, this project revives a nostalgic gaming style with modern mechanics and improvements.
 
+---
+
 ## Game Overview
 
 Front Yard Monster challenges players to construct and defend their bases while managing resources and engaging in strategic combat. Become part of our vibrant community to influence the game’s evolution through valuable feedback and participation. For immediate gameplay and updates, visit the official website or join the Discord server.
@@ -16,11 +18,15 @@ Front Yard Monster challenges players to construct and defend their bases while 
 
 ![Screenshot from Frontyard Monsters](https://danielbeltejar.es/assets/images/posts/0/thumbnail-monsters-backyard-creatures.webp)
 
+---
+
 ## Models and Characters
 
 Every 3D model in Front Yard Monster is created using Blender, emphasizing high-quality animations and smooth rotations. By adopting a sprite-based approach, we capture the classic visual feel while ensuring optimal performance—particularly on mobile devices. Although *Backyard Monsters* serves as our foundational inspiration, we continuously enhance these assets with unique designs and innovative mechanics.
 
 ![Screenshot from Tesla Tower](https://danielbeltejar.es/assets/images/posts/0/backyard-creatures-tesla-render.webp)
+
+---
 
 ## Technical Overview
 
@@ -28,9 +34,13 @@ Built on the Unity platform, Front Yard Monster leverages C# for its client-side
 
 ![Screenshot from UI](https://danielbeltejar.es/assets/images/posts/0/resources.webp)
 
+---
+
 ## Gameplay Mechanics
 
 Players embark on their journey by collecting essential resources, which serve as the foundation for base expansion and defense. Strategic deployment of builder units, each possessing unique abilities, is crucial for progressing through the game. These builders can be exchanged for valuable resources, unlocking new opportunities for enhancing your base and creatures. As players advance, opportunities to mutate and upgrade creatures add depth, forcing strategic decision-making to conquer rival bases and explore new challenges.
+
+---
 
 ## Case Study: Development and Deployment
 
@@ -47,6 +57,8 @@ The continuous refinement of anti-cheat measures on both the client and server s
 
 These innovations demonstrate our commitment to excellence and responsiveness in addressing both technical and gameplay challenges.
 
+---
+
 ## Key Lessons
 
 1. **Nostalgia Meets Innovation:**  
@@ -57,6 +69,8 @@ These innovations demonstrate our commitment to excellence and responsiveness in
 
 3. **Robust and Scalable Solutions:**  
    A microservices architecture ensures flexibility and scalability, crucial for supporting an expanding user base.
+
+---
 
 ## References
 

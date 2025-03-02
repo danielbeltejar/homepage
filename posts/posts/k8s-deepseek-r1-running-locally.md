@@ -10,6 +10,8 @@ This article explains how to configure a Kubernetes cluster with GPU support and
 
 ![Open Web UI](https://danielbeltejar.es/assets/images/posts/1/open-web-ui-deepseek.webp)
 
+---
+
 ## The Setup
 
 ### NVIDIA Toolkit Installation
@@ -29,6 +31,8 @@ This article explains how to configure a Kubernetes cluster with GPU support and
 - The model leverages GPU acceleration to process requests with high speed and low latency.
 - By running DeepSeek-R1 locally, dependency on external APIs is eliminated, ensuring greater control over both data and outcomes.
 
+---
+
 ## Case Study: Hardware Specifications and Performance
 
 ### Hardware Specifications
@@ -44,6 +48,8 @@ This article explains how to configure a Kubernetes cluster with GPU support and
 
 ![Ollama Python API calls](https://danielbeltejar.es/assets/images/posts/1/ollama-python-api-calls-deepseek.webp)
 
+---
+
 ## Key Lessons
 
 1. **Independence from External Services:**  
@@ -58,9 +64,13 @@ This article explains how to configure a Kubernetes cluster with GPU support and
 4. **Customization and Control:**  
    A local deployment provides the flexibility to customize and fine-tune the model according to specific use-cases and data requirements.
 
+---
+
 ## Final Thoughts
 
 Deploying DeepSeek-R1 on a local Kubernetes cluster offers a powerful and cost-effective solution for businesses and professionals seeking robust LLM capabilities. The integration of GPU acceleration not only enhances performance but also ensures reliability and scalability. This approach is especially valuable in scenarios where data sensitivity and operational independence are critical.
+
+---
 
 ## References
 

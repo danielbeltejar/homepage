@@ -56,6 +56,13 @@ h3 {
     font-family: 'Source Serif 4', serif;
 }
 
+.post h2 {
+    font-size: 1.35rem;
+}
+
+.post h3 {
+    font-size: 1.15rem;
+}
 
 .post :is(img) {
     max-height: 400px;
