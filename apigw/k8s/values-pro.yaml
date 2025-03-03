@@ -14,8 +14,8 @@ resources:
   requests:
     memory: "16Mi"
   limits:
-    cpu: 20m
-    memory: "24Mi"
+    cpu: 100m
+    memory: "32Mi"
 ingress:
   enabled: true
   annotations:
