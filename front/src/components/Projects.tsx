@@ -53,13 +53,8 @@ const Projects = () => {
       <SectionHeader title="Projects" link="#projects" />
 
       <p className="mt-4 mb-10 text-12">
-        I also have a number of personal projects that I work on in my free time. These projects allow me to
-        explore new and emerging technologies and to expand my
-        skillset in a variety of different areas. Through these projects, I have gained valuable experience and
-        knowledge that I can apply to my professional work. I am always looking for new and exciting
-        opportunities to learn and grow, and my personal projects are an important part of that journey.
+        I build personal projects to explore new technologies. All projects are deployed in Kubernetes with CI/CD pipelines across various environments, using Jenkins for Docker multi-stage builds with minimal, distroless images, securized Helm deployments and managed by ArgoCD.
       </p>
-
       <div className="h-full flex justify-center w-full">
         <div className="h-full flex lg:flex-row lg:flex-wrap lg:content-start gap-5 lg:justify-center lg:overflow-x-auto overflow-x-scroll">
           {projects.map((project, index) => (
