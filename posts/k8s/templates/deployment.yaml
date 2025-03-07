@@ -16,7 +16,7 @@ spec:
         {{- include "app.selectorLabels" . | nindent 8 }}
     spec:
       securityContext:
-        fsGroup: 10003
+        fsGroup: 65534
       automountServiceAccountToken: false
       affinity:
         podAntiAffinity:
@@ -50,8 +50,8 @@ spec:
               - ALL
             runAsNonRoot: true
             readOnlyRootFilesystem: true
-            runAsUser: 65532
-            runAsGroup: 10002
+            runAsUser: 65534
+            runAsGroup: 65534
             allowPrivilegeEscalation: false
             seccompProfile:
               type: RuntimeDefault
