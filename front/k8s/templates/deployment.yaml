@@ -13,6 +13,7 @@ spec:
   template:
     metadata:
       labels:
+        {{- include "app.labels" . | nindent 8 }}
         {{- include "app.selectorLabels" . | nindent 8 }}
     spec:
       securityContext:

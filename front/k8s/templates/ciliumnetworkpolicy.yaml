@@ -1,0 +1,30 @@
+apiVersion: "cilium.io/v2"
+kind: CiliumNetworkPolicy
+metadata:
+  name: {{ include "app.fullname" . }}-policy
+  namespace: {{ .Values.namespace }}
+  labels:
+    {{- include "app.labels" . | nindent 4 }}
+spec:
+  endpointSelector:
+    matchLabels:
+      {{- include "app.name" . | nindent 6 }}
+      {{- include "app.selectorLabels" . | nindent 6 }}
+  ingress:
+    - fromEndpoints:
+        - matchLabels:
+            io.kubernetes.pod.namespace: ingress-{{ .Values.ingress.class }}
+  # egress:
+  #   - toEndpoints:
+  #       - matchLabels:
+  #           io.kubernetes.pod.namespace: kube-system
+  #           k8s-app: kube-dns
+  #       - matchLabels:
+  #           io.kubernetes.pod.namespace: "${each.value.back_namespace}"
+  #   - toPorts:
+  #       - ports:
+  #           - port: "53"
+  #             protocol: "UDP"
+  #         rules:
+  #           dns:
+  #             - matchPattern: '*'
