@@ -9,7 +9,7 @@ spec:
   endpointSelector:
     matchLabels:
       {{- include "app.name" . | nindent 6 }}
-      {{- include "app.selectorLabels" . | nindent 6 }}
+      {{- include "app.labels" . | nindent 6 }}
   ingress:
     - fromEndpoints:
         - matchLabels:
