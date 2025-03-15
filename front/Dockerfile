@@ -1,9 +1,9 @@
 # Etapa 1: Construcción de la aplicación Node.js
-FROM gcr.io/distroless/nodejs22-debian12:nonroot as build
+FROM cgr.dev/chainguard/node:latest as build
 
 ENV NODE_ENV=production
 
-COPY ["./", "/app/"]
+COPY --chown=node:node ["./", "/app/"]
 
 WORKDIR /app
 
