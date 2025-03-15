@@ -20,8 +20,8 @@ spec:
             k8s-app: kube-dns
         - matchLabels:
             io.kubernetes.pod.namespace: {{ .Values.namespace | replace "-front" "-back" }}
-        - toFQDNs:
-          - matchName: "*.{{ .Values.namespace | replace "-front" "-back" }}.svc.cluster.local"  
+    - toFQDNs:
+      - matchName: "*.{{ .Values.namespace | replace "-front" "-back" }}.svc.cluster.local"  
     - toPorts:
         - ports:
             - port: "53"
