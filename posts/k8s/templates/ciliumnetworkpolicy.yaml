@@ -1,0 +1,16 @@
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: {{ include "app.fullname" . }}-policy
+  namespace: {{ .Values.namespace }}
+spec:
+  endpointSelector:
+    matchLabels:
+      {{- include "app.selectorLabels" . | nindent 6 }}
+  ingress:
+  - fromEndpoints:
+    - matchLabels:
+        io.kubernetes.pod.namespace: ingress-{{ .Values.namespace | replace "-back" "-front" }}
+        app : apigw
+  egress:
+    - {}
