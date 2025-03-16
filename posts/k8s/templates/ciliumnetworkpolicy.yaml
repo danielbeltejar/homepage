@@ -10,7 +10,7 @@ spec:
   ingress:
   - fromEndpoints:
     - matchLabels:
-        io.kubernetes.pod.namespace: ingress-{{ .Values.namespace | replace "-back" "-front" }}
+        io.kubernetes.pod.namespace: {{ .Values.namespace | replace "-back" "-front" }}
         app : apigw
   egress:
     - {}
