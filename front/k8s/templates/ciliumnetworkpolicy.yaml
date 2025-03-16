@@ -8,8 +8,8 @@ spec:
     matchLabels:
       {{- include "app.selectorLabels" . | nindent 6 }}
   ingress:
-    - fromEndpoints:
-        - matchLabels:
-            io.kubernetes.pod.namespace: ingress-{{ .Values.ingress.class }}
+  - fromEndpoints:
+    - matchLabels:
+        io.kubernetes.pod.namespace: ingress-{{ .Values.ingress.class }}
   egress:
     - {}
