@@ -6,7 +6,7 @@ metadata:
 spec:
   endpointSelector:
     matchLabels:
-    {{- include "app.selectorLabels" . | nindent 4 }}
+      {{- include "app.selectorLabels" . | nindent 4 }}
   ingress:
     - fromEndpoints:
         - matchLabels:
