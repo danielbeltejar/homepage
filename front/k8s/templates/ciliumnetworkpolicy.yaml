@@ -11,3 +11,5 @@ spec:
     - fromEndpoints:
         - matchLabels:
             io.kubernetes.pod.namespace: ingress-{{ .Values.ingress.class }}
+  egress:
+    - {}
