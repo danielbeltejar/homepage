@@ -1,14 +1,12 @@
-apiVersion: "cilium.io/v2"
+apiVersion: cilium.io/v2
 kind: CiliumNetworkPolicy
 metadata:
   name: {{ include "app.fullname" . }}-policy
   namespace: {{ .Values.namespace }}
-  labels:
-    {{- include "app.labels" . | nindent 4 }}
 spec:
   endpointSelector:
     matchLabels:
-      {{- include "app.labels" . | nindent 6 }}
+    {{- include "app.selectorLabels" . | nindent 4 }}
   ingress:
     - fromEndpoints:
         - matchLabels:
@@ -18,14 +16,17 @@ spec:
         - matchLabels:
             io.kubernetes.pod.namespace: kube-system
             k8s-app: kube-dns
-        - matchLabels:
-            io.kubernetes.pod.namespace: {{ .Values.namespace | replace "-front" "-back" }}
-    - toFQDNs:
-      - matchName: "*.{{ .Values.namespace | replace "-front" "-back" }}.svc.cluster.local"  
-    - toPorts:
+      toPorts:
         - ports:
             - port: "53"
-              protocol: "UDP"
+              protocol: UDP
           rules:
             dns:
-              - matchPattern: '*'
+              - matchPattern: "*"
+    - toEndpoints:
+        - matchLabels:
+            io.kubernetes.pod.namespace: kube-system
+            k8s-app: kube-dns
+    - toEndpoints:
+        - matchLabels:
+            io.kubernetes.pod.namespace.labels.namespace: {{ .Values.namespace | replace "-front" "-back" }}
