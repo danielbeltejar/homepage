@@ -25,13 +25,6 @@ const projects = [
     githubLink: "https://github.com/danielbeltejar/pokemon-weather-map"
   },
   {
-    videoSrc: "assets/videos/emojitranslator.webm",
-    description: "A small project to test differents languages made backends for a single web app. It can encode and decode text to emojis on the two ways in realtime while typing as other public big translate services. It have a metric to benchmark the two differents backends, as they do the same under the hood.",
-    technologies: ["Python", "FastAPI", "Go", "Tailwind", "JavaScript", "K8s"],
-    visitLink: "https://danielbeltejar.es/translate/",
-    githubLink: "https://github.com/danielbeltejar?tab=repositories&q=emoji-translator&type=&language=&sort="
-  },
-  {
     videoSrc: "assets/videos/comugamers.webm",
     description: "A solution for storing and managing the data of 6 million users. Allows for the manipulation of users data, statistics, leaderboards and game mechanics, to provide a comprehensive system for managing user data. Redis was used to enable efficient and scalable data management. This solution effectively handles thousands of simultaneous users reliably.",
     technologies: ["Java", "Redis", "PostgreSQL"],
