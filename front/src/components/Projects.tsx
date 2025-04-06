@@ -2,7 +2,13 @@ import ProjectCard from "./ProjectCard";
 import SectionHeader from './SectionHeader';
 
 const projects = [
-
+  {
+    videoSrc: "assets/videos/chatbot.webm",
+    description: "A car dealership page featuring a live chat interface that mimics a chatbot. The chatbot leverages a large language model to assist users in exploring car options, providing detailed information and guiding them through the buying process. This project showcases an LLM integration.",
+    technologies: ["LLM", "React", "Python", "FastAPI", "K8s"],
+    visitLink: "https://chatbot.danielbeltejar.es",
+    githubLink: "https://github.com/danielbeltejar/landing-chatbot"
+  },
   {
     videoSrc: "assets/videos/fym.webm",
     description: "A self-made online game inspired by the art style and mechanics of an old flash game. Offering a unique blend of retro and modern elements that provide an engaging and immersive experience for players. This project was made to inquire into creating and implementing a complex online game system using a range of modern technologies.",
@@ -38,6 +44,7 @@ const projects = [
     visitLink: "https://es.realstate.danielbeltejar.es/",
     githubLink: "https://github.com/danielbeltejar/es-realstate-kafka/"
   },
+
 ];
 
 const Projects = () => {
