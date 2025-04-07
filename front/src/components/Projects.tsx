@@ -4,7 +4,7 @@ import SectionHeader from './SectionHeader';
 const projects = [
   {
     videoSrc: "assets/videos/chatbot.webm",
-    description: "A car dealership page featuring a live chat interface that mimics a chatbot. The chatbot leverages a large language model to assist users in exploring car options, providing detailed information and guiding them through the buying process. This project showcases an LLM integration.",
+    description: "A car dealership page featuring a chatbot interface that mimics a live chat. The chatbot leverages a large language model to assist users in exploring car options, providing detailed information and guiding them through the buying process. This project showcases an LLM integration.",
     technologies: ["LLM", "React", "Python", "FastAPI", "K8s"],
     visitLink: "https://chatbot.danielbeltejar.es",
     githubLink: "https://github.com/danielbeltejar/landing-chatbot"
