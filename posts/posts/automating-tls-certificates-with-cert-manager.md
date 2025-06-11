@@ -108,8 +108,6 @@ A public-facing web app (`danielbeltejar.es`) requires automated TLS certificate
 ## Final Thoughts  
 Automating TLS certificate management with cert-manager is a powerful way to secure your infrastructure. By combining **[OVH webhook](https://artifacthub.io/packages/helm/cert-manager-webhook-ovh/cert-manager-webhook-ovh)** for internal DNS and **Let’s Encrypt** via Ingress for external DNS, you can address both internal and public use cases seamlessly. This approach eliminates manual overhead, reduces downtime, and ensures compliance with modern security standards.  
 
-As you adopt this pattern, consider contributing your webhook implementation to the cert-manager ecosystem or sharing insights with the community to help others avoid common pitfalls.  
-
 ---
 
 ## References  
