@@ -50,6 +50,10 @@ body {
     position: relative;
 }
 
+p {
+    word-spacing: 0.2rem;
+}
+
 h1,
 h2,
 h3 {
