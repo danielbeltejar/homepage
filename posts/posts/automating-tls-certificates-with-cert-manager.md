@@ -111,9 +111,9 @@ Automating TLS certificate management with cert-manager is a powerful way to sec
 ---
 
 ## References  
-1. [cert-manager Documentation](https://cert-manager.io/docs/)  
-2. [OVH API Reference](https://eu.api.ovh.com/)  
-3. [OVH Let’s Encrypt Webhook](https://artifacthub.io/packages/helm/cert-manager-webhook-ovh/cert-manager-webhook-ovh)  
-4. [Kubernetes Helm Chart for cert-manager](https://github.com/jetstack/cert-manager)  
-5. [Let’s Encrypt ACME Documentation](https://letsencrypt.org/docs/)  
-6. [ovh-dns-updater.py](https://github.com/danielbeltejar/ovh-dns-updater)
+- [cert-manager Documentation](https://cert-manager.io/docs/)  
+- [OVH API Reference](https://eu.api.ovh.com/)  
+- [OVH Let’s Encrypt Webhook](https://artifacthub.io/packages/helm/cert-manager-webhook-ovh/cert-manager-webhook-ovh)  
+- [Kubernetes Helm Chart for cert-manager](https://github.com/jetstack/cert-manager)  
+- [Let’s Encrypt ACME Documentation](https://letsencrypt.org/docs/)  
+- [ovh-dns-updater.py](https://github.com/danielbeltejar/ovh-dns-updater)
