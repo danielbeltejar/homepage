@@ -1,8 +1,8 @@
----
+$$$
 title: "Automating TLS Certificates with cert-manager"
 date: "2025-06-11"
 author: "Daniel Beltejar"
----
+$$$
 
 ## Introduction  
 In today’s digital landscape, securing web services with TLS certificates is non-negotiable. However, manually managing certificates is error-prone, time-consuming, and unsustainable for growing systems. **cert-manager**, a Kubernetes-native certificate management tool, automates the issuance and renewal of TLS certificates using the ACME protocol. When paired with a custom webhook for OVH (a popular DNS provider), it enables seamless integration with OVH’s DNS API to automate DNS record updates, ensuring secure, self-service certificate management for both public and internal services.  
