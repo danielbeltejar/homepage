@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react'; 
 import { useParams } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import SectionHeader from './SectionHeader';
@@ -13,7 +13,7 @@ interface PostObject {
 export default function Post() {
     const [post, setPost] = useState<PostObject | null>(null);
     const { filename } = useParams<{ filename: string }>();
-
+    const contentRef = useRef<HTMLDivElement>(null); 
     useEffect(() => {
         const fetchPost = async () => {
             try {
@@ -43,7 +43,6 @@ export default function Post() {
 
         fetchPost();
     }, [filename]);
-
 
     useEffect(() => {
         const images = document.querySelectorAll('.post img');
@@ -92,6 +91,12 @@ export default function Post() {
         };
     }, [post]);
 
+    useEffect(() => {
+        const isMobile = window.innerWidth <= 768;
+        if (isMobile && contentRef.current) {
+            contentRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+    }, [post]);
 
     if (!post) {
         return (
@@ -104,7 +109,7 @@ export default function Post() {
 
     return (
         <div className='bg-window dark:bg-dark-window mt-16 mb-16 p-10 shadow-lg'>
-            <div className="flex flex-col align-middle items-start mt-xs group w-full">
+            <div ref={contentRef}  className="flex flex-col align-middle items-start mt-xs group w-full">
                 <SectionHeader title={post.title} link="#content" />
                 <div className='text-accent dark:text-dark-accent flex flex-row'>
                     <p id='author' className="mr-1 hidden">{post.author} -</p>
@@ -118,5 +123,4 @@ export default function Post() {
             </p>
         </div>
     );
-
 }

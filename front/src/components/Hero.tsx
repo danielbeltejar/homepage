@@ -28,7 +28,7 @@ const Hero = () => {
         (typeEffectElem) { typeEffectElem.innerHTML = 'Daniel Beltejar'; setTimeout(typeWriter, 2200); }
     }
   }, []); return (
-    <section className="flex flex-col bg-window p-10 dark:bg-dark-window ">
+    <section className="flex flex-col bg-window p-10 dark:bg-dark-window">
       <div className="flex flex-col flex-1">
         <div className="relative">
           <h2 id="type-effect" className="absolute text-accent dark:text-dark-accent font-bold text-4xl "> </h2>
