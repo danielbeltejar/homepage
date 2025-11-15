@@ -1,6 +1,8 @@
 import React, { ReactNode } from 'react';
+import { useLocation } from 'react-router-dom';
 import Header from './Header';
 import Hero from './Hero';
+import Certifications from './Certifications';
 import Footer from './Footer';
 
 interface LayoutProps {
@@ -8,6 +10,8 @@ interface LayoutProps {
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
+  const location = useLocation();
+
   return (
     <>
       <div>
@@ -22,6 +26,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           <Hero />
         </div>
         {children}
+        {location.pathname === "/" && <Certifications />}
         <Footer />
       </div>
     </>

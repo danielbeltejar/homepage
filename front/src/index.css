@@ -110,3 +110,9 @@ h3 {
         background-position: right -90px top 0;
     }
 }
+
+/* Development mode outlines */
+.dev-outlines * {
+    outline: 1px solid red !important;
+    outline-offset: -1px;
+}

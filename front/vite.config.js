@@ -26,6 +26,11 @@ export default defineConfig({
     esbuild: {
         loader: 'tsx',
     },
+    test: {
+        globals: true,
+        environment: 'jsdom',
+        setupFiles: './src/test/setup.ts',
+    },
     // resolve: {
     //     alias: {
     //         '@': path.resolve(__dirname, './src'),
