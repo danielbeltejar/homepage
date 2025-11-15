@@ -16,7 +16,7 @@ const Hero = () => {
 
       if (!typeEffectElem || !titleEffectElem) return;
 
-      if (typeEffectElem.innerHTML === 'Daniel Beltejar') {
+      if (typeEffectElem.innerHTML === 'Daniel Beltejar' || typeEffectElem.innerHTML.trim() === '') {
         // Inicializar todo el texto con opacidad 0
         typeEffectElem.innerHTML = '';
         txt.split('').forEach(char => {

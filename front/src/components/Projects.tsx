@@ -1,5 +1,7 @@
 import ProjectCard from "./ProjectCard";
 import SectionHeader from './SectionHeader';
+import ScrollIndicator from './ScrollIndicator';
+import { useScrollPosition } from '../hooks/useScrollPosition';
 
 const projects = [
   {
@@ -54,6 +56,14 @@ const projects = [
 ];
 
 const Projects = () => {
+  const CARD_WIDTH = 320;
+  const GAP = 20;
+  
+  const { scrollContainerRef, activeIndex } = useScrollPosition({ 
+    itemWidth: CARD_WIDTH, 
+    gap: GAP 
+  });
+
   return (
     <div className='bg-window dark:bg-dark-window mt-16 mb-16 p-10 shadow-lg'>
       <SectionHeader title="Projects" link="#projects" />
@@ -62,12 +72,23 @@ const Projects = () => {
         I build personal projects to explore new technologies. All projects are deployed in Kubernetes with CI/CD pipelines across various environments, using Jenkins for Docker multi-stage builds with minimal, distroless images, securized Helm deployments and managed by ArgoCD.
       </p>
       <div className="h-full flex justify-center w-full">
-        <div className="h-full flex lg:flex-row lg:flex-wrap lg:content-start gap-5 lg:justify-center lg:overflow-x-auto overflow-x-scroll">
+        <div 
+          ref={scrollContainerRef}
+          className="h-full flex lg:flex-row lg:flex-wrap lg:content-start gap-5 lg:justify-center lg:overflow-x-auto overflow-x-scroll snap-x snap-mandatory"
+        >
           {projects.map((project, index) => (
-            <ProjectCard key={index} {...project} />
+            <div key={index} className="snap-center">
+              <ProjectCard {...project} />
+            </div>
           ))}
         </div>
       </div>
+      
+      <ScrollIndicator 
+        totalItems={projects.length} 
+        activeIndex={activeIndex}
+        className="mt-6 lg:hidden"
+      />
     </div>
   );
 };

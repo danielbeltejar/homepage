@@ -34,7 +34,7 @@ const Certifications = () => {
         The following certifications demonstrate my expertise and proficiency in various technologies.
       </p>
       <div className="h-full flex justify-center w-full">
-        <div className="h-full flex lg:flex-row lg:flex-wrap lg:content-start gap-5 lg:justify-center lg:overflow-x-auto overflow-x-scroll">
+        <div className="h-full flex flex-col lg:flex-row lg:flex-wrap lg:content-start gap-5 lg:justify-center w-full">
           {certifications.map((cert, index) => (
             <CertificationCard key={index} {...cert} />
           ))}
