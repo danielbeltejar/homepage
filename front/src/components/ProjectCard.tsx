@@ -8,9 +8,10 @@ interface ProjectProps {
   technologies: string[];
   visitLink: string;
   githubLink: string;
+  postLink: string;
 }
 
-const ProjectCard = ({ videoSrc, description, technologies, visitLink, githubLink }: ProjectProps) => {
+const ProjectCard = ({ videoSrc, description, technologies, visitLink, githubLink, postLink }: ProjectProps) => {
   return (
     <div className="project group group-hover:shadow-md pt-5 pb-5 pl-5 pr-5 flex flex-col h-96 w-80 transition-all duration-500 hyphens-auto text-justify bg-background dark:bg-dark-background px-s py-s rounded-3xl shadow-inner-lg">
       <div className="relative">
@@ -45,6 +46,10 @@ const ProjectCard = ({ videoSrc, description, technologies, visitLink, githubLin
       >
         {description}
       </p>
+
+      <div className="flex justify-center mt-auto opacity-0 group-hover:opacity-100 group-hover:transition-opacity group-hover:duration-500">
+        <Button text="Read more" url={postLink} newTab={false} primary={true} className="flex-grow max-h-[48px]" />
+      </div>
 
       <div className="flex flex-row gap-5 mt-auto w-full">
         <Button icon={faArrowUpRightFromSquare} text="Visit" url={visitLink} primary={true} className="flex-grow max-h-[48px]" />
