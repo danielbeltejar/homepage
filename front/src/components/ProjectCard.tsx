@@ -47,9 +47,11 @@ const ProjectCard = ({ videoSrc, description, technologies, visitLink, githubLin
         {description}
       </p>
 
-      <div className="flex justify-center mt-auto opacity-0 group-hover:opacity-100 group-hover:transition-opacity group-hover:duration-500">
-        <Button text="Read more" url={postLink} newTab={false} primary={true} className="flex-grow max-h-[48px]" />
-      </div>
+      {postLink && postLink.trim() !== '' && (
+        <div className="flex justify-center mt-auto opacity-0 group-hover:opacity-100 group-hover:transition-opacity group-hover:duration-500">
+          <Button text="Read more" url={postLink} newTab={false} primary={true} className="flex-grow max-h-[48px]" />
+        </div>
+      )}
 
       <div className="flex flex-row gap-5 mt-auto w-full">
         <Button icon={faArrowUpRightFromSquare} text="Visit" url={visitLink} primary={true} className="flex-grow max-h-[48px]" />

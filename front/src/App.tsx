@@ -9,7 +9,10 @@ import './index.css';
 
 function App() {
   const isDevelopment = import.meta.env.MODE === 'development';
-  const [showOutlines, setShowOutlines] = useState(isDevelopment);
+  const [showOutlines, setShowOutlines] = useState(() => {
+    const saved = localStorage.getItem('showOutlines');
+    return saved !== null ? JSON.parse(saved) : isDevelopment;
+  });
 
   useEffect(() => {
     if (showOutlines && isDevelopment) {
@@ -18,6 +21,10 @@ function App() {
       document.body.classList.remove('dev-outlines');
     }
   }, [showOutlines, isDevelopment]);
+
+  useEffect(() => {
+    localStorage.setItem('showOutlines', JSON.stringify(showOutlines));
+  }, [showOutlines]);
 
   return (
     <div className="flex flex-col items-center">

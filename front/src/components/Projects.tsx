@@ -8,7 +8,7 @@ const projects = [
     technologies: ["LLM", "React", "Python", "FastAPI", "K8s"],
     visitLink: "https://chatbot.danielbeltejar.es",
     githubLink: "https://github.com/danielbeltejar/landing-chatbot",
-    postLink: "https://danielbeltejar.es/blog/2024-06-15-building-a-car-dealership-chatbot-with-llm/"
+    postLink: ""
   },
   {
     videoSrc: "assets/videos/fym.webm",
@@ -16,7 +16,7 @@ const projects = [
     technologies: ["C#", "Python", "Redis", "MongoDB", "K8s"],
     visitLink: "https://fym.danielbeltejar.es",
     githubLink: "https://github.com/danielbeltejar?tab=repositories&q=frontyardmonsters&type=&language=&sort=/",
-    postLink: "https://danielbeltejar.es/blog/2023-12-20-building-an-online-game-from-scratch/"
+    postLink: ""
   },
   {
     videoSrc: "assets/videos/bigmac-index.webm",
@@ -24,7 +24,7 @@ const projects = [
     technologies: ["Python", "FastAPI", "BeautifulSoup", "PostgreSQL", "JavaScript", "K8s"],
     visitLink: "https://bigmac.danielbeltejar.es/",
     githubLink: "https://github.com/danielbeltejar?tab=repositories&q=bigmac-index&type=&language=&sort=",
-    postLink: "https://danielbeltejar.es/blog/2024-01-10-web-scraping-uber-eats-prices/"
+    postLink: ""
   },
   {
     videoSrc: "assets/videos/pokemon-weather-map.webm",
@@ -32,7 +32,7 @@ const projects = [
     technologies: ["Python", "Pillow", "FastAPI", "JavaScript", "K8s"],
     visitLink: "https://weather.danielbeltejar.es/",
     githubLink: "https://github.com/danielbeltejar/pokemon-weather-map",
-    postLink: "https://danielbeltejar.es/blog/2024-02-20-creating-a-pokemon-weather-map-app/"
+    postLink: ""
   },
   {
     videoSrc: "assets/videos/comugamers.webm",
@@ -40,7 +40,7 @@ const projects = [
     technologies: ["Java", "Redis", "PostgreSQL"],
     visitLink: "https://github.com/comugamerses/",
     githubLink: "https://github.com/danielbeltejar/ComuGlobal/",
-    postLink: "https://danielbeltejar.es/blog/2023-10-05-building-a-scalable-user-management-system-with-redis/"
+    postLink: ""
   },
   {
     videoSrc: "assets/videos/kafka.webm",
@@ -48,7 +48,7 @@ const projects = [
     technologies: ["Spark", "Python", "TypeScript", "Tailwind"],
     visitLink: "https://es.realstate.danielbeltejar.es/",
     githubLink: "https://github.com/danielbeltejar/es-realstate-kafka/",
-    postLink: "https://danielbeltejar.es/blog/2024-03-15-analyzing-spanish-real-estate-prices-with-big-data/"
+    postLink: ""
   },
 
 ];
