@@ -17,15 +17,36 @@ const Hero = () => {
       if (!typeEffectElem || !titleEffectElem) return;
 
       if (typeEffectElem.innerHTML === 'Daniel Beltejar') {
+        // Inicializar todo el texto con opacidad 0
         typeEffectElem.innerHTML = '';
+        txt.split('').forEach(char => {
+          const span = document.createElement('span');
+          span.textContent = char;
+          span.style.opacity = '0';
+          span.style.transition = 'opacity 0.3s ease-in';
+          typeEffectElem.appendChild(span);
+        });
         titleEffectElem.style.opacity = '1';
       }
 
-      if (i < txt.length) { typeEffectElem.innerHTML += txt.charAt(i); i++; setTimeout(typeWriter, speed); }
-    }; if
-      (window.innerWidth < 1024) { typeWriter(); } else {
-      const typeEffectElem = document.getElementById('type-effect'); if
-        (typeEffectElem) { typeEffectElem.innerHTML = 'Daniel Beltejar'; setTimeout(typeWriter, 2200); }
+      if (i < txt.length) {
+        const spans = typeEffectElem.querySelectorAll('span');
+        if (spans[i]) {
+          spans[i].style.opacity = '1';
+        }
+        i++;
+        setTimeout(typeWriter, speed);
+      }
+    };
+    
+    if (window.innerWidth < 1024) {
+      typeWriter();
+    } else {
+      const typeEffectElem = document.getElementById('type-effect');
+      if (typeEffectElem) {
+        typeEffectElem.innerHTML = 'Daniel Beltejar';
+        setTimeout(typeWriter, 2200);
+      }
     }
   }, []); return (
     <section className="flex flex-col bg-window p-10 dark:bg-dark-window">
