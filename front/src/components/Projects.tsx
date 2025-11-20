@@ -10,7 +10,7 @@ const projects = [
     technologies: ["LLM", "React", "Python", "FastAPI", "K8s"],
     visitLink: "https://chatbot.danielbeltejar.es",
     githubLink: "https://github.com/danielbeltejar/landing-chatbot",
-    postLink: ""
+    postLink: "post/building-a-chatbot-powered-ai-landing-page-with-react-and-fastapi"
   },
   {
     videoSrc: "assets/videos/fym.webm",
