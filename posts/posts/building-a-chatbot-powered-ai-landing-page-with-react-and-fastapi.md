@@ -1,8 +1,8 @@
----
+$$$
 title: "Building a Chatbot-Powered AI Landing Page with React and FastAPI"
 date: "2024-11-20"
 author: "Daniel Beltejar"
----
+$$$
 
 ## Introduction  
 These days, in the fast-paced world of online shopping, adding chatbots to landing pages can really spice things up. They make the site more interactive and can help drive more sales. I built this full-stack app for a fictional car dealership to explore that idea. It features a React front-end, a FastAPI back-end with an AI chatbot powered by Ollama and Qwen3, and an API gateway for secure routing. Everything's deployed on Kubernetes with Helm charts, showcasing modern web dev practices like responsive Tailwind CSS, real-time chat, and scalable microservices.  
