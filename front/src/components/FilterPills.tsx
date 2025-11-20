@@ -15,7 +15,7 @@ const FilterPills = ({ filters, activeFilter, onFilterChange, className = '' }: 
           className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 shadow-sm ${
             activeFilter === filter
               ? 'bg-accent text-window'
-              : 'bg-background text-text hover:bg-accent hover:text-window'
+              : 'bg-background text-gray-600 hover:bg-accent hover:text-window'
           }`}
           aria-pressed={activeFilter === filter}
           aria-label={`Filter by ${filter === 'all' ? 'all certifications' : filter}`}

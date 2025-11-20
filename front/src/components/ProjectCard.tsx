@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 import { faGithub } from "@fortawesome/free-brands-svg-icons"
 import Button from './Button';
@@ -12,18 +13,50 @@ interface ProjectProps {
 }
 
 const ProjectCard = ({ videoSrc, description, technologies, visitLink, githubLink, postLink }: ProjectProps) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const posterSrc = videoSrc.replace('assets/videos/', 'assets/images/').replace('.webm', '.jpg');
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            video.play().catch(() => {
+              // Play might be blocked
+            });
+          } else {
+            video.pause();
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    observer.observe(video);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   return (
     <div className="project group group-hover:shadow-md pt-5 pb-5 pl-5 pr-5 flex flex-col h-96 w-80 transition-all duration-500 hyphens-auto text-justify bg-background dark:bg-dark-background px-s py-s rounded-3xl shadow-inner-lg">
       <div className="relative">
         <div className='rounded-xl w-[280px] h-[161px] overflow-hidde group-hover:hidden skeleton-simple absolute'></div>
         <div className='rounded-xl w-[280px] h-[161px] overflow-hidde group-hover:hidden absolute shadow-md'>
           <video
-            autoPlay
+            ref={videoRef}
             loop
             muted
             playsInline
-            preload="none"
-            poster={videoSrc}
+            preload="metadata"
+            poster={posterSrc}
             className="w-full h-full object-cover rounded-xl group-hover:scale-110 transition-all"
           >
             <source src={videoSrc} type="video/webm" />
@@ -34,7 +67,7 @@ const ProjectCard = ({ videoSrc, description, technologies, visitLink, githubLin
 
       <div className="z-10 flex flex-wrap mt-4 gap-2 justify-start h-[6rem] content-start group-hover:hidden pt-[161px]">
         {technologies.map((tech, index) => (
-          <p key={index} className="text-sm text-center bg-slate-50 dark:bg-dark-accent px-2 rounded-full shadow-lg">
+          <p key={index} className="text-sm text-center text-gray-500 bg-slate-50 dark:bg-dark-accent px-2 rounded-full shadow-sm">
             {tech}
           </p>
         ))}

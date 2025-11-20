@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import Header from './Header';
 import Hero from './Hero';
@@ -11,12 +11,35 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const location = useLocation();
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReducedMotion) {
+        video.pause();
+      } else {
+        video.play().catch(() => {
+          // Autoplay might be blocked, that's fine
+        });
+      }
+    }
+  }, []);
 
   return (
     <>
       <div>
-        <video autoPlay loop muted playsInline webkit-playsinline="true"  className="neuphormism-video">
-          <source src="/assets/videos/background.webm" type="video/webm" />
+        <video 
+          ref={videoRef}
+          loop 
+          muted 
+          playsInline 
+          webkit-playsinline="true"  
+          className="neuphormism-video"
+          preload="none"
+        >
+          <source src="/assets/videos/background.mp4" type="video/mp4" />
         </video>
       </div>
       <div className="dot-grid"></div>

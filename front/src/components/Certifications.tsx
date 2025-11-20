@@ -3,28 +3,34 @@ import SectionHeader from './SectionHeader';
 import FilterPills from './FilterPills';
 import { useFilter } from '../hooks/useFilter';
 import { faMicrosoft, faLinux } from '@fortawesome/free-brands-svg-icons';
-import { faNetworkWired, faCertificate } from '@fortawesome/free-solid-svg-icons';
+import { faNetworkWired, faCertificate, faBridge } from '@fortawesome/free-solid-svg-icons';
 
 const certifications = [
   {
     icon: faMicrosoft,
     vendor: "Microsoft",
-    name: "AZ305 - Microsoft Azure Solutions Architect Expert"
+    name: "AZ305 - Microsoft Azure Solutions Architect Expert",
+    highlight: true
   },
   {
     icon: faMicrosoft,
     vendor: "Microsoft",
-    name: "AZ104 - Microsoft Azure Administrator"
+    name: "AZ104 - Microsoft Azure Administrator",
+        highlight: true
   },
   {
     icon: faLinux,
     vendor: "Kubernetes",
-    name: "CKAD - Certified Kubernetes Application Developer"
+    name: "CKAD - Certified Kubernetes Application Developer",
+        highlight: true
+
   },
   {
     icon: faLinux,
     vendor: "Kubernetes",
-    name: "CKA - Certified Kubernetes Administrator"
+    name: "CKA - Certified Kubernetes Administrator",
+        highlight: true
+
   },
   {
     icon: faCertificate,
@@ -32,17 +38,17 @@ const certifications = [
     name: "Databricks Fundamentals"
   },
   {
-    icon: faNetworkWired,
+    icon: faBridge,
     vendor: "Cisco",
     name: "CCNA: Introduction to Networks"
   },
   {
-    icon: faNetworkWired,
+    icon: faBridge,
     vendor: "Cisco",
     name: "Cybersecurity Essentials"
   },
   {
-    icon: faNetworkWired,
+    icon: faBridge,
     vendor: "Cisco",
     name: "Introduction to Cybersecurity"
   }
@@ -54,7 +60,7 @@ const Certifications = () => {
     'vendor'
   );
 
-  const displayItems = activeFilter === 'all' ? filteredItems.slice(0, 4) : filteredItems;
+  const displayItems = activeFilter === 'all' ? filteredItems.filter(cert => cert.highlight) : filteredItems;
 
   return (
     <div className='bg-window dark:bg-dark-window mb-16 p-10 shadow-lg'>
@@ -72,8 +78,8 @@ const Certifications = () => {
 
       <div className="h-full flex justify-center w-full">
         <div className="min-h-[148px] flex flex-col lg:flex-row lg:flex-wrap lg:content-start gap-5 lg:justify-start w-full">
-          {displayItems.map((cert, index) => (
-            <CertificationCard key={index} {...cert} />
+          {displayItems.map((cert) => (
+            <CertificationCard key={cert.name} {...cert} />
           ))}
         </div>
       </div>
