@@ -1,6 +1,6 @@
 $$$
 title: "Building a Chatbot-Powered AI Landing Page with React and FastAPI"
-date: "2024-11-20"
+date: "2025-11-20"
 author: "Daniel Beltejar"
 $$$
 
