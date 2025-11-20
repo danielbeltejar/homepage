@@ -16,6 +16,7 @@
     "autoprefixer": "^10.4.20",
     "cra-template": "1.2.0",
     "fluent-ffmpeg": "^2.1.3",
+    "framer-motion": "^12.0.0",
     "postcss": "^8.5.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
