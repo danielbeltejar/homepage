@@ -4,6 +4,7 @@ import FilterPills from './FilterPills';
 import { useFilter } from '../hooks/useFilter';
 import { faMicrosoft, faLinux } from '@fortawesome/free-brands-svg-icons';
 import { faNetworkWired, faCertificate, faBridge } from '@fortawesome/free-solid-svg-icons';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const certifications = [
   {
@@ -40,7 +41,7 @@ const certifications = [
   {
     icon: faBridge,
     vendor: "Cisco",
-    name: "CCNA: Introduction to Networks"
+    name: "CCNA - Introduction to Networks"
   },
   {
     icon: faBridge,
@@ -53,6 +54,21 @@ const certifications = [
     name: "Introduction to Cybersecurity"
   }
 ];
+
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.3 } },
+  exit: { opacity: 0, y: -20, transition: { duration: 0.2 } }
+};
 
 const Certifications = () => {
   const { activeFilter, setActiveFilter, filteredItems, availableFilters } = useFilter(
@@ -77,11 +93,22 @@ const Certifications = () => {
       />
 
       <div className="h-full flex justify-center w-full">
-        <div className="min-h-[148px] flex flex-col lg:flex-row lg:flex-wrap lg:content-start gap-5 lg:justify-start w-full">
-          {displayItems.map((cert) => (
-            <CertificationCard key={cert.name} {...cert} />
-          ))}
-        </div>
+        <motion.div
+          className="min-h-[148px] flex flex-col lg:flex-row lg:flex-wrap lg:content-start gap-5 lg:justify-start w-full"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <AnimatePresence>
+            {displayItems.map((cert) => (
+              <CertificationCard
+                key={cert.name}
+                {...cert}
+                variants={itemVariants}
+              />
+            ))}
+          </AnimatePresence>
+        </motion.div>
       </div>
     </div>
   );
