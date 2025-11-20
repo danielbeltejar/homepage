@@ -18,7 +18,7 @@ const projects = [
     technologies: ["C#", "Python", "Redis", "MongoDB", "K8s"],
     visitLink: "https://fym.danielbeltejar.es",
     githubLink: "https://github.com/danielbeltejar?tab=repositories&q=frontyardmonsters&type=&language=&sort=/",
-    postLink: ""
+    postLink: "post/fym-game-introduction"
   },
   {
     videoSrc: "assets/videos/bigmac-index.webm",

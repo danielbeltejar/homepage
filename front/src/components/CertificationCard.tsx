@@ -13,7 +13,7 @@ const CertificationCard = ({ icon, vendor, name, ...props }: CertificationProps)
   return (
     <motion.div
       className="flex flex-row items-center bg-background dark:bg-dark-background px-5 py-5 rounded-3xl shadow-inner-lg h-16 w-full lg:w-80"
-      whileHover={{ scale: 1.05 }}
+      whileHover={{ scale: 1.025 }}
       whileTap={{ scale: 0.95 }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
       {...props}
