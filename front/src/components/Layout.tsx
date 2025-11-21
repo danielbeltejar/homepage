@@ -17,7 +17,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     const video = videoRef.current;
     if (video) {
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (prefersReducedMotion) {
+      const isLowEndDevice = navigator.hardwareConcurrency < 2 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      
+      if (prefersReducedMotion || isLowEndDevice) {
         video.pause();
       } else {
         video.play().catch(() => {
@@ -39,6 +41,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           className="neuphormism-video"
           preload="none"
         >
+          <source src="/assets/videos/background.webm" type="video/webm" />
           <source src="/assets/videos/background.mp4" type="video/mp4" />
         </video>
       </div>

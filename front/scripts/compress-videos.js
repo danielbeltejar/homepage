@@ -8,8 +8,9 @@ ffmpeg.setFfmpegPath(ffmpegPath);
 const inputDir = path.join(__dirname, '../public/assets/videos');
 
 const videoFiles = fs.readdirSync(inputDir).filter(file =>
-  ['.mp4', '.mov', '.avi', '.mkv', '.webm'].includes(path.extname(file).toLowerCase()) &&
-  !file.includes('_compressed')
+  path.extname(file).toLowerCase() === '.mp4' &&
+  !file.includes('_temp') &&
+  !fs.existsSync(path.join(inputDir, path.parse(file).name + '.webm'))
 );
 
 console.log(`Found ${videoFiles.length} video files to compress.`);
@@ -19,36 +20,54 @@ let processed = 0;
 videoFiles.forEach(file => {
   const inputPath = path.join(inputDir, file);
   const baseName = path.parse(file).name;
-  const isMp4 = path.extname(file).toLowerCase() === '.mp4';
-  const outputPath = isMp4 ? path.join(inputDir, baseName + '_temp.mp4') : path.join(inputDir, baseName + '.mp4');
+  const outputWebM = path.join(inputDir, baseName + '.webm');
+  const outputMP4 = path.join(inputDir, baseName + '_temp.mp4');
 
-  console.log(`Compressing ${file}...`);
+  console.log(`Compressing ${file} to WebM...`);
 
+  // Compress to WebM with VP9 for better efficiency
   ffmpeg(inputPath)
-    .videoCodec('libx264')
-    .audioCodec('aac')
+    .videoCodec('libvpx-vp9')
+    .audioCodec('libopus')
     .outputOptions([
-      '-crf 25',
-      '-preset slow',
-      '-vf scale=-2:720'
+      '-crf 30',  // Higher CRF for more compression
+      '-b:v 0',   // Variable bitrate
+      '-vf scale=-2:480',  // Lower resolution for better performance
+      '-deadline best',  // Best quality
+      '-cpu-used 4'  // Balance speed/quality
     ])
-    .output(outputPath)
+    .output(outputWebM)
     .on('end', () => {
-      console.log(`Compressed: ${file}`);
-      if (isMp4) {
-        fs.renameSync(outputPath, inputPath);
-      } else {
-        fs.unlinkSync(inputPath);
-      }
-      processed++;
-      if (processed === videoFiles.length) {
-        console.log('All videos optimized.');
-      }
+      console.log(`Compressed to WebM: ${file}`);
+      // Also create MP4 fallback
+      ffmpeg(inputPath)
+        .videoCodec('libx264')
+        .audioCodec('aac')
+        .outputOptions([
+          '-crf 28',
+          '-preset fast',
+          '-vf scale=-2:480'
+        ])
+        .output(outputMP4)
+        .on('end', () => {
+          console.log(`Compressed to MP4: ${file}`);
+          // Remove original if not needed
+          if (path.extname(file).toLowerCase() !== '.mp4') {
+            fs.unlinkSync(inputPath);
+          }
+          processed++;
+          if (processed === videoFiles.length) {
+            console.log('All videos optimized.');
+          }
+        })
+        .on('error', err => {
+          console.error(`Error compressing MP4 ${file}:`, err);
+          processed++;
+        })
+        .run();
     })
     .on('error', err => {
-      console.error(`Error compressing ${file}:`, err);
-      // Clean up temp if exists
-      if (fs.existsSync(outputPath)) fs.unlinkSync(outputPath);
+      console.error(`Error compressing WebM ${file}:`, err);
       processed++;
     })
     .run();
