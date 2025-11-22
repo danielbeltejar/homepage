@@ -94,7 +94,7 @@ const Certifications = () => {
 
       <div className="h-full flex justify-center w-full">
         <motion.div
-          className="min-h-[148px] flex flex-col lg:flex-row lg:flex-wrap lg:content-start gap-5 lg:justify-start w-full"
+          className="min-h-[316px] lg:min-h-[188px] grid grid-cols-1 content-start justify-start lg:grid-cols-2 gap-5 w-full"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
