@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 const Hero = () => {
   useEffect(() => {
     let i = 0;
-    const txt = 'Developer, Operations and Cloud proeffecient';
+    const txt = 'Developer, Operations and Cloud proficient';
     const speed = 60;
 
     const typeWriter = () => {
@@ -54,7 +54,7 @@ const Hero = () => {
         <div className="relative">
           <h2 id="type-effect" className="absolute text-accent dark:text-dark-accent font-bold text-4xl "> </h2>
           < h2 className=" mb-auto text-window dark:text-dark-window font-bold text-4xl"> Developer, Operations
-            and Cloud proeffecient
+            and Cloud proficient
           </h2>
         </div>
         < p className="justify-self-center mt-10 mb-10">

@@ -2,6 +2,7 @@ import ProjectCard from "./ProjectCard";
 import SectionHeader from './SectionHeader';
 import ScrollIndicator from './ScrollIndicator';
 import { useScrollPosition } from '../hooks/useScrollPosition';
+import { useState, useEffect, useRef } from 'react';
 
 const projects = [
   {
@@ -64,6 +65,40 @@ const Projects = () => {
     gap: GAP 
   });
 
+  const [currentPage, setCurrentPage] = useState(0);
+  const [isDesktop, setIsDesktop] = useState(false);
+  const [isHovering, setIsHovering] = useState(false);
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    const checkDesktop = () => setIsDesktop(window.innerWidth >= 1024);
+    checkDesktop();
+    window.addEventListener('resize', checkDesktop);
+    return () => window.removeEventListener('resize', checkDesktop);
+  }, []);
+
+  useEffect(() => {
+    if (isDesktop && !isHovering) {
+      startTimer();
+    } else {
+      if (timerRef.current) clearTimeout(timerRef.current);
+    }
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current);
+    };
+  }, [isDesktop, currentPage, isHovering]);
+
+  const itemsPerPage = 4;
+  const totalPages = Math.ceil(projects.length / itemsPerPage);
+  const displayedProjects = isDesktop ? projects.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage) : projects;
+
+  const startTimer = () => {
+    if (timerRef.current) clearTimeout(timerRef.current);
+    timerRef.current = setTimeout(() => {
+      setCurrentPage((prev) => (prev + 1) % totalPages);
+    }, 15000);
+  };
+
   return (
     <div className='bg-window dark:bg-dark-window mt-16 mb-16 p-10 shadow-lg'>
       <SectionHeader title="Projects" link="#projects" />
@@ -71,23 +106,47 @@ const Projects = () => {
       <p className="mt-4 mb-10 text-12">
         I build personal projects to explore new technologies. All projects are deployed in Kubernetes with CI/CD pipelines across various environments, using Jenkins for Docker multi-stage builds with minimal, distroless images, securized Helm deployments and managed by ArgoCD.
       </p>
-      <div className="h-full flex justify-center w-full">
-        <div 
-          ref={scrollContainerRef}
-          className="h-full flex lg:flex-row lg:flex-wrap lg:content-start gap-5 lg:justify-center lg:overflow-x-auto overflow-x-scroll snap-x snap-mandatory"
-        >
-          {projects.map((project, index) => (
-            <div key={index} className="snap-center">
-              <ProjectCard {...project} />
+      <div className="h-full lg:flex lg:justify-center w-full">
+        <div className="lg:hidden">
+          <div 
+            ref={scrollContainerRef}
+            className="h-full overflow-x-scroll snap-x snap-mandatory"
+          >
+            <div className="flex flex-nowrap gap-5">
+              {projects.map((project, index) => (
+                <div key={index} className="snap-center">
+                  <ProjectCard {...project} />
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
+        </div>
+        <div className="hidden lg:block">
+          <div 
+            className="grid grid-cols-2 gap-5 min-h-[800px]"
+            onMouseEnter={() => setIsHovering(true)}
+            onMouseLeave={() => setIsHovering(false)}
+          >
+            {displayedProjects.map((project, index) => (
+              <ProjectCard key={index} {...project} />
+            ))}
+          </div>
         </div>
       </div>
       
       <ScrollIndicator 
-        totalItems={projects.length} 
-        activeIndex={activeIndex}
-        className="mt-6 lg:hidden"
+        totalItems={isDesktop ? totalPages : projects.length} 
+        activeIndex={isDesktop ? currentPage : activeIndex}
+        onPillClick={isDesktop ? setCurrentPage : (index: number) => {
+          if (scrollContainerRef.current) {
+            const itemTotalWidth = CARD_WIDTH + GAP;
+            scrollContainerRef.current.scrollTo({
+              left: index * itemTotalWidth,
+              behavior: 'smooth'
+            });
+          }
+        }}
+        className="mt-6"
       />
     </div>
   );
