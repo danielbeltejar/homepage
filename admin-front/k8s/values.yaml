@@ -1,4 +1,4 @@
-namespace: pre-homepage-admin
+namespace: pre-homepage-front
 replicaCount: 1
 registry: harbor.server.local/danielbeltejar/homepage
 image:
