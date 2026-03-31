@@ -11,7 +11,7 @@ venv/
 
 # Build outputs
 front/build/
-admin-frontend/build/
+admin-front/build/
 *.br
 
 # Environment & secrets

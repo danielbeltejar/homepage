@@ -16,7 +16,7 @@ dev: ## Build and start all services
 	@echo "  Admin login:    admin / admin"
 
 dev-admin: ## Build and start admin + posts services only
-	$(COMPOSE_CMD) up --build -d admin-backend admin-frontend posts
+	$(COMPOSE_CMD) up --build -d admin-back admin-front posts
 
 build: ## Build all container images
 	$(COMPOSE_CMD) build
@@ -34,21 +34,21 @@ logs: ## Tail logs from all services
 	$(COMPOSE_CMD) logs -f
 
 logs-admin: ## Tail admin backend logs
-	$(COMPOSE_CMD) logs -f admin-backend
+	$(COMPOSE_CMD) logs -f admin-back
 
-test-backend: ## Run backend tests (admin-backend + posts)
-	cd admin-backend && pip install -r requirements.txt pytest httpx > /dev/null 2>&1 && python -m pytest tests/ -v
+test-backend: ## Run backend tests (admin-back + posts)
+	cd admin-back && pip install -r requirements.txt pytest httpx > /dev/null 2>&1 && python -m pytest tests/ -v
 	cd posts && pip install -r requirements.txt pytest httpx > /dev/null 2>&1 && python -m pytest tests/ -v
 
-test-frontend: ## Run frontend tests (admin-frontend + front)
-	cd admin-frontend && npm test
+test-frontend: ## Run frontend tests (admin-front + front)
+	cd admin-front && npm test
 	cd front && npm test -- --run
 
 test: test-backend test-frontend ## Run all tests
 
 lint: ## Run linters
-	cd admin-backend && pip install ruff > /dev/null 2>&1 && ruff check .
-	cd admin-frontend && npx tsc --noEmit
+	cd admin-back && pip install ruff > /dev/null 2>&1 && ruff check .
+	cd admin-front && npx tsc --noEmit
 
 status: ## Show status of all services
 	$(COMPOSE_CMD) ps

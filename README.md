@@ -8,8 +8,8 @@ Página personal con panel de administración de entradas de blog. Construida co
 |---|---|---|
 | `front` | Frontend público (React + Vite + Tailwind) | 3000 |
 | `posts` | API de lectura de posts (FastAPI) | 8001 |
-| `admin-backend` | API CRUD de administración con JWT (FastAPI) | 8002 |
-| `admin-frontend` | Panel de administración (React + shadcn/ui) | 3001 |
+| `admin-back` | API CRUD de administración con JWT (FastAPI) | 8002 |
+| `admin-front` | Panel de administración (React + shadcn/ui) | 3001 |
 | `apigw` | API Gateway (nginx) | — |
 
 ## Desarrollo local
@@ -53,11 +53,11 @@ Contenido del post aquí.
 
 ## Despliegue en Kubernetes
 
-Cada servicio tiene su propio chart de Helm en `<servicio>/k8s/`. Se usa un PVC `ReadWriteMany` compartido entre `posts` y `admin-backend`.
+Cada servicio tiene su propio chart de Helm en `<servicio>/k8s/`. Se usa un PVC `ReadWriteMany` compartido entre `posts` y `admin-back`.
 
 ```bash
-helm upgrade --install admin-backend ./admin-backend/k8s -f ./admin-backend/k8s/values-pro.yaml
-helm upgrade --install admin-frontend ./admin-frontend/k8s -f ./admin-frontend/k8s/values-pro.yaml
+helm upgrade --install admin-back ./admin-back/k8s -f ./admin-back/k8s/values-pro.yaml
+helm upgrade --install admin-front ./admin-front/k8s -f ./admin-front/k8s/values-pro.yaml
 ```
 
 Las credenciales de administración se almacenan en un Secret de Kubernetes (`admin-credentials`).

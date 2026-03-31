@@ -12,7 +12,7 @@ SOURCE_DIR="posts/posts"
 echo "Seeding posts into shared volume..."
 
 # Create a temporary container to copy files
-$COMPOSE_CMD up -d admin-backend
+$COMPOSE_CMD up -d admin-back
 sleep 2
 
 # Copy each markdown file
@@ -20,7 +20,7 @@ for file in "$SOURCE_DIR"/*.md; do
     if [ -f "$file" ]; then
         filename=$(basename "$file")
         echo "  Copying $filename..."
-        podman cp "$file" "$(podman ps -q -f name=admin-backend):/app/posts/$filename"
+        podman cp "$file" "$(podman ps -q -f name=admin-back):/app/posts/$filename"
     fi
 done
 

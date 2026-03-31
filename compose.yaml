@@ -17,9 +17,9 @@ services:
       start_period: 10s
     restart: unless-stopped
 
-  admin-backend:
+  admin-back:
     build:
-      context: ./admin-backend
+      context: ./admin-back
       dockerfile: Dockerfile.dev
     ports:
       - "8002:8000"
@@ -38,14 +38,14 @@ services:
       start_period: 10s
     restart: unless-stopped
 
-  admin-frontend:
+  admin-front:
     build:
-      context: ./admin-frontend
+      context: ./admin-front
       dockerfile: Dockerfile.dev
     ports:
       - "3001:8080"
     depends_on:
-      admin-backend:
+      admin-back:
         condition: service_healthy
     restart: unless-stopped
 
