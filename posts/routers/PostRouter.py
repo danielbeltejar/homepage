@@ -4,7 +4,7 @@ import os
 from datetime import datetime
 
 import yaml
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException
 
 POSTS_DIR = "posts"
 
@@ -36,7 +36,7 @@ def get_posts():
             **front_matter
         })
 
-    posts.sort(key=lambda post: post.get('date') or datetime.min, reverse=True)
+    posts.sort(key=lambda post: str(post.get('date') or ''), reverse=True)
     return posts
 
 
@@ -72,9 +72,10 @@ def get_newest_post():
 
 @post_router.get("/posts/{filename}")
 def get_single_post(filename: str):
-    content = get_post(filename)
-    if not content:
-        return {"message": f"Post {filename} not found"}, 404
+    try:
+        content = get_post(filename)
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail=f"Post {filename} not found")
     return {
         "filename": filename,
         "content": content.split("$$$")[2],

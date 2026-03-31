@@ -1,0 +1,6 @@
+apiVersion: v2
+name: admin-backend
+description: Admin backend for post management
+type: application
+version: 0.1.0
+appVersion: "1.0"

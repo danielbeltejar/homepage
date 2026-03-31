@@ -1,4 +1,4 @@
-namespace: pre-homepage-back
+namespace: pre-homepage-admin
 replicaCount: 1
 registry: harbor.server.local/danielbeltejar/homepage
 image:
@@ -12,17 +12,19 @@ extraEnv:
   value: "UTC"
 - name: "POSTS_DIR"
   value: "/app/posts"
-extraEnvFrom: []
+extraEnvFrom:
+- secretRef:
+    name: admin-credentials
 resources:
   requests:
     memory: "32Mi"
   limits:
     memory: "128Mi"
-volumeMounts:
-- name: posts-data
+auth:
+  username: admin
+  passwordHash: "$2b$12$CHANGE_ME_IN_PRODUCTION"
+  jwtSecret: "CHANGE_ME_IN_PRODUCTION"
+persistence:
+  enabled: true
+  existingClaim: posts-data
   mountPath: /app/posts
-  readOnly: true
-volumes:
-- name: posts-data
-  persistentVolumeClaim:
-    claimName: posts-data

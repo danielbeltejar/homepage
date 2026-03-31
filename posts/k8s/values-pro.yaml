@@ -10,6 +10,8 @@ service:
 extraEnv:
 - name: "TZ"
   value: "UTC"
+- name: "POSTS_DIR"
+  value: "/app/posts"
 extraEnvFrom: []
 resources:
   requests:
@@ -17,3 +19,11 @@ resources:
   limits:
     cpu: 500m
     memory: "128Mi"
+volumeMounts:
+- name: posts-data
+  mountPath: /app/posts
+  readOnly: true
+volumes:
+- name: posts-data
+  persistentVolumeClaim:
+    claimName: posts-data

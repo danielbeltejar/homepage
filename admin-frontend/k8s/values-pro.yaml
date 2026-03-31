@@ -1,0 +1,29 @@
+namespace: pro-homepage-admin
+replicaCount: 1
+registry: harbor.server.local/danielbeltejar/homepage
+image:
+  pullPolicy: IfNotPresent
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 8080
+extraEnv:
+- name: "TZ"
+  value: "UTC"
+extraEnvFrom: []
+resources:
+  requests:
+    memory: "32Mi"
+  limits:
+    cpu: 500m
+    memory: "128Mi"
+ingress:
+  enabled: true
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+    ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/proxy-set-header: X-Real-IP $remote_addr
+    nginx.ingress.kubernetes.io/use-forwarded-headers: "true"
+  class: "nginx-online"
+  host: "admin.danielbeltejar.es"
+  tls: true

@@ -1,0 +1,65 @@
+services:
+  posts:
+    build:
+      context: ./posts
+      dockerfile: Dockerfile.dev
+    ports:
+      - "8001:8000"
+    volumes:
+      - posts-data:/app/posts:ro
+    environment:
+      POSTS_DIR: /app/posts
+    healthcheck:
+      test: ["CMD", "python3", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/healthz')"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    restart: unless-stopped
+
+  admin-backend:
+    build:
+      context: ./admin-backend
+      dockerfile: Dockerfile.dev
+    ports:
+      - "8002:8000"
+    volumes:
+      - posts-data:/app/posts
+    env_file:
+      - admin.env
+    environment:
+      POSTS_DIR: /app/posts
+
+    healthcheck:
+      test: ["CMD", "python3", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/healthz')"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    restart: unless-stopped
+
+  admin-frontend:
+    build:
+      context: ./admin-frontend
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3001:8080"
+    depends_on:
+      admin-backend:
+        condition: service_healthy
+    restart: unless-stopped
+
+  front:
+    build:
+      context: ./front
+      dockerfile: Dockerfile
+    ports:
+      - "3000:8080"
+    tmpfs:
+      - /tmp
+      - /run/nginx
+      - /var/lib/nginx/tmp
+    restart: unless-stopped
+
+volumes:
+  posts-data:

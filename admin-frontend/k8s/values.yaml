@@ -1,0 +1,27 @@
+namespace: pre-homepage-admin
+replicaCount: 1
+registry: harbor.server.local/danielbeltejar/homepage
+image:
+  pullPolicy: IfNotPresent
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 8080
+extraEnv:
+- name: "TZ"
+  value: "UTC"
+extraEnvFrom: []
+resources:
+  requests:
+    memory: "32Mi"
+  limits:
+    memory: "128Mi"
+ingress:
+  enabled: true
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-set-header: X-Real-IP $remote_addr
+    nginx.ingress.kubernetes.io/use-forwarded-headers: "true"
+    cert-manager.io/cluster-issuer: letsencrypt-ovh
+  class: "nginx-local"
+  host: "admin.pre.danielbeltejar.es"
+  tls: true
