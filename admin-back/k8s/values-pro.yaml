@@ -21,10 +21,6 @@ resources:
   limits:
     cpu: 500m
     memory: "128Mi"
-auth:
-  username: admin
-  passwordHash: "$2b$12$CHANGE_ME_IN_PRODUCTION"
-  jwtSecret: "CHANGE_ME_IN_PRODUCTION"
 persistence:
   enabled: true
   existingClaim: posts-data

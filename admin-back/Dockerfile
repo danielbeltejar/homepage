@@ -16,6 +16,7 @@ COPY --from=builder /usr/local/bin/uvicorn /app/uvicorn
 
 COPY . /app
 WORKDIR /app
+USER 65532
 
 EXPOSE 8000
 
