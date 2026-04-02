@@ -74,15 +74,11 @@ spec:
             periodSeconds: 5
             initialDelaySeconds: 3
           volumeMounts:
-            - name: nginx-tmp
-              mountPath: /var/lib/nginx/tmp
-            - name: nginx-run
-              mountPath: /run/nginx
+          {{- with .Values.volumeMounts }}
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
       volumes:
-        - name: nginx-tmp
-          emptyDir:
-            medium: Memory
-        - name: nginx-run
-          emptyDir:
-            medium: Memory
+      {{- with .Values.volumes }}
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       restartPolicy: Always

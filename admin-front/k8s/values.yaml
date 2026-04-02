@@ -18,6 +18,23 @@ resources:
     memory: "32Mi"
   limits:
     memory: "128Mi"
+volumes:
+- name: tmpfs-tmp
+  emptyDir:
+    medium: Memory
+- name: tmpfs-var-lib-nginx-tmp
+  emptyDir:
+    medium: Memory
+- name: tmpfs-run-nginx
+  emptyDir:
+    medium: Memory
+volumeMounts:
+- name: tmpfs-tmp
+  mountPath: /tmp
+- name: tmpfs-var-lib-nginx-tmp
+  mountPath: /var/lib/nginx/tmp
+- name: tmpfs-run-nginx
+  mountPath: /run/nginx
 ingress:
   enabled: true
   annotations:
