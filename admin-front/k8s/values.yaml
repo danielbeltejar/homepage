@@ -28,6 +28,9 @@ volumes:
 - name: tmpfs-run-nginx
   emptyDir:
     medium: Memory
+- name: tmpfs-var-lib-nginx-logs
+  emptyDir:
+    medium: Memory
 volumeMounts:
 - name: tmpfs-tmp
   mountPath: /tmp
@@ -35,6 +38,8 @@ volumeMounts:
   mountPath: /var/lib/nginx/tmp
 - name: tmpfs-run-nginx
   mountPath: /run/nginx
+- name: tmpfs-var-lib-nginx-logs
+  mountPath: /var/lib/nginx/logs
 ingress:
   enabled: true
   annotations:
