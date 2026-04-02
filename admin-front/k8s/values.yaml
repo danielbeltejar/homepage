@@ -7,7 +7,8 @@ service:
   type: ClusterIP
   port: 80
   targetPort: 8080
-backendHost: admin-back-service.pre-homepage-back.svc.cluster.local:8000
+backendFQDN: admin-back-service.pre-homepage-back.svc.cluster.local
+backendPort: 8000
 extraEnv:
 - name: "TZ"
   value: "UTC"
@@ -24,5 +25,5 @@ ingress:
     nginx.ingress.kubernetes.io/use-forwarded-headers: "true"
     cert-manager.io/cluster-issuer: letsencrypt-ovh
   class: "nginx-local"
-  host: "admin.pre.danielbeltejar.es"
+  host: "admin.homepage.pre.danielbeltejar.es"
   tls: true

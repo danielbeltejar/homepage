@@ -32,3 +32,10 @@ config:
     method:
     - "GET"
     backend_dns: "http://posts-service.pro-homepage-back.svc.cluster.local:80"
+  - pattern: "/api/admin"
+    method:
+    - "GET"
+    - "POST"
+    - "PUT"
+    - "DELETE"
+    backend_dns: "http://admin-back-service.pro-homepage-back.svc.cluster.local:80"

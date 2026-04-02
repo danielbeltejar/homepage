@@ -7,7 +7,8 @@ service:
   type: ClusterIP
   port: 80
   targetPort: 8080
-backendHost: admin-back-service.pro-homepage-back.svc.cluster.local:8000
+backendFQDN: admin-back-service.pro-homepage-back.svc.cluster.local
+backendPort: 8000
 extraEnv:
 - name: "TZ"
   value: "UTC"
@@ -26,5 +27,5 @@ ingress:
     nginx.ingress.kubernetes.io/proxy-set-header: X-Real-IP $remote_addr
     nginx.ingress.kubernetes.io/use-forwarded-headers: "true"
   class: "nginx-online"
-  host: "admin.danielbeltejar.es"
+  host: "admin.homepage.danielbeltejar.es"
   tls: true
