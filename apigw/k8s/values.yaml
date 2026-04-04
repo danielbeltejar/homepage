@@ -23,6 +23,8 @@ ingress:
     cert-manager.io/cluster-issuer: letsencrypt-ovh
   class: "nginx-local"
   host: "homepage.pre.danielbeltejar.es"
+  additionalHosts:
+  - "admin.homepage.pre.danielbeltejar.es"
   tls: true
 config:
   routes:
@@ -36,4 +38,9 @@ config:
     - "POST"
     - "PUT"
     - "DELETE"
+    backend_dns: "http://admin-back-service.pre-homepage-back.svc.cluster.local:80"
+  - pattern: "/api/auth"
+    method:
+    - "GET"
+    - "POST"
     backend_dns: "http://admin-back-service.pre-homepage-back.svc.cluster.local:80"

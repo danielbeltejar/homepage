@@ -25,6 +25,8 @@ ingress:
     nginx.ingress.kubernetes.io/use-forwarded-headers: "true"
   class: "nginx-online"
   host: "danielbeltejar.es"
+  additionalHosts:
+  - "admin.homepage.danielbeltejar.es"
   tls: true
 config:
   routes:
@@ -38,4 +40,9 @@ config:
     - "POST"
     - "PUT"
     - "DELETE"
+    backend_dns: "http://admin-back-service.pro-homepage-back.svc.cluster.local:80"
+  - pattern: "/api/auth"
+    method:
+    - "GET"
+    - "POST"
     backend_dns: "http://admin-back-service.pro-homepage-back.svc.cluster.local:80"

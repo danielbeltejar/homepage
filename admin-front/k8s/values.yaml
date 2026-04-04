@@ -7,8 +7,6 @@ service:
   type: ClusterIP
   port: 80
   targetPort: 8080
-backendFQDN: admin-back-service.pre-homepage-back.svc.cluster.local
-backendPort: 8000
 extraEnv:
 - name: "TZ"
   value: "UTC"
