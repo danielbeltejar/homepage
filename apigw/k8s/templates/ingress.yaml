@@ -23,6 +23,7 @@ spec:
       {{- end }}
       secretName: {{ default (printf "%s-tls" .Release.Name) .Values.ingress.existingSecret }}
   {{- end }}
+  {{- $serviceName := printf "%s-service" (include "app.fullname" .) }}
   rules:
   - host: {{ .Values.ingress.host }}
     http:
@@ -31,7 +32,7 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: {{ include "app.fullname" . }}-service
+            name: {{ $serviceName }}
             port:
               name: http
   {{- range .Values.ingress.additionalHosts }}
@@ -42,7 +43,7 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: {{ include "app.fullname" . }}-service
+            name: {{ $serviceName }}
             port:
               name: http
   {{- end }}
