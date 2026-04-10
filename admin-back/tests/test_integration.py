@@ -44,7 +44,7 @@ def test_full_crud_workflow(client, auth_headers):
 
     # 1. Create
     create_resp = client.post(
-        "/posts",
+        "/admin/posts",
         json={
             "title": "Integration Test",
             "date": "2025-06-15",
@@ -58,19 +58,19 @@ def test_full_crud_workflow(client, auth_headers):
     assert filename == "integration-test.md"
 
     # 2. List — should contain the new post
-    list_resp = client.get("/posts", headers=auth_headers)
+    list_resp = client.get("/admin/posts", headers=auth_headers)
     assert list_resp.status_code == 200
     titles = [p["title"] for p in list_resp.json()["posts"]]
     assert "Integration Test" in titles
 
     # 3. Read
-    get_resp = client.get(f"/posts/{filename}", headers=auth_headers)
+    get_resp = client.get(f"/admin/posts/{filename}", headers=auth_headers)
     assert get_resp.status_code == 200
     assert get_resp.json()["content"] == "Original content"
 
     # 4. Update
     update_resp = client.put(
-        f"/posts/{filename}",
+        f"/admin/posts/{filename}",
         json={
             "title": "Integration Test Updated",
             "date": "2025-06-16",
@@ -83,13 +83,13 @@ def test_full_crud_workflow(client, auth_headers):
     assert update_resp.json()["title"] == "Integration Test Updated"
 
     # 5. Read after update
-    get_resp2 = client.get(f"/posts/{filename}", headers=auth_headers)
+    get_resp2 = client.get(f"/admin/posts/{filename}", headers=auth_headers)
     assert get_resp2.json()["content"] == "Updated content"
 
     # 6. Delete
-    del_resp = client.delete(f"/posts/{filename}", headers=auth_headers)
+    del_resp = client.delete(f"/admin/posts/{filename}", headers=auth_headers)
     assert del_resp.status_code == 204
 
     # 7. Verify deleted
-    get_resp3 = client.get(f"/posts/{filename}", headers=auth_headers)
+    get_resp3 = client.get(f"/admin/posts/{filename}", headers=auth_headers)
     assert get_resp3.status_code == 404

@@ -39,14 +39,14 @@ def client():
 
 
 def test_list_posts_empty(client, auth_headers):
-    response = client.get("/posts", headers=auth_headers)
+    response = client.get("/admin/posts", headers=auth_headers)
     assert response.status_code == 200
     assert response.json()["posts"] == []
 
 
 def test_create_post(client, auth_headers):
     response = client.post(
-        "/posts",
+        "/admin/posts",
         json={
             "title": "Test Post",
             "date": "2025-01-15",
@@ -64,7 +64,7 @@ def test_create_post(client, auth_headers):
 
 def test_create_post_with_custom_filename(client, auth_headers):
     response = client.post(
-        "/posts",
+        "/admin/posts",
         json={
             "title": "My Post",
             "date": "2025-01-15",
@@ -85,14 +85,14 @@ def test_create_post_duplicate(client, auth_headers):
         "author": "Author",
         "content": "Content",
     }
-    client.post("/posts", json=post_data, headers=auth_headers)
-    response = client.post("/posts", json=post_data, headers=auth_headers)
+    client.post("/admin/posts", json=post_data, headers=auth_headers)
+    response = client.post("/admin/posts", json=post_data, headers=auth_headers)
     assert response.status_code == 409
 
 
 def test_get_post(client, auth_headers, setup_posts_dir):
     client.post(
-        "/posts",
+        "/admin/posts",
         json={
             "title": "Read Me",
             "date": "2025-02-20",
@@ -102,7 +102,7 @@ def test_get_post(client, auth_headers, setup_posts_dir):
         headers=auth_headers,
     )
 
-    response = client.get("/posts/read-me.md", headers=auth_headers)
+    response = client.get("/admin/posts/read-me.md", headers=auth_headers)
     assert response.status_code == 200
     data = response.json()
     assert data["title"] == "Read Me"
@@ -110,13 +110,13 @@ def test_get_post(client, auth_headers, setup_posts_dir):
 
 
 def test_get_post_not_found(client, auth_headers):
-    response = client.get("/posts/nonexistent.md", headers=auth_headers)
+    response = client.get("/admin/posts/nonexistent.md", headers=auth_headers)
     assert response.status_code == 404
 
 
 def test_update_post(client, auth_headers):
     client.post(
-        "/posts",
+        "/admin/posts",
         json={
             "title": "Original",
             "date": "2025-01-01",
@@ -127,7 +127,7 @@ def test_update_post(client, auth_headers):
     )
 
     response = client.put(
-        "/posts/original.md",
+        "/admin/posts/original.md",
         json={
             "title": "Updated Title",
             "date": "2025-06-15",
@@ -143,7 +143,7 @@ def test_update_post(client, auth_headers):
 
 def test_delete_post(client, auth_headers):
     client.post(
-        "/posts",
+        "/admin/posts",
         json={
             "title": "To Delete",
             "date": "2025-01-01",
@@ -153,24 +153,24 @@ def test_delete_post(client, auth_headers):
         headers=auth_headers,
     )
 
-    response = client.delete("/posts/to-delete.md", headers=auth_headers)
+    response = client.delete("/admin/posts/to-delete.md", headers=auth_headers)
     assert response.status_code == 204
 
-    response = client.get("/posts/to-delete.md", headers=auth_headers)
+    response = client.get("/admin/posts/to-delete.md", headers=auth_headers)
     assert response.status_code == 404
 
 
 def test_path_traversal_prevention(client, auth_headers):
-    response = client.get("/posts/..%2F..%2Fetc%2Fpasswd", headers=auth_headers)
+    response = client.get("/admin/posts/..%2F..%2Fetc%2Fpasswd", headers=auth_headers)
     assert response.status_code in (400, 404)
 
-    response = client.get("/posts/../../etc/passwd.md", headers=auth_headers)
+    response = client.get("/admin/posts/../../etc/passwd.md", headers=auth_headers)
     assert response.status_code in (400, 404)
 
 
 def test_invalid_filename_characters(client, auth_headers):
     response = client.post(
-        "/posts",
+        "/admin/posts",
         json={
             "title": "Test",
             "date": "2025-01-01",
@@ -184,11 +184,11 @@ def test_invalid_filename_characters(client, auth_headers):
 
 
 def test_unauthorized_access(client):
-    response = client.get("/posts")
+    response = client.get("/admin/posts")
     assert response.status_code == 403
 
     response = client.post(
-        "/posts",
+        "/admin/posts",
         json={
             "title": "Test",
             "date": "2025-01-01",

@@ -12,7 +12,7 @@ from models.post import PostCreate, PostListResponse, PostResponse, PostUpdate
 
 POSTS_DIR = os.environ.get("POSTS_DIR", "posts")
 
-post_router = APIRouter(prefix="/posts", tags=["posts"])
+post_router = APIRouter(prefix="/admin/posts", tags=["posts"])
 
 
 def slugify(text: str) -> str:

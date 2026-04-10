@@ -72,9 +72,9 @@ export const api = {
 
   getMe: () => request<{ username: string }>("/auth/me"),
 
-  listPosts: () => request<PostList>("/posts"),
+  listPosts: () => request<PostList>("/admin/posts"),
 
-  getPost: (filename: string) => request<Post>(`/posts/${filename}`),
+  getPost: (filename: string) => request<Post>(`/admin/posts/${filename}`),
 
   createPost: (data: {
     title: string;
@@ -83,7 +83,7 @@ export const api = {
     content: string;
     filename?: string;
   }) =>
-    request<Post>("/posts", {
+    request<Post>("/admin/posts", {
       method: "POST",
       body: JSON.stringify(data),
     }),
@@ -92,11 +92,11 @@ export const api = {
     filename: string,
     data: { title: string; date: string; author: string; content: string }
   ) =>
-    request<Post>(`/posts/${filename}`, {
+    request<Post>(`/admin/posts/${filename}`, {
       method: "PUT",
       body: JSON.stringify(data),
     }),
 
   deletePost: (filename: string) =>
-    request<void>(`/posts/${filename}`, { method: "DELETE" }),
+    request<void>(`/admin/posts/${filename}`, { method: "DELETE" }),
 };
