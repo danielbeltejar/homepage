@@ -47,5 +47,5 @@ ingress:
     nginx.ingress.kubernetes.io/proxy-set-header: X-Real-IP $remote_addr
     nginx.ingress.kubernetes.io/use-forwarded-headers: "true"
   class: "nginx-online"
-  host: "admin.homepage.danielbeltejar.es"
+  host: "admin.homepage.lab.danielbeltejar.es"
   tls: true
