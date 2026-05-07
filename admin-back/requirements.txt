@@ -3,7 +3,7 @@ anyio==4.8.0
 bcrypt==4.0.1
 cffi==2.0.0
 click==8.1.8
-cryptography==46.0.6
+cryptography==46.0.7
 fastapi==0.123.10
 h11==0.16.0
 idna==3.10
