@@ -36,7 +36,7 @@ const Header = () => {
                 to={blogUrl}
                 className="transition-opacity ease-in-out duration-1000 text-window dark:text-dark-text m-0 lg:max-w-[375px] max-w-full">
                 <div
-                    className="text-12 flex gap-2 font-bold bg-accent dark:bg-dark-accent overflow-hidden drop-shadow-lg shadow-lg px-1 flex-row align-middle items-center rounded-full h-[33px] m-0">
+                    className="text-12 flex gap-2 font-bold bg-accent dark:bg-dark-accent overflow-hidden shadow-md px-1 flex-row align-middle items-center rounded-full h-[33px] m-0">
                     <p className="border-2  border-window dark:border-dark-text text-[0.8rem] p-[0.5px] px-2 rounded-full mt-[1px] m-0">Blog</p>
                     <p className="text-sm text-ellipsis overflow-hidden whitespace-nowrap mr-1">{blogTitle}</p>
                 </div>

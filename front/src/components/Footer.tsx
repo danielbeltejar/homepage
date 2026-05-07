@@ -5,7 +5,7 @@ import SectionHeader from './SectionHeader';
 const Footer = () => {
   return (
     <footer id="contact"
-      className="text-text dark:text-dark-text bg-window dark:bg-dark-window text-11 p-10 lg:pb-24 shadow-lg lg:w-[740px] mb-0">
+      className="text-text dark:text-dark-text bg-window dark:bg-dark-window text-11 p-10 lg:pb-24 shadow-elevated rounded-t-2xl inner-glow lg:w-[740px] mb-0">
       <SectionHeader title="Contact" link="#contact" />
       <p className="mt-4 mb-10">
         Thank you for visiting my personal web page. If you have any questions or would like to get in touch,

@@ -100,7 +100,7 @@ export default function Post() {
 
     if (!post) {
         return (
-            <div className='bg-window dark:bg-dark-window mt-16 mb-16 p-10 shadow-lg'>
+            <div className='bg-window dark:bg-dark-window mt-16 mb-16 p-10 shadow-elevated rounded-2xl inner-glow'>
                 <div className="flex flex-row h-[1000px] align-middle items-center mt-xs group w-full">
                 </div>
             </div>
@@ -108,7 +108,7 @@ export default function Post() {
     }
 
     return (
-        <div className='bg-window dark:bg-dark-window mt-16 mb-16 p-10 shadow-lg'>
+        <div className='bg-window dark:bg-dark-window mt-16 mb-16 p-10 shadow-elevated rounded-2xl'>
             <div ref={contentRef}  className="flex flex-col align-middle items-start mt-xs group w-full">
                 <SectionHeader title={post.title} link="#content" />
                 <div className='text-accent dark:text-dark-accent flex flex-row'>

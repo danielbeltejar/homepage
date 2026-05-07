@@ -8,7 +8,7 @@ interface ScrollIndicatorProps {
 const ScrollIndicator = ({ totalItems, activeIndex, className = '', onPillClick }: ScrollIndicatorProps) => {
   return (
     <div className={`flex justify-center ${className}`}>
-      <div className="flex gap-2 bg-secondary-button dark:bg-dark-accent px-4 py-2 rounded-full shadow-lg">
+      <div className="flex gap-2 bg-white/70 backdrop-blur-sm px-4 py-2 rounded-full shadow-md border border-white/40">
         {Array.from({ length: totalItems }).map((_, index) => (
           <div
             key={index}
