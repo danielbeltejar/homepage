@@ -26,7 +26,7 @@ ingress:
   class: "nginx-online"
   host: "danielbeltejar.es"
   additionalHosts:
-  - "admin.homepage.lab.danielbeltejar.es"
+  - "admin.homepage.danielbeltejar.es"
   tls: true
 config:
   routes:
