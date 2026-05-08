@@ -49,11 +49,11 @@ const Hero = () => {
       }
     }
   }, []); return (
-    <section className="flex flex-col bg-window p-10 dark:bg-dark-window rounded-b-2xl">
+    <section className="flex flex-col p-10 rounded-b-2xl">
       <div className="flex flex-col flex-1">
         <div className="relative">
           <h2 id="type-effect" className="absolute text-accent dark:text-dark-accent font-bold text-4xl "> </h2>
-          < h2 className=" mb-auto text-window dark:text-dark-window font-bold text-4xl"> Developer, Operations
+          < h2 className=" mb-auto text-transparent font-bold text-4xl"> Developer, Operations
             and Cloud proficient
           </h2>
         </div>
@@ -68,13 +68,9 @@ const Hero = () => {
           <div className="group flex flex-row gap-2 relative">
             <Button text="@" url="mailto:contacto@danielbeltejar.es" />
             <Link to="mailto:contacto@danielbeltejar.es"
-              className="absolute lg:group-hover:left-[35px] pl-6 h-12 -left-40 flex  rounded-xl text-accent  border-gray-200 border-2 min-w-12 transition-all duration-300 flex-row gap-2    text-11 px-[10px] py-1 justify-center items-center  bg-background ">
+              className="absolute lg:group-hover:left-[35px] pl-6 h-12 -left-40 flex  rounded-xl text-accent  border-gray-200 border-2 min-w-12 transition-all duration-300 flex-row gap-2    text-11 px-[10px] py-1 justify-center items-center  bg-background opacity-0 lg:group-hover:opacity-100 pointer-events-none lg:group-hover:pointer-events-auto">
               <p>hi@danielbeltejar.es</p>
             </Link>
-            < p
-              className="absolute left-[-156px] flex flex-row h-12  gap-2 text-window dark:text-dark-window text-11 px-[10px] py-1 justify-center items-center cursor-default bg-window dark:bg-dark-window">
-              hi@danielbeltejar.es
-            </p>
           </div>
         </div>
       </div>
@@ -83,3 +79,4 @@ const Hero = () => {
 };
 
 export default Hero;
+

@@ -33,7 +33,7 @@ const PredefinedButton: React.FC<ButtonProps> = ({ icon, text, url, onClick, new
             rel={newTab ? "noreferrer" : ""}
             href={url}
             onClick={handleClick}
-            className={`flex flex-row z-10 min-h-12 ${themeClass} cursor-pointer rounded-xl text-accent hover:text-accent-light hover:border-accent-light/30 hover:shadow-md border-gray-200/60 border min-w-12 gap-2 transition-all duration-300 text-11 px-[10px] py-1 justify-center items-center hover:bg-white/80 active:scale-[0.97] ${className}`}
+            className={`flex flex-row z-10 min-h-12 ${themeClass} cursor-pointer rounded-xl text-accent hover:text-accent-light hover:border-accent-light/30 hover:shadow-md border border-accent/10 min-w-12 gap-2 transition-all duration-300 text-11 px-[10px] py-1 justify-center items-center hover:bg-white/80 active:scale-[0.97] ${className}`}
         >
             {icon && <FontAwesomeIcon icon={icon} />}
             {text && <p>{text}</p>}

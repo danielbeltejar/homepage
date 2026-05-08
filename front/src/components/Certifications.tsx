@@ -79,7 +79,7 @@ const Certifications = () => {
   const displayItems = activeFilter === 'all' ? filteredItems.filter(cert => cert.highlight) : filteredItems;
 
   return (
-    <div className='bg-window dark:bg-dark-window mb-16 p-10 shadow-elevated rounded-2xl inner-glow'>
+    <div className='mb-16 p-10 shadow-elevated rounded-2xl inner-glow'>
       <SectionHeader title="Certifications" link="#certifications" />
 
       <p className="mt-4 mb-10 text-12">

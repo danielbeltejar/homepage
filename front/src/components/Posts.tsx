@@ -81,17 +81,18 @@ export default function Posts() {
     };
 
     return (
-        <div className='bg-window dark:bg-dark-window mt-16 mb-16 p-10 shadow-elevated rounded-2xl inner-glow min-h-[400px]'>
+        <div className='mt-16 mb-16 p-10 shadow-elevated rounded-2xl inner-glow min-h-[400px]'>
             <SectionHeader title="Posts" link="/posts" />
 
             <p className="mt-4 mb-8 text-12">
                 Welcome to my blog! Here, I share insights into my personal projects, hobby projects, and various topics related to my career.
             </p>
 
-            <div className="relative">
+<div className="h-full w-full overflow-hidden">
                 <div 
                     ref={scrollRef}
-                    className="flex overflow-x-auto gap-4 snap-x snap-mandatory scroll-smooth hide-scrollbar pb-2"
+                    className="flex overflow-x-auto gap-4 snap-x snap-mandatory scroll-smooth hide-scrollbar pb-4"
+                    style={{ maskImage: 'linear-gradient(to right, transparent 0%, black 40px, black calc(100% - 40px), transparent 100%)', WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 40px, black calc(100% - 40px), transparent 100%)' }}
                 >
                     {/* Spacer to center first card */}
                     <div className="flex-shrink-0 snap-start" style={{ width: 'calc(50% - 148px)' }} />
@@ -148,10 +149,6 @@ export default function Posts() {
                     {/* Spacer to center last card */}
                     <div className="flex-shrink-0 snap-start" style={{ width: 'calc(50% - 148px)' }} />
                 </div>
-
-                {/* Gradient fade edges */}
-                <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-10 bg-gradient-to-r from-window to-transparent z-10" />
-                <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-10 bg-gradient-to-r from-transparent to-window z-10" />
             </div>
 
             {/* Pagination */}

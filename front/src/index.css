@@ -127,7 +127,7 @@ body {
 
 h1, h2, h3, h4 {
   font-family: 'Playfair Display', Georgia, serif;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.02em;
 }
 
 p {
@@ -143,10 +143,11 @@ p {
   background-clip: text;
 }
 
-/* --- Subtle inner glow on window sections --- */
+/* --- Stained glass window sections --- */
 .inner-glow {
   position: relative;
 }
+/* Background color + glowing stains on ::before */
 .inner-glow::before {
   content: '';
   position: absolute;
@@ -154,27 +155,25 @@ p {
   border-radius: inherit;
   pointer-events: none;
   z-index: 0;
+  background:
+    /* stains on top (first = topmost) */
+    radial-gradient(ellipse 500px 350px at 6% 12%, rgba(212, 165, 116, 0.40) 0%, transparent 50%),
+    radial-gradient(ellipse 400px 500px at 75% 65%, rgba(197, 213, 192, 0.35) 0%, transparent 50%),
+    radial-gradient(ellipse 450px 300px at 50% 88%, rgba(232, 196, 184, 0.38) 0%, transparent 50%),
+    radial-gradient(ellipse 300px 450px at 88% 8%, rgba(212, 165, 116, 0.32) 0%, transparent 50%),
+    radial-gradient(ellipse 550px 350px at 22% 72%, rgba(197, 213, 192, 0.35) 0%, transparent 50%),
+    radial-gradient(ellipse 380px 450px at 68% 28%, rgba(232, 196, 184, 0.28) 0%, transparent 50%),
+    /* solid base at bottom (last = bottommost) */
+    linear-gradient(#f8f7f2, #f8f7f2);
   box-shadow: 
     inset 0 1px 0 rgba(255,255,255,0.5),
-    inset 0 -40px 60px -40px rgba(212,165,116,0.08),
+    inset 0 -40px 60px -40px rgba(212,165,116,0.12),
     inset 0 40px 60px -40px rgba(255,255,255,0.3);
 }
-/* --- Organic glowing stains inside windows --- */
-.inner-glow::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.75;
-  background:
-    radial-gradient(ellipse 360px 240px at 8% 15%, rgba(212, 165, 116, 0.18) 0%, transparent 60%),
-    radial-gradient(ellipse 280px 380px at 72% 60%, rgba(197, 213, 192, 0.15) 0%, transparent 60%),
-    radial-gradient(ellipse 320px 200px at 48% 85%, rgba(232, 196, 184, 0.16) 0%, transparent 60%),
-    radial-gradient(ellipse 200px 320px at 85% 10%, rgba(212, 165, 116, 0.13) 0%, transparent 60%),
-    radial-gradient(ellipse 400px 260px at 20% 70%, rgba(197, 213, 192, 0.14) 0%, transparent 60%),
-    radial-gradient(ellipse 260px 340px at 65% 25%, rgba(232, 196, 184, 0.12) 0%, transparent 60%);
+/* Content sits on top of the stained glass */
+.inner-glow > * {
+  position: relative;
+  z-index: 1;
 }
 
 /* =============================================

@@ -1,7 +1,6 @@
 import ProjectCard from "./ProjectCard";
 import SectionHeader from './SectionHeader';
 import ScrollIndicator from './ScrollIndicator';
-import { useScrollPosition } from '../hooks/useScrollPosition';
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -61,16 +60,22 @@ const Projects = () => {
   const CARD_WIDTH = 320;
   const GAP = 20;
   
-  const { scrollContainerRef, activeIndex } = useScrollPosition({ 
-    itemWidth: CARD_WIDTH, 
-    gap: GAP 
-  });
-
-  const [isDesktop, setIsDesktop] = useState(false);
-  const desktopScrollRef = useRef<HTMLDivElement>(null);
-  const [desktopActiveIndex, setDesktopActiveIndex] = useState(0);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
   const [archExpanded, setArchExpanded] = useState(false);
   const threeCanvasRef = useRef<HTMLCanvasElement>(null);
+
+  // Track scroll position
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const handleScroll = () => {
+      const idx = Math.round(el.scrollLeft / (CARD_WIDTH + GAP));
+      setActiveIndex(idx);
+    };
+    el.addEventListener('scroll', handleScroll, { passive: true });
+    return () => el.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // Lock body scroll when overlay open
   useEffect(() => {
@@ -99,8 +104,6 @@ const Projects = () => {
       const renderer = new T.WebGLRenderer({ canvas, alpha: true, antialias: true });
       renderer.setSize(w, h);
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-      
-      // Floating torus knots
       const knots: any[] = [];
       for (let i = 0; i < 3; i++) {
         const geo = new T.TorusKnotGeometry(0.5 + Math.random() * 0.5, 0.2, 48, 16);
@@ -111,8 +114,6 @@ const Projects = () => {
         scene.add(mesh);
         knots.push(mesh);
       }
-      
-      // Particles
       const pc = 200;
       const pos = new Float32Array(pc * 3);
       const vel: {x:number,y:number,z:number}[] = [];
@@ -124,15 +125,12 @@ const Projects = () => {
       const mat = new T.PointsMaterial({ color: 0xd4a574, size: 0.08, transparent: true, opacity: 0.35, blending: T.AdditiveBlending });
       const pts = new T.Points(geo, mat);
       scene.add(pts);
-      
-      // Connecting lines between nearby particles
       const linesMat = new T.LineBasicMaterial({ color: 0x6b4532, transparent: true, opacity: 0.04 });
       const linesGeo = new T.BufferGeometry();
-      const linesPos = new Float32Array(pc * 6); // start + end per pair
+      const linesPos = new Float32Array(pc * 6);
       linesGeo.setAttribute('position', new T.BufferAttribute(linesPos, 3));
       const lineSegments = new T.LineSegments(linesGeo, linesMat);
       scene.add(lineSegments);
-      
       let anim = 0;
       const tick = () => {
         anim = requestAnimationFrame(tick);
@@ -144,8 +142,6 @@ const Projects = () => {
           if (Math.abs(arr[i*3+2]) > 12) vel[i].z *= -1;
         }
         pts.geometry.attributes.position.needsUpdate = true;
-        
-        // Update lines - connect nearby particles
         const lp = lineSegments.geometry.attributes.position.array as Float32Array;
         let li = 0;
         for (let i = 0; i < pc && li < lp.length; i += 3) {
@@ -161,42 +157,18 @@ const Projects = () => {
         }
         lineSegments.geometry.setDrawRange(0, li / 3);
         lineSegments.geometry.attributes.position.needsUpdate = true;
-        
-        // Rotate knots
         knots.forEach((k, i) => { k.rotation.x += 0.005 * (i + 1); k.rotation.y += 0.008 * (i + 1); });
-        
         renderer.render(scene, camera);
       };
       tick();
-      
-      const resize = () => { /* skip for fixed height */ };
       clean = () => cancelAnimationFrame(anim);
     };
     document.head.appendChild(script);
     return () => { if (clean) clean(); if (script.parentNode) script.parentNode.removeChild(script); };
   }, [archExpanded]);
 
-  useEffect(() => {
-    const checkDesktop = () => setIsDesktop(window.innerWidth >= 1024);
-    checkDesktop();
-    window.addEventListener('resize', checkDesktop);
-    return () => window.removeEventListener('resize', checkDesktop);
-  }, []);
-
-  // Track scroll position for desktop carousel dots
-  useEffect(() => {
-    const el = desktopScrollRef.current;
-    if (!el || !isDesktop) return;
-    const handleScroll = () => {
-      const idx = Math.round(el.scrollLeft / (CARD_WIDTH + GAP));
-      setDesktopActiveIndex(idx);
-    };
-    el.addEventListener('scroll', handleScroll, { passive: true });
-    return () => el.removeEventListener('scroll', handleScroll);
-  }, [isDesktop]);
-
   const scrollToCard = (index: number) => {
-    const el = desktopScrollRef.current || scrollContainerRef.current;
+    const el = scrollRef.current;
     if (!el) return;
     const cards = el.querySelectorAll('.snap-center');
     if (cards[index]) {
@@ -207,11 +179,9 @@ const Projects = () => {
   };
 
   const scrollBy = (dir: 'prev' | 'next') => {
-    const el = desktopScrollRef.current || scrollContainerRef.current;
+    const el = scrollRef.current;
     if (!el) return;
-    const totalItems = projects.length;
-    const currentIdx = isDesktop ? desktopActiveIndex : activeIndex;
-    const newIdx = Math.max(0, Math.min(totalItems - 1, currentIdx + (dir === 'next' ? 1 : -1)));
+    const newIdx = Math.max(0, Math.min(projects.length - 1, activeIndex + (dir === 'next' ? 1 : -1)));
     scrollToCard(newIdx);
   };
 
@@ -242,60 +212,31 @@ const Projects = () => {
   ];
 
   return (
-    <div className='bg-window dark:bg-dark-window mt-16 mb-16 p-10 shadow-elevated rounded-2xl inner-glow'>
+    <div className='mt-16 mb-16 p-10 shadow-elevated rounded-2xl inner-glow'>
       <SectionHeader title="Projects" link="#projects" />
 
       <p className="mt-4 mb-10 text-12">
         I build personal projects to explore new technologies. All projects are deployed in Kubernetes with CI/CD pipelines across various environments, using Jenkins for Docker multi-stage builds with minimal, distroless images, securized Helm deployments and managed by ArgoCD.
       </p>
       <div className="h-full w-full overflow-hidden">
-        {/* Mobile: horizontal scroll with snap */}
-        <div className="lg:hidden relative">
-          <div 
-            ref={scrollContainerRef}
-            className="h-full overflow-x-scroll snap-x snap-mandatory hide-scrollbar"
-          >
-            <div className="flex flex-nowrap gap-5">
-              {/* Spacer to center first card */}
-              <div className="flex-shrink-0 snap-start" style={{ width: 'calc((100vw - 320px) / 2)' }} />
-              {projects.map((project, index) => (
-                <div key={index} className="snap-center flex-shrink-0 cursor-pointer" onClick={() => scrollToCard(index)}>
-                  <ProjectCard {...project} />
-                </div>
-              ))}
-              {/* Spacer to center last card */}
-              <div className="flex-shrink-0 snap-start" style={{ width: 'calc((100vw - 320px) / 2)' }} />
+        <div 
+          ref={scrollRef}
+          className="flex overflow-x-auto gap-5 snap-x snap-mandatory scroll-smooth hide-scrollbar pb-4"
+          style={{ maskImage: 'linear-gradient(to right, transparent 0%, black 48px, black calc(100% - 48px), transparent 100%)', WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 48px, black calc(100% - 48px), transparent 100%)' }}
+        >
+          {/* Spacer to center first card */}
+          <div className="flex-shrink-0 snap-start" style={{ width: 'calc(50% - 170px)' }} />
+          {projects.map((project, index) => (
+            <div 
+              key={index} 
+              className="flex-shrink-0 snap-center cursor-pointer" 
+              onClick={() => scrollToCard(index)}
+            >
+              <ProjectCard {...project} />
             </div>
-          </div>
-          {/* Mobile fade edges */}
-          <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-window to-transparent z-10" />
-          <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-r from-transparent to-window z-10" />
-        </div>
-        
-        {/* Desktop: contained horizontal carousel */}
-        <div className="hidden lg:block relative">
-          <div 
-            ref={desktopScrollRef}
-            className="flex overflow-x-auto gap-5 snap-x snap-mandatory scroll-smooth hide-scrollbar pb-2"
-          >
-            {/* Spacer to center first card */}
-            <div className="flex-shrink-0 snap-start" style={{ width: 'calc(50% - 170px)' }} />
-            {projects.map((project, index) => (
-              <div 
-                key={index} 
-                className="flex-shrink-0 snap-center cursor-pointer" 
-                onClick={() => scrollToCard(index)}
-              >
-                <ProjectCard {...project} />
-              </div>
-            ))}
-            {/* Spacer to center last card */}
-            <div className="flex-shrink-0 snap-start" style={{ width: 'calc(50% - 170px)' }} />
-          </div>
-          
-          {/* Gradient fade edges */}
-          <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-window to-transparent z-10" />
-          <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-r from-transparent to-window z-10" />
+          ))}
+          {/* Spacer to center last card */}
+          <div className="flex-shrink-0 snap-start" style={{ width: 'calc(50% - 170px)' }} />
         </div>
       </div>
       
@@ -303,16 +244,8 @@ const Projects = () => {
         <button onClick={() => scrollBy('prev')} className="flex-shrink-0 w-7 h-7 rounded-full bg-white/90 shadow-md border border-white/40 flex items-center justify-center text-accent hover:bg-white hover:shadow-lg transition-all duration-200 text-sm" aria-label="Previous">‹</button>
         <ScrollIndicator 
           totalItems={projects.length} 
-          activeIndex={isDesktop ? desktopActiveIndex : activeIndex}
-          onPillClick={isDesktop ? scrollToCard : (index: number) => {
-            if (scrollContainerRef.current) {
-              const itemTotalWidth = CARD_WIDTH + GAP;
-              scrollContainerRef.current.scrollTo({
-                left: index * itemTotalWidth,
-                behavior: 'smooth'
-              });
-            }
-          }}
+          activeIndex={activeIndex}
+          onPillClick={scrollToCard}
         />
         <button onClick={() => scrollBy('next')} className="flex-shrink-0 w-7 h-7 rounded-full bg-white/90 shadow-md border border-white/40 flex items-center justify-center text-accent hover:bg-white hover:shadow-lg transition-all duration-200 text-sm" aria-label="Next">›</button>
       </div>

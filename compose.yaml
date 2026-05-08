@@ -7,6 +7,7 @@ services:
       - "8001:8000"
     volumes:
       - posts-data:/app/posts:ro
+      - ./posts:/app/src:ro
     environment:
       POSTS_DIR: /app/posts
     healthcheck:
@@ -25,11 +26,12 @@ services:
       - "8002:8000"
     volumes:
       - posts-data:/app/posts
+      - ./admin-back:/app/src
     env_file:
       - admin.env
     environment:
       POSTS_DIR: /app/posts
-
+    command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
     healthcheck:
       test: ["CMD", "python3", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/healthz')"]
       interval: 10s
@@ -44,6 +46,8 @@ services:
       dockerfile: Dockerfile.dev
     ports:
       - "3001:8080"
+    volumes:
+      - ./admin-front/src:/app/src
     depends_on:
       admin-back:
         condition: service_healthy
@@ -52,13 +56,19 @@ services:
   front:
     build:
       context: ./front
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
     ports:
-      - "3000:8080"
-    tmpfs:
-      - /tmp
-      - /run/nginx
-      - /var/lib/nginx/tmp
+      - "3000:5173"
+    volumes:
+      - ./front/src:/app/src
+      - ./front/public:/app/public
+      - ./front/index.html:/app/index.html
+      - ./front/vite.config.js:/app/vite.config.js
+      - ./front/tailwind.config.js:/app/tailwind.config.js
+      - ./front/postcss.config.js:/app/postcss.config.js
+      - ./front/package.json:/app/package.json
+    environment:
+      - NODE_ENV=development
     restart: unless-stopped
 
 volumes:

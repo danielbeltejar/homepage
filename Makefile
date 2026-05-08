@@ -1,57 +1,63 @@
-.PHONY: dev dev-admin build down clean seed logs test test-backend test-frontend lint help
+.PHONY: dev dev-admin build rebuild rebuild-% down clean seed logs logs-% test test-backend test-frontend lint help status restart
 
-COMPOSE_CMD := $(shell command -v podman-compose 2>/dev/null || echo "podman compose")
+COMPOSE := $(shell command -v podman-compose 2>/dev/null || echo "podman compose")
 
 help: ## Show this help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
 
-dev: ## Build and start all services
-	$(COMPOSE_CMD) up --build -d
+dev: ## Start all services with hot-reload
+	$(COMPOSE) up --build -d
 	@echo ""
 	@echo "Services running:"
-	@echo "  Frontend:       http://localhost:3000"
+	@echo "  Frontend:       http://localhost:3000 (vite hmr)"
 	@echo "  Admin Panel:    http://localhost:3001"
 	@echo "  Posts API:      http://localhost:8001"
-	@echo "  Admin API:      http://localhost:8002"
+	@echo "  Admin API:      http://localhost:8002 (uvicorn reload)"
 	@echo "  Admin login:    admin / admin"
 
-dev-admin: ## Build and start admin + posts services only
-	$(COMPOSE_CMD) up --build -d admin-back admin-front posts
+dev-admin: ## Start admin + posts only
+	$(COMPOSE) up --build -d admin-back admin-front posts
 
-build: ## Build all container images
-	$(COMPOSE_CMD) build
+build: ## Build all images
+	$(COMPOSE) build
 
-down: ## Stop and remove all containers
-	$(COMPOSE_CMD) down
+rebuild: ## Rebuild all without cache
+	$(COMPOSE) build --no-cache
 
-clean: ## Stop containers and remove volumes
-	$(COMPOSE_CMD) down -v
+rebuild-%: ## Rebuild specific service without cache (e.g. make rebuild-front)
+	$(COMPOSE) build --no-cache $*
 
-seed: ## Copy existing posts into the shared volume
+down: ## Stop + remove containers
+	$(COMPOSE) down
+
+clean: ## Stop + remove containers + volumes
+	$(COMPOSE) down -v
+
+seed: ## Copy posts into shared volume
 	bash scripts/seed-posts.sh
 
-logs: ## Tail logs from all services
-	$(COMPOSE_CMD) logs -f
+logs: ## Tail all logs
+	$(COMPOSE) logs -f
 
-logs-admin: ## Tail admin backend logs
-	$(COMPOSE_CMD) logs -f admin-back
-
-test-backend: ## Run backend tests (admin-back + posts)
-	cd admin-back && pip install -r requirements.txt pytest httpx > /dev/null 2>&1 && python -m pytest tests/ -v
-	cd posts && pip install -r requirements.txt pytest httpx > /dev/null 2>&1 && python -m pytest tests/ -v
-
-test-frontend: ## Run frontend tests (admin-front + front)
-	cd admin-front && npm test
-	cd front && npm test -- --run
+logs-%: ## Tail service logs (e.g. make logs-front)
+	$(COMPOSE) logs -f $*
 
 test: test-backend test-frontend ## Run all tests
 
+test-backend: ## Backend tests
+	cd admin-back && pip install -q -r requirements.txt pytest httpx && python -m pytest tests/ -v
+	cd posts && pip install -q -r requirements.txt pytest httpx && python -m pytest tests/ -v
+
+test-frontend: ## Frontend tests
+	cd admin-front && npm test
+	cd front && npm test -- --run
+
 lint: ## Run linters
-	cd admin-back && pip install ruff > /dev/null 2>&1 && ruff check .
+	cd admin-back && pip install -q ruff && ruff check .
 	cd admin-front && npx tsc --noEmit
 
-status: ## Show status of all services
-	$(COMPOSE_CMD) ps
+status: ## Show service status
+	$(COMPOSE) ps
 
 restart: ## Restart all services
-	$(COMPOSE_CMD) restart
+	$(COMPOSE) restart
