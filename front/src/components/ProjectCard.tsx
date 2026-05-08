@@ -27,9 +27,7 @@ const ProjectCard = ({ videoSrc, description, technologies, visitLink, githubLin
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            video.play().catch(() => {
-              // Play might be blocked
-            });
+            video.play().catch(() => {});
           } else {
             video.pause();
           }
@@ -40,55 +38,65 @@ const ProjectCard = ({ videoSrc, description, technologies, visitLink, githubLin
 
     observer.observe(video);
 
-    return () => {
-      observer.disconnect();
-    };
+    return () => observer.disconnect();
   }, []);
 
   return (
-    <div className="project group pt-5 pb-5 pl-5 pr-5 flex flex-col h-96 w-80 transition-all duration-500 hyphens-auto text-justify bg-background dark:bg-dark-background px-s py-s rounded-3xl shadow-card hover:shadow-card-hover border border-white/30">
-      <div className="relative">
-        <div className='rounded-xl w-[280px] h-[161px] overflow-hidde group-hover:hidden skeleton-simple absolute'></div>
-        <div className='rounded-xl w-[280px] h-[161px] overflow-hidde group-hover:hidden absolute shadow-md'>
-          <video
-            ref={videoRef}
-            loop
-            muted
-            playsInline
-            preload="metadata"
-            poster={posterSrc}
-            className="w-full h-full object-cover rounded-xl group-hover:scale-110 transition-all"
-          >
-            <source src={videoSrc} type="video/webm" />
-            <source src={videoSrc.replace('.webm', '.mp4')} type="video/mp4" />
-            Sorry, your browser does not support HTML5 video.
-          </video> </div>
+    <div className="glass-card rounded-2xl p-0 w-80 h-[460px] overflow-hidden transition-all duration-500 group relative flex flex-col">
+      {/* Video — absolute top, slides up out of view on hover */}
+      <div className="absolute top-0 left-0 right-0 z-10 h-40 overflow-hidden bg-gray-200 skeleton-simple transition-all duration-500 ease-out group-hover:-translate-y-full group-hover:opacity-0">
+        <video
+          ref={videoRef}
+          loop
+          muted
+          playsInline
+          preload="metadata"
+          poster={posterSrc}
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+        >
+          <source src={videoSrc} type="video/webm" />
+          <source src={videoSrc.replace('.webm', '.mp4')} type="video/mp4" />
+          Sorry, your browser does not support HTML5 video.
+        </video>
       </div>
 
-      <div className="z-10 flex flex-wrap mt-4 gap-2 justify-start h-[6rem] content-start group-hover:hidden pt-[161px]">
-        {technologies.map((tech, index) => (
-          <p key={index} className="text-sm text-center text-gray-500 bg-slate-50 dark:bg-dark-accent px-2 rounded-full shadow-sm">
-            {tech}
-          </p>
-        ))}
-      </div>
+      {/* Scrollable content — pt offsets video, shrinks on hover */}
+      <div className="flex-1 flex flex-col pt-[168px] px-5 gap-3 transition-all duration-500 group-hover:pt-5 min-h-0 overflow-y-auto hide-scrollbar">
+        {/* Description — clamped when idle, full on hover */}
+        <p className="text-sm text-gray-600 leading-relaxed line-clamp-4 group-hover:line-clamp-none">
+          {description}
+        </p>
 
-      <p
-        className="text-11 max-h-0 w-[280px] overflow-hidden group-hover:max-h-80 text-background dark:text-dark-background group-hover:text-black group-hover:transition-colors group-hover:duration-700"
-        style={{ maxHeight: '12rem' }}
-      >
-        {description}
-      </p>
-
-      {postLink && postLink.trim() !== '' && (
-        <div className="flex justify-center mt-auto opacity-0 group-hover:opacity-100 group-hover:transition-opacity group-hover:duration-500" onClick={e => e.stopPropagation()}>
-          <Button text="Read more" url={postLink} newTab={false} primary={true} className="flex-grow max-h-[48px]" />
+        {/* Tech tags */}
+        <div className="flex flex-wrap gap-1.5">
+          {technologies.map((tech, index) => (
+            <span
+              key={index}
+              className="text-xs px-2.5 py-1 rounded-full bg-accent/8 text-accent/70 border border-accent/10 font-medium"
+            >
+              {tech}
+            </span>
+          ))}
         </div>
-      )}
 
-      <div className="flex flex-row gap-5 mt-auto w-full" onClick={e => e.stopPropagation()}>
-        <Button icon={faArrowUpRightFromSquare} text="Visit" url={visitLink} primary={true} className="flex-grow max-h-[48px]" />
-        <Button icon={faGithub} text="GitHub" url={githubLink} primary={true} className="flex-grow max-h-[48px]" />
+        {/* Spacer */}
+        <div className="flex-1" />
+
+        {/* Read more — only on hover, at bottom of content */}
+        {postLink && postLink.trim() !== '' && (
+          <div
+            className="opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+            onClick={e => e.stopPropagation()}
+          >
+            <Button text="Read more" url={postLink} newTab={false} primary={true} className="w-full" />
+          </div>
+        )}
+      </div>
+
+      {/* Fixed bottom bar — always visible, never moves */}
+      <div className="flex-shrink-0 flex flex-row gap-2 px-5 pb-5 pt-3" onClick={e => e.stopPropagation()}>
+        <Button icon={faArrowUpRightFromSquare} text="Visit" url={visitLink} primary={true} className="flex-1" />
+        <Button icon={faGithub} text="GitHub" url={githubLink} primary={true} className="flex-1" />
       </div>
     </div>
   );

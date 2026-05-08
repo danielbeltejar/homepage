@@ -65,15 +65,22 @@ const Projects = () => {
   const [archExpanded, setArchExpanded] = useState(false);
   const threeCanvasRef = useRef<HTMLCanvasElement>(null);
 
-  // Track scroll position
+  // Track scroll position + center first card on mount
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
     const handleScroll = () => {
-      const idx = Math.round(el.scrollLeft / (CARD_WIDTH + GAP));
-      setActiveIndex(idx);
+      const idx = Math.round((el.scrollLeft - CARD_WIDTH - GAP) / (CARD_WIDTH + GAP));
+      setActiveIndex(Math.max(0, Math.min(projects.length - 1, idx)));
     };
     el.addEventListener('scroll', handleScroll, { passive: true });
+    // Center first card on load
+    const cards = el.querySelectorAll('.snap-center');
+    if (cards[0]) {
+      const card = cards[0] as HTMLElement;
+      const offset = card.offsetLeft - el.offsetWidth / 2 + card.offsetWidth / 2;
+      el.scrollLeft = offset;
+    }
     return () => el.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -221,11 +228,20 @@ const Projects = () => {
       <div className="h-full w-full overflow-hidden">
         <div 
           ref={scrollRef}
-          className="flex overflow-x-auto gap-5 snap-x snap-mandatory scroll-smooth hide-scrollbar pb-4"
+          className="flex overflow-x-auto gap-5 snap-x snap-proximity scroll-smooth hide-scrollbar pb-8 pt-4"
           style={{ maskImage: 'linear-gradient(to right, transparent 0%, black 48px, black calc(100% - 48px), transparent 100%)', WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 48px, black calc(100% - 48px), transparent 100%)' }}
         >
-          {/* Spacer to center first card */}
-          <div className="flex-shrink-0 snap-start" style={{ width: 'calc(50% - 170px)' }} />
+          {/* Empty card — replica of ProjectCard but empty */}
+          <div className="flex-shrink-0 w-80 h-[460px] glass-card rounded-2xl p-0 overflow-hidden flex flex-col relative pointer-events-none select-none">
+            <div className="absolute top-0 left-0 right-0 h-40 overflow-hidden bg-gray-200 skeleton-simple" />
+            <div className="flex-1 pt-[168px] px-5 pb-5 flex flex-col">
+              <div className="flex-1" />
+              <div className="flex flex-row gap-2">
+                <div className="flex-1 h-[48px] rounded-xl bg-accent/5" />
+                <div className="flex-1 h-[48px] rounded-xl bg-accent/5" />
+              </div>
+            </div>
+          </div>
           {projects.map((project, index) => (
             <div 
               key={index} 
@@ -240,7 +256,7 @@ const Projects = () => {
         </div>
       </div>
       
-      <div className="flex items-center justify-center gap-3 mt-6">
+      <div className="flex items-center justify-center gap-3">
         <button onClick={() => scrollBy('prev')} className="flex-shrink-0 w-7 h-7 rounded-full bg-white/90 shadow-md border border-white/40 flex items-center justify-center text-accent hover:bg-white hover:shadow-lg transition-all duration-200 text-sm" aria-label="Previous">‹</button>
         <ScrollIndicator 
           totalItems={projects.length} 

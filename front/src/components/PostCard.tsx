@@ -19,12 +19,12 @@ export default function PostCard({ title, date, content, onClick }: PostCardProp
         <div className="flex flex-row items-center justify-between bg-background dark:bg-dark-background
       px-5 py-4 rounded-2xl shadow-card hover:shadow-card-hover w-full transition-all duration-300 h-24 gap-4 border border-white/40">
             <div className="flex flex-row items-center gap-4 flex-1 min-w-0">
-                <div className="w-16 h-16 rounded-md bg-gray-300 overflow-hidden flex-shrink-0">
+                <div className="w-16 h-16 rounded-md overflow-hidden flex-shrink-0 skeleton-simple">
                     {firstImageUrl ? (
                         <img
                             src={firstImageUrl}
                             alt="Post"
-                            className="w-full h-full object-cover transition-transform duration-500 scale-150 skeleton-simple"
+                            className="w-full h-full object-cover object-center"
                         />
                     ) : (
                         <div className="w-full h-full bg-gray-300"></div>
