@@ -385,3 +385,17 @@ html {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* =============================================
+   ARCHITECTURE OVERLAY
+   ============================================= */
+
+/* Pulse animation for status indicators */
+@keyframes status-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.animate-status-pulse {
+  animation: status-pulse 2s ease-in-out infinite;
+}
