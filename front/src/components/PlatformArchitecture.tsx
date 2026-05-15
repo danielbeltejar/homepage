@@ -170,7 +170,7 @@ const PlatformArchitecture: React.FC<PlatformArchitectureProps> = ({ isOpen, onC
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
-          className="fixed inset-0 z-50 bg-[#eae1d2]/97 backdrop-blur-xl overflow-y-auto overscroll-contain"
+          className="fixed inset-0 z-50 bg-[#eae1d2]/97 overflow-y-auto overscroll-contain"
           onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
           data-testid="architecture-overlay"
         >

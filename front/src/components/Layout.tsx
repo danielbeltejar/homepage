@@ -32,14 +32,15 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <>
       <div>
-        <video 
+        <video
           ref={videoRef}
-          loop 
-          muted 
-          playsInline 
-          webkit-playsinline="true"  
+          loop
+          muted
+          playsInline
+          webkit-playsinline="true"
           className="neuphormism-video"
           preload="none"
+          decoding="async"
         >
           <source src="/assets/videos/background.webm" type="video/webm" />
           <source src="/assets/videos/background.mp4" type="video/mp4" />

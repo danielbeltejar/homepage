@@ -172,7 +172,7 @@ export default function Posts() {
             {posts.length > 0 && (
                 <div className="flex items-center justify-center gap-3">
                     <button onClick={() => scrollBy('prev')} className="flex-shrink-0 w-7 h-7 rounded-full bg-white/90 shadow-md border border-white/40 flex items-center justify-center text-accent hover:bg-white hover:shadow-lg transition-all duration-200 text-sm" aria-label="Previous posts">‹</button>
-                    <div className="flex gap-2 bg-white/70 backdrop-blur-sm px-4 py-2 rounded-full shadow-md border border-white/40">
+                    <div className="flex gap-2 bg-white/85 px-4 py-2 rounded-full shadow-md border border-white/40">
                         {posts.map((_, i) => (
                             <button
                                 key={i}
