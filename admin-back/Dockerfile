@@ -1,9 +1,9 @@
 FROM cgr.dev/chainguard/python:latest-dev AS builder
 
 WORKDIR /build
-RUN python -m venv /venv
+RUN python -m venv venv
 COPY requirements.txt .
-RUN /venv/bin/pip install --no-cache-dir -r requirements.txt
+RUN /build/venv/bin/pip install --no-cache-dir -r requirements.txt
 
 FROM cgr.dev/chainguard/python:latest
 
@@ -11,7 +11,7 @@ ENV PYTHONUNBUFFERED=1 \
     PATH=/venv/bin \
     PYTHONPATH=/app
 
-COPY --from=builder /venv /venv
+COPY --from=builder /build/venv /venv
 COPY . /app
 WORKDIR /app
 

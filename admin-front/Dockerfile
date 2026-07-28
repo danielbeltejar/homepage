@@ -2,10 +2,10 @@ FROM cgr.dev/chainguard/node:latest-dev AS builder
 
 WORKDIR /app
 
-COPY package.json package-lock.json* ./
+COPY --chown=node:node package.json package-lock.json* ./
 RUN npm install
 
-COPY . .
+COPY --chown=node:node . .
 RUN npm run build
 
 FROM cgr.dev/chainguard/nginx:latest
