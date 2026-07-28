@@ -1,25 +1,20 @@
-FROM mirror.gcr.io/library/python:3.11-slim AS builder
+FROM cgr.dev/chainguard/python:latest-dev AS builder
 
-RUN pip install --upgrade pip
-
+WORKDIR /build
+RUN python -m venv /venv
 COPY requirements.txt .
+RUN /venv/bin/pip install --no-cache-dir -r requirements.txt
 
-RUN pip install --no-cache-dir -r requirements.txt
+FROM cgr.dev/chainguard/python:latest
 
-FROM gcr.io/distroless/python3-debian12:nonroot
-ARG PYTHON_VERSION=3.11
+ENV PYTHONUNBUFFERED=1 \
+    PATH=/venv/bin \
+    PYTHONPATH=/app
 
-ENV PYTHONUNBUFFERED 1
-
-COPY --from=builder /usr/local/lib/python${PYTHON_VERSION}/site-packages /usr/local/lib/python${PYTHON_VERSION}/site-packages
-COPY --from=builder /usr/local/bin/uvicorn /app/uvicorn
-
+COPY --from=builder /venv /venv
 COPY . /app
 WORKDIR /app
-USER 65532
 
 EXPOSE 8000
 
-ENV PYTHONPATH=/usr/local/lib/python${PYTHON_VERSION}/site-packages
-
-CMD ["/app/uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+ENTRYPOINT ["/venv/bin/python", "-m", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
