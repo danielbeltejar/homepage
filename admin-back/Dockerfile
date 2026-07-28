@@ -1,11 +1,11 @@
-FROM cgr.dev/chainguard/python:latest-dev AS builder
+FROM cgr.dev/chainguard/python:3.13-dev AS builder
 
 WORKDIR /build
 RUN python -m venv venv
 COPY requirements.txt .
 RUN /build/venv/bin/pip install --no-cache-dir -r requirements.txt
 
-FROM cgr.dev/chainguard/python:latest
+FROM cgr.dev/chainguard/python:3.13
 
 ENV PYTHONUNBUFFERED=1 \
     PATH=/venv/bin \
