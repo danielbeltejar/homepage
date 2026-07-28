@@ -8,7 +8,7 @@ RUN npm install
 COPY . .
 RUN npm run build
 
-FROM cgr.dev/chainguard/nginx:latest
+FROM mirror.gcr.io/library/nginx:stable-alpine
 
 COPY --from=builder /app/build/ /build/
 COPY nginx.conf /etc/nginx/nginx.conf

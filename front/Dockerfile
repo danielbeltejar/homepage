@@ -1,5 +1,5 @@
 # Etapa 1: Construcción de la aplicación Node.js
-FROM cgr.dev/chainguard/node:latest as build
+FROM mirror.gcr.io/library/node:22-slim AS build
 
 ENV NODE_ENV=production
 
@@ -11,7 +11,7 @@ RUN npm install
 RUN npm run build
 
 # Etapa 2: Configuración de Nginx
-FROM cgr.dev/chainguard/nginx:latest
+FROM mirror.gcr.io/library/nginx:stable-alpine
 
 COPY --from=build /app/build /usr/share/nginx/html
 COPY ./nginx.conf /etc/nginx/nginx.conf
