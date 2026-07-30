@@ -67,3 +67,10 @@ Las credenciales de administración se almacenan en un Secret de Kubernetes (`ad
 - **Frontend**: React 19, Vite 6, Tailwind CSS 3, shadcn/ui
 - **Backend**: FastAPI 0.115, Python 3.11, bcrypt, python-jose
 - **Infra**: Podman, Kubernetes, Helm, registro Harbor
+
+## Catálogo Backstage
+
+El fichero raíz `catalog-info.yaml` describe el sistema `homepage` y sus
+componentes desplegables. Los cambios de código siguen el flujo GitHub →
+Tekton → Harbor → GitOps → Argo CD; el catálogo se actualiza automáticamente
+desde GitHub.
