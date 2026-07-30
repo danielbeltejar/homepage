@@ -1,0 +1,85 @@
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: homepage
+  description: Delicias Homepage platform
+  annotations:
+    github.com/project-slug: danielbeltejar/homepage
+spec:
+  owner: user:danielbeltejar
+  lifecycle: production
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: homepage-front
+  description: Public Homepage frontend
+  annotations:
+    github.com/project-slug: danielbeltejar/homepage
+    backstage.io/kubernetes-id: front
+    backstage.io/kubernetes-namespace: pre-homepage-front
+spec:
+  type: website
+  owner: user:danielbeltejar
+  lifecycle: production
+  system: homepage
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: homepage-admin-front
+  description: Homepage administration frontend
+  annotations:
+    github.com/project-slug: danielbeltejar/homepage
+    backstage.io/kubernetes-id: admin-front
+    backstage.io/kubernetes-namespace: pre-homepage-front
+spec:
+  type: website
+  owner: user:danielbeltejar
+  lifecycle: production
+  system: homepage
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: homepage-apigw
+  description: Homepage API gateway
+  annotations:
+    github.com/project-slug: danielbeltejar/homepage
+    backstage.io/kubernetes-id: apigw
+    backstage.io/kubernetes-namespace: pre-homepage-front
+spec:
+  type: service
+  owner: user:danielbeltejar
+  lifecycle: production
+  system: homepage
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: homepage-admin-back
+  description: Homepage administration backend
+  annotations:
+    github.com/project-slug: danielbeltejar/homepage
+    backstage.io/kubernetes-id: admin-back
+    backstage.io/kubernetes-namespace: pre-homepage-back
+spec:
+  type: service
+  owner: user:danielbeltejar
+  lifecycle: production
+  system: homepage
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: homepage-posts
+  description: Homepage posts backend
+  annotations:
+    github.com/project-slug: danielbeltejar/homepage
+    backstage.io/kubernetes-id: posts
+    backstage.io/kubernetes-namespace: pre-homepage-back
+spec:
+  type: service
+  owner: user:danielbeltejar
+  lifecycle: production
+  system: homepage
