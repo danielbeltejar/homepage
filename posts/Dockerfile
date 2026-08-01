@@ -4,7 +4,11 @@ WORKDIR /build
 RUN python -m venv venv
 COPY requirements.txt .
 ENV PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1
-RUN /build/venv/bin/pip install --no-cache-dir -r requirements.txt
+RUN /build/venv/bin/pip install --no-cache-dir -r requirements.txt \
+    && rm -rf /build/venv/lib/python*/site-packages/pip \
+              /build/venv/lib/python*/site-packages/pip-*.dist-info \
+              /build/venv/lib/python*/site-packages/setuptools \
+              /build/venv/lib/python*/site-packages/setuptools-*.dist-info
 
 FROM cgr.dev/chainguard/python:latest
 
