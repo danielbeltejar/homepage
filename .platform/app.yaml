@@ -1,0 +1,71 @@
+apiVersion: platform.delicias/v1alpha2
+kind: Application
+metadata:
+  name: homepage
+spec:
+  owner: user:danielbeltejar
+  repository: https://github.com/danielbeltejar/homepage
+  defaultBranch: main
+  components:
+    - name: admin-back
+      build:
+        context: admin-back
+        dockerfile: admin-back/Dockerfile
+      deploy:
+        kind: service
+        containerPort: 8000
+        servicePort: 80
+        healthPort: 8000
+        healthPath: /healthz
+    - name: admin-front
+      build:
+        context: admin-front
+        dockerfile: admin-front/Dockerfile
+      deploy:
+        kind: service
+        containerPort: 8080
+        servicePort: 80
+        healthPort: 8080
+        healthPath: /healthz
+    - name: front
+      build:
+        context: front
+        dockerfile: front/Dockerfile
+      deploy:
+        kind: service
+        containerPort: 8080
+        servicePort: 80
+        healthPort: 8080
+        healthPath: /healthz
+    - name: posts
+      build:
+        context: posts
+        dockerfile: posts/Dockerfile
+      deploy:
+        kind: service
+        containerPort: 8000
+        servicePort: 80
+        healthPort: 8000
+        healthPath: /healthz
+  runtime:
+    - name: apigw
+      image: harbor.server.local/danielbeltejar/common/apigw
+      digest: sha256:1e8a77888a0110b8b30b794a2414d0eb2bc4c23aae38ecec14ca74c66299b494
+      deploy:
+        kind: service
+        containerPort: 8080
+        servicePort: 80
+        healthPort: 8081
+        healthPath: /healthz
+  environments:
+    pre:
+      automatic: true
+    pro:
+      automatic: false
+  promotion:
+    strategy: pull-request
+    from: pre
+    to: pro
+  artifacts:
+    registry: harbor.server.local/danielbeltejar/homepage
+    imageReference: digest

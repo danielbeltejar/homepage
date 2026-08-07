@@ -5,6 +5,12 @@ metadata:
   description: Delicias Homepage platform
   annotations:
     github.com/project-slug: danielbeltejar/homepage
+    backstage.io/source-location: url:https://github.com/danielbeltejar/homepage
+    delicias.dev/managed-by: backstage
+    delicias.dev/workload-kind: application
+    delicias.dev/application-contract: platform.delicias/v1alpha2
+    delicias.dev/delivery-chart: common-app@1.1.0
+    delicias.dev/runtime-components: apigw
 spec:
   owner: user:danielbeltejar
   lifecycle: production
@@ -16,8 +22,15 @@ metadata:
   description: Public Homepage frontend
   annotations:
     github.com/project-slug: danielbeltejar/homepage
+    backstage.io/source-location: url:https://github.com/danielbeltejar/homepage
+    tekton.dev/pipeline: universal-monorepo
     backstage.io/kubernetes-id: front
     backstage.io/kubernetes-namespace: pre-homepage-front
+    delicias.dev/managed-by: backstage
+    delicias.dev/workload-kind: application
+    delicias.dev/application-contract: platform.delicias/v1alpha2
+    delicias.dev/deploy-kind: service
+    delicias.dev/delivery-chart: common-app@1.1.0
 spec:
   type: website
   owner: user:danielbeltejar
@@ -31,8 +44,15 @@ metadata:
   description: Homepage administration frontend
   annotations:
     github.com/project-slug: danielbeltejar/homepage
+    backstage.io/source-location: url:https://github.com/danielbeltejar/homepage
+    tekton.dev/pipeline: universal-monorepo
     backstage.io/kubernetes-id: admin-front
     backstage.io/kubernetes-namespace: pre-homepage-front
+    delicias.dev/managed-by: backstage
+    delicias.dev/workload-kind: application
+    delicias.dev/application-contract: platform.delicias/v1alpha2
+    delicias.dev/deploy-kind: service
+    delicias.dev/delivery-chart: common-app@1.1.0
 spec:
   type: website
   owner: user:danielbeltejar
@@ -46,8 +66,15 @@ metadata:
   description: Homepage API gateway
   annotations:
     github.com/project-slug: danielbeltejar/homepage
+    backstage.io/source-location: url:https://github.com/danielbeltejar/homepage
+    tekton.dev/pipeline: universal-monorepo
     backstage.io/kubernetes-id: apigw
     backstage.io/kubernetes-namespace: pre-homepage-front
+    delicias.dev/managed-by: backstage
+    delicias.dev/workload-kind: application
+    delicias.dev/application-contract: platform.delicias/v1alpha2
+    delicias.dev/deploy-kind: service
+    delicias.dev/delivery-chart: common-app@1.1.0
 spec:
   type: service
   owner: user:danielbeltejar
@@ -61,8 +88,15 @@ metadata:
   description: Homepage administration backend
   annotations:
     github.com/project-slug: danielbeltejar/homepage
+    backstage.io/source-location: url:https://github.com/danielbeltejar/homepage
+    tekton.dev/pipeline: universal-monorepo
     backstage.io/kubernetes-id: admin-back
     backstage.io/kubernetes-namespace: pre-homepage-back
+    delicias.dev/managed-by: backstage
+    delicias.dev/workload-kind: application
+    delicias.dev/application-contract: platform.delicias/v1alpha2
+    delicias.dev/deploy-kind: service
+    delicias.dev/delivery-chart: common-app@1.1.0
 spec:
   type: service
   owner: user:danielbeltejar
@@ -76,8 +110,15 @@ metadata:
   description: Homepage posts backend
   annotations:
     github.com/project-slug: danielbeltejar/homepage
+    backstage.io/source-location: url:https://github.com/danielbeltejar/homepage
+    tekton.dev/pipeline: universal-monorepo
     backstage.io/kubernetes-id: posts
     backstage.io/kubernetes-namespace: pre-homepage-back
+    delicias.dev/managed-by: backstage
+    delicias.dev/workload-kind: application
+    delicias.dev/application-contract: platform.delicias/v1alpha2
+    delicias.dev/deploy-kind: service
+    delicias.dev/delivery-chart: common-app@1.1.0
 spec:
   type: service
   owner: user:danielbeltejar
