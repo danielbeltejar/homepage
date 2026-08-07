@@ -3,6 +3,7 @@ replicaCount: 1
 registry: harbor.server.local/danielbeltejar/homepage
 image:
   pullPolicy: IfNotPresent
+clarityProjectId: "6n7dkmur2b"
 service:
   type: ClusterIP
   port: 80

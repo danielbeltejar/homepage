@@ -75,10 +75,20 @@ spec:
             periodSeconds: 5
             initialDelaySeconds: 10
           volumeMounts:
+            - name: runtime-config
+              mountPath: /usr/share/nginx/html/runtime-config.js
+              subPath: runtime-config.js
+              readOnly: true
           {{- with .Values.volumeMounts }}
             {{- toYaml . | nindent 12 }}
           {{- end }}
       volumes:
+        - name: runtime-config
+          configMap:
+            name: {{ include "app.fullname" . }}-runtime-config
+            items:
+            - key: runtime-config.js
+              path: runtime-config.js
       {{- with .Values.volumes }}
         {{- toYaml . | nindent 8 }}
       {{- end }}
