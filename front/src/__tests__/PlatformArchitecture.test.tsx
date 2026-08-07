@@ -106,7 +106,7 @@ describe('PlatformArchitecture', () => {
     const { container } = render(<PlatformArchitecture {...defaultProps} isOpen />);
     const overlay = container.querySelector('[data-testid="architecture-overlay"]');
     expect(overlay).toHaveClass('overscroll-contain');
-    expect(document.body.style.overflow).toBe('');
+    expect(document.body.style.overflow).toBe('hidden');
   });
 
   it('calls onClose when Escape key is pressed', () => {
@@ -125,7 +125,7 @@ describe('PlatformArchitecture', () => {
 
   it('does not affect body overflow on unmount', () => {
     const { unmount } = render(<PlatformArchitecture {...defaultProps} isOpen />);
-    expect(document.body.style.overflow).toBe('');
+    expect(document.body.style.overflow).toBe('hidden');
     unmount();
     expect(document.body.style.overflow).toBe('');
   });

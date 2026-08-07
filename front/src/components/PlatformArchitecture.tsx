@@ -162,6 +162,18 @@ const PlatformArchitecture: React.FC<PlatformArchitectureProps> = ({ isOpen, onC
     return () => clearTimeout(timer);
   }, [jenkinsStep]);
 
+  // Manage body overflow to prevent scrollbar flash
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -228,17 +240,17 @@ const PlatformArchitecture: React.FC<PlatformArchitectureProps> = ({ isOpen, onC
                             </div>
 
                             {/* Detail */}
-                            <p className="text-11 text-accent/50 leading-relaxed flex-1 mb-3">{step.detail}</p>
+                          <p className="text-11 text-accent/60 leading-relaxed flex-1 mb-3">{step.detail}</p>
 
-                            {/* Tech tags */}
-                            <div className="flex flex-wrap gap-1.5">
-                              {step.tech.map(t => (
-                                <span key={t} className="text-10 px-2 py-0.5 rounded-full bg-accent/5 text-accent/40 font-medium">{t}</span>
-                              ))}
-                            </div>
+                          {/* Tech tags */}
+                          <div className="flex flex-wrap gap-1.5">
+                            {step.tech.map(t => (
+                              <span key={t} className="text-10 px-2 py-0.5 rounded-full bg-accent/5 text-accent/60 font-medium">{t}</span>
+                            ))}
                           </div>
                         </div>
-                      </motion.div>
+                      </div>
+                    </motion.div>
                     ))}
 
                     {/* Spacer for centering */}
@@ -293,16 +305,16 @@ const PlatformArchitecture: React.FC<PlatformArchitectureProps> = ({ isOpen, onC
                             className={`w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 transition-all duration-700 ${
                               isGreen
                                 ? 'bg-emerald-400 text-white shadow-lg shadow-emerald-400/25'
-                                : 'bg-accent/10 text-accent/30'
+                                : 'bg-accent/10 text-accent/40'
                             }`}
                           >
                             {jenkinsStep + 1}
                           </div>
                           <div className="min-w-0">
-                            <p className={`text-sm font-semibold truncate transition-colors duration-700 ${isGreen ? 'text-emerald-400' : 'text-accent/35'}`}>
+                            <p className={`text-sm font-semibold truncate transition-colors duration-700 ${isGreen ? 'text-emerald-400' : 'text-accent/50'}`}>
                               {step.title}
                             </p>
-                            <p className="text-9 text-accent/20 font-mono mt-0.5">
+                            <p className="text-9 text-accent/35 font-mono mt-0.5">
                               Step {jenkinsStep + 1} of {jenkinsDeclarativeSteps.length}
                             </p>
                           </div>
@@ -315,8 +327,8 @@ const PlatformArchitecture: React.FC<PlatformArchitectureProps> = ({ isOpen, onC
                               ? 'bg-emerald-400/6 border-emerald-400/10'
                               : 'bg-accent/3 border-accent/5'
                           }`}>
-                            <span className="block text-9 text-accent/25 uppercase tracking-wider mb-0.5">Avg</span>
-                            <span className={`text-sm font-mono font-bold transition-colors duration-700 ${isGreen ? 'text-emerald-400' : 'text-accent/30'}`}>
+                            <span className="block text-9 text-accent/40 uppercase tracking-wider mb-0.5">Avg</span>
+                            <span className={`text-sm font-mono font-bold transition-colors duration-700 ${isGreen ? 'text-emerald-400' : 'text-accent/45'}`}>
                               {step.avgTime}
                             </span>
                           </div>
@@ -325,12 +337,12 @@ const PlatformArchitecture: React.FC<PlatformArchitectureProps> = ({ isOpen, onC
                               ? 'bg-emerald-400/6 border-emerald-400/10'
                               : 'bg-accent/3 border-accent/5'
                           }`}>
-                            <span className="block text-9 text-accent/25 uppercase tracking-wider mb-0.5">#437</span>
-                            <span className={`text-sm font-mono font-bold transition-colors duration-700 ${isGreen ? 'text-emerald-400' : 'text-accent/30'}`}>
+                            <span className="block text-9 text-accent/40 uppercase tracking-wider mb-0.5">#437</span>
+                            <span className={`text-sm font-mono font-bold transition-colors duration-700 ${isGreen ? 'text-emerald-400' : 'text-accent/45'}`}>
                               {step.runTime}
                             </span>
                             {step.paused && (
-                              <span className={`block text-9 italic mt-0.5 transition-colors duration-700 ${isGreen ? 'text-amber-400/60' : 'text-accent/15'}`}>
+                              <span className={`block text-9 italic mt-0.5 transition-colors duration-700 ${isGreen ? 'text-amber-400/60' : 'text-accent/25'}`}>
                                 paused {step.paused}
                               </span>
                             )}
@@ -405,18 +417,18 @@ const PlatformArchitecture: React.FC<PlatformArchitectureProps> = ({ isOpen, onC
                     data-testid="edge-layer"
                   >
                     <div className="flex items-center gap-2 mb-3">
-                      <span className="w-8 h-8 rounded-lg bg-accent/5 flex items-center justify-center text-accent/50 flex-shrink-0"><FontAwesomeIcon icon={faGlobe} className="w-4 h-4" /></span>
+                      <span className="w-8 h-8 rounded-lg bg-accent/5 flex items-center justify-center text-accent/70 flex-shrink-0"><FontAwesomeIcon icon={faGlobe} className="w-4 h-4" /></span>
                       <h4 className="font-serif font-bold text-sm text-accent">Dual Ingress , Online + Local</h4>
-                      <span className="text-9 font-mono text-accent/25 ml-auto">ns: ingress-nginx</span>
+                      <span className="text-9 font-mono text-accent/40 ml-auto">ns: ingress-nginx</span>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
                       <div className="p-3 rounded-lg bg-background/40 border border-white/20">
-                        <p className="text-xs font-bold text-accent/60">nginx-online</p>
-                        <p className="text-10 text-accent/35 mt-0.5">Public-facing. ModSecurity + OWASP CRS WAF. Let's Encrypt TLS via {' '}<a href="/post/automating-tls-certificates-with-cert-manager" className="underline hover:text-accent/60 transition-colors">cert-manager</a>. Used by all production (<code className="text-9">pro</code>) services.</p>
+                        <p className="text-xs font-bold text-accent/70">nginx-online</p>
+                        <p className="text-10 text-accent/50 mt-0.5">Public-facing. ModSecurity + OWASP CRS WAF. Let's Encrypt TLS via {' '}<a href="/post/automating-tls-certificates-with-cert-manager" className="underline hover:text-accent/60 transition-colors">cert-manager</a>. Used by all production (<code className="text-9">pro</code>) services.</p>
                       </div>
                       <div className="p-3 rounded-lg bg-background/40 border border-white/20">
-                        <p className="text-xs font-bold text-accent/60">nginx-local</p>
-                        <p className="text-10 text-accent/35 mt-0.5">Internal/LAN. Simpler config, no WAF. Still has full TLS via{' '}<a href="/post/automating-tls-certificates-with-cert-manager" className="underline hover:text-accent/60 transition-colors">cert-manager</a>. Used by pre-production (<code className="text-9">pre</code>) services and internal tools.</p>
+                        <p className="text-xs font-bold text-accent/70">nginx-local</p>
+                        <p className="text-10 text-accent/50 mt-0.5">Internal/LAN. Simpler config, no WAF. Still has full TLS via{' '}<a href="/post/automating-tls-certificates-with-cert-manager" className="underline hover:text-accent/60 transition-colors">cert-manager</a>. Used by pre-production (<code className="text-9">pre</code>) services and internal tools.</p>
                       </div>
                     </div>
                   </motion.div>
@@ -429,21 +441,21 @@ const PlatformArchitecture: React.FC<PlatformArchitectureProps> = ({ isOpen, onC
                     className="glass-card mx-4 rounded-xl p-5 border-l-4 border-l-accent/40"
                   >
                     <div className="flex items-center gap-2 mb-3">
-                      <span className="w-8 h-8 rounded-lg bg-accent/5 flex items-center justify-center text-accent/50 flex-shrink-0"><FontAwesomeIcon icon={faLayerGroup} className="w-4 h-4" /></span>
+                      <span className="w-8 h-8 rounded-lg bg-accent/5 flex items-center justify-center text-accent/70 flex-shrink-0"><FontAwesomeIcon icon={faLayerGroup} className="w-4 h-4" /></span>
                       <h4 className="font-serif font-bold text-sm text-accent">Environments , pre + pro per Project</h4>
-                      <span className="text-9 font-mono text-accent/25 ml-auto">40+ namespaces</span>
+                      <span className="text-9 font-mono text-accent/40 ml-auto">40+ namespaces</span>
                     </div>
-                    <p className="text-11 text-accent/45 leading-relaxed mb-3">
+                    <p className="text-11 text-accent/60 leading-relaxed mb-3">
                       Every project has two environments. Each environment gets its own set of namespaces , one per service , keeping everything isolated.
                     </p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       <div className="p-3 rounded-lg bg-background/40 border border-white/20">
-                        <p className="text-xs font-bold text-accent/60">pre-{`{project}`}-{`{service}`}</p>
-                        <p className="text-10 text-accent/35 mt-0.5">Pre-production. Routes through <strong>nginx-local</strong>. Test domains like <code className="text-9">homepage.pre.danielbeltejar.es</code></p>
+                        <p className="text-xs font-bold text-accent/70">pre-{`{project}`}-{`{service}`}</p>
+                        <p className="text-10 text-accent/50 mt-0.5">Pre-production. Routes through <strong>nginx-local</strong>. Test domains like <code className="text-9">homepage.pre.danielbeltejar.es</code></p>
                       </div>
                       <div className="p-3 rounded-lg bg-background/40 border border-white/20">
-                        <p className="text-xs font-bold text-accent/60">pro-{`{project}`}-{`{service}`}</p>
-                        <p className="text-10 text-accent/35 mt-0.5">Production. Routes through <strong>nginx-online</strong> with WAF. Real domains, full TLS.</p>
+                        <p className="text-xs font-bold text-accent/70">pro-{`{project}`}-{`{service}`}</p>
+                        <p className="text-10 text-accent/50 mt-0.5">Production. Routes through <strong>nginx-online</strong> with WAF. Real domains, full TLS.</p>
                       </div>
                     </div>
                   </motion.div>
@@ -456,42 +468,42 @@ const PlatformArchitecture: React.FC<PlatformArchitectureProps> = ({ isOpen, onC
                     className="glass-card mx-4 rounded-xl p-5 border-l-4 border-l-accent/40"
                   >
                     <div className="flex items-center gap-2 mb-3">
-                      <span className="w-8 h-8 rounded-lg bg-accent/5 flex items-center justify-center text-accent/50 flex-shrink-0"><FontAwesomeIcon icon={faCube} className="w-4 h-4" /></span>
+                      <span className="w-8 h-8 rounded-lg bg-accent/5 flex items-center justify-center text-accent/70 flex-shrink-0"><FontAwesomeIcon icon={faCube} className="w-4 h-4" /></span>
                       <h4 className="font-serif font-bold text-sm text-accent">Service Template , Every Project</h4>
-                      <span className="text-9 font-mono text-accent/25 ml-auto">per environment</span>
+                      <span className="text-9 font-mono text-accent/40 ml-auto">per environment</span>
                     </div>
 
                     {/* Flow diagram */}
-                    <div className="flex flex-col items-center gap-2 mb-4 text-10 text-accent/40 font-mono">
-                      <div className="px-3 py-1.5 rounded-lg bg-background/40 border border-white/20 text-accent/60 text-xs font-semibold">Incoming request</div>
+                    <div className="flex flex-col items-center gap-2 mb-4 text-10 text-accent/55 font-mono">
+                      <div className="px-3 py-1.5 rounded-lg bg-background/40 border border-white/20 text-accent/70 text-xs font-semibold">Incoming request</div>
                       <span>↓</span>
-                      <div className="px-3 py-1.5 rounded-lg bg-background/40 border border-white/20 text-accent/60 text-xs font-semibold">Ingress (online/local)</div>
+                      <div className="px-3 py-1.5 rounded-lg bg-background/40 border border-white/20 text-accent/70 text-xs font-semibold">Ingress (online/local)</div>
                       <span>↓</span>
                       <div className="flex gap-4">
-                        <div className="px-3 py-1.5 rounded-lg bg-background/40 border border-white/20 text-xs">front Ingress<br/><span className="text-9 text-accent/35">serves main domain</span></div>
-                        <div className="px-3 py-1.5 rounded-lg bg-background/40 border border-white/20 text-xs">apigw Ingress<br/><span className="text-9 text-accent/35">serves /api/* paths</span></div>
+                        <div className="px-3 py-1.5 rounded-lg bg-background/40 border border-white/20 text-xs">front Ingress<br/><span className="text-9 text-accent/50">serves main domain</span></div>
+                        <div className="px-3 py-1.5 rounded-lg bg-background/40 border border-white/20 text-xs">apigw Ingress<br/><span className="text-9 text-accent/50">serves /api/* paths</span></div>
                       </div>
                       <span>↓</span>
                       <div className="flex gap-4">
-                        <div className="px-3 py-1.5 rounded-lg bg-background/40 border border-white/20 text-xs">front (React/Vite)<br/><span className="text-9 text-accent/35">nginx static server</span></div>
-                        <div className="px-3 py-1.5 rounded-lg bg-background/40 border border-white/20 text-xs">apigw (Go)<br/><span className="text-9 text-accent/35">routes /api/* → backends</span></div>
+                        <div className="px-3 py-1.5 rounded-lg bg-background/40 border border-white/20 text-xs">front (React/Vite)<br/><span className="text-9 text-accent/50">nginx static server</span></div>
+                        <div className="px-3 py-1.5 rounded-lg bg-background/40 border border-white/20 text-xs">apigw (Go)<br/><span className="text-9 text-accent/50">routes /api/* → backends</span></div>
                       </div>
                       <span>↓</span>
-                      <div className="px-3 py-1.5 rounded-lg bg-background/40 border border-white/20 text-accent/60 text-xs font-semibold">backends</div>
+                      <div className="px-3 py-1.5 rounded-lg bg-background/40 border border-white/20 text-accent/70 text-xs font-semibold">backends</div>
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                       <div className="p-3 rounded-lg bg-background/40 border border-white/20">
-                        <p className="text-xs font-bold text-accent/60"><FontAwesomeIcon icon={faDesktop} className="w-3 h-3 mr-1" /> front</p>
-                        <p className="text-10 text-accent/35 mt-0.5">React/Vite SPA served by nginx. Has its own Ingress for the main domain. Handles client-side routing, lazy-loaded assets.</p>
+                        <p className="text-xs font-bold text-accent/70"><FontAwesomeIcon icon={faDesktop} className="w-3 h-3 mr-1" /> front</p>
+                        <p className="text-10 text-accent/50 mt-0.5">React/Vite SPA served by nginx. Has its own Ingress for the main domain. Handles client-side routing, lazy-loaded assets.</p>
                       </div>
                       <div className="p-3 rounded-lg bg-background/40 border border-white/20">
-                        <p className="text-xs font-bold text-accent/60"><FontAwesomeIcon icon={faCodeBranch} className="w-3 h-3 mr-1" /> apigw (Go)</p>
-                        <p className="text-10 text-accent/35 mt-0.5">Shared Go binary. Exposes backends under <code className="text-9">/api/...</code>. Config-driven routing via ConfigMap. No backend is directly reachable.</p>
+                        <p className="text-xs font-bold text-accent/70"><FontAwesomeIcon icon={faCodeBranch} className="w-3 h-3 mr-1" /> apigw (Go)</p>
+                        <p className="text-10 text-accent/50 mt-0.5">Shared Go binary. Exposes backends under <code className="text-9">/api/...</code>. Config-driven routing via ConfigMap. No backend is directly reachable.</p>
                       </div>
                       <div className="p-3 rounded-lg bg-background/40 border border-white/20">
-                        <p className="text-xs font-bold text-accent/60"><FontAwesomeIcon icon={faCogs} className="w-3 h-3 mr-1" /> backend</p>
-                        <p className="text-10 text-accent/35 mt-0.5">Only accessible through the apigw , no external Ingress. Handles business logic per project.</p>
+                        <p className="text-xs font-bold text-accent/70"><FontAwesomeIcon icon={faCogs} className="w-3 h-3 mr-1" /> backend</p>
+                        <p className="text-10 text-accent/50 mt-0.5">Only accessible through the apigw , no external Ingress. Handles business logic per project.</p>
                       </div>
                     </div>
                   </motion.div>
