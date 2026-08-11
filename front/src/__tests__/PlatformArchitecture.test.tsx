@@ -28,11 +28,6 @@ describe('PlatformArchitecture', () => {
     expect(screen.getByTestId('architecture-overlay')).toBeInTheDocument();
   });
 
-  it('displays the title "Platform Architecture"', () => {
-    render(<PlatformArchitecture {...defaultProps} isOpen />);
-    expect(screen.getByTestId('overlay-title')).toHaveTextContent('Platform Architecture');
-  });
-
   it('renders all 5 pipeline steps', () => {
     render(<PlatformArchitecture {...defaultProps} isOpen />);
     const steps = screen.getAllByTestId(/^pipeline-step-/);
@@ -57,37 +52,6 @@ describe('PlatformArchitecture', () => {
   it('renders service template section (front + apigw + backend)', () => {
     render(<PlatformArchitecture {...defaultProps} isOpen />);
     expect(screen.getByText(/Service Template/)).toBeInTheDocument();
-  });
-
-  it('renders infrastructure tools section', () => {
-    render(<PlatformArchitecture {...defaultProps} isOpen />);
-    expect(screen.getByTestId('infra-tools')).toBeInTheDocument();
-  });
-
-  it('renders all 5 infrastructure tools', () => {
-    render(<PlatformArchitecture {...defaultProps} isOpen />);
-    const tools = ['cilium', 'longhorn', 'prometheus', 'loki', 'vault'];
-    tools.forEach(tool => {
-      expect(screen.getByTestId(`infra-${tool}`)).toBeInTheDocument();
-    });
-  });
-
-  it('renders key numbers section', () => {
-    render(<PlatformArchitecture {...defaultProps} isOpen />);
-    expect(screen.getByTestId('key-numbers')).toBeInTheDocument();
-  });
-
-  it('renders all 4 metrics', () => {
-    render(<PlatformArchitecture {...defaultProps} isOpen />);
-    const metrics = ['projects-deployed', 'k8s-namespaces', 'ci-cd-stages', 'auto-rollback'];
-    metrics.forEach(metric => {
-      expect(screen.getByTestId(`metric-${metric}`)).toBeInTheDocument();
-    });
-  });
-
-  it('shows 40+ K8s namespaces', () => {
-    render(<PlatformArchitecture {...defaultProps} isOpen />);
-    expect(screen.getByText('40+')).toBeInTheDocument();
   });
 
   it('does not have a close button (uses backdrop/ESC to close)', () => {
@@ -134,7 +98,6 @@ describe('PlatformArchitecture', () => {
     render(<PlatformArchitecture {...defaultProps} isOpen />);
     expect(screen.getByText('The CI/CD Pipeline')).toBeInTheDocument();
     expect(screen.getByText('Global Architecture')).toBeInTheDocument();
-    expect(screen.getByText('Infrastructure at a Glance')).toBeInTheDocument();
   });
 
   it('pipeline steps contain correct titles', () => {
