@@ -74,3 +74,6 @@ El fichero raíz `catalog-info.yaml` describe el sistema `homepage` y sus
 componentes desplegables. Los cambios de código siguen el flujo GitHub →
 Tekton → Harbor → GitOps → Argo CD; el catálogo se actualiza automáticamente
 desde GitHub.
+# GitOps CI smoke
+
+This marker validates the shared common-app promotion path.
