@@ -1,11 +1,8 @@
 import ProjectCard from "./ProjectCard";
 import SectionHeader from './SectionHeader';
 import ScrollIndicator from './ScrollIndicator';
-import PlatformArchitecture from './PlatformArchitecture';
-import PredefinedButton from './Button';
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { faServer } from '@fortawesome/free-solid-svg-icons';
 
 const projects = [
   {
@@ -65,7 +62,6 @@ const Projects = () => {
   
   const scrollRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [archExpanded, setArchExpanded] = useState(false);
 
   // Track scroll position + center first card on mount
   useEffect(() => {
@@ -152,21 +148,6 @@ const Projects = () => {
         <button onClick={() => scrollBy('next')} className="flex-shrink-0 w-7 h-7 rounded-full bg-white/90 shadow-md border border-white/40 flex items-center justify-center text-accent hover:bg-white hover:shadow-lg transition-all duration-200 text-sm" aria-label="Next">›</button>
       </div>
 
-      {/* === Architecture Showcase === */}
-      {!archExpanded && (
-        <div className="mt-8 pt-6 border-t border-accent/10 flex justify-center">
-          <PredefinedButton
-            icon={faServer}
-            text="Platform Architecture"
-            onClick={() => setArchExpanded(true)}
-            newTab={false}
-            className="w-full max-w-md"
-          />
-        </div>
-      )}
-
-      {/* === Architecture Overlay === */}
-      <PlatformArchitecture isOpen={archExpanded} onClose={() => setArchExpanded(false)} />
     </div>
   );
 };
