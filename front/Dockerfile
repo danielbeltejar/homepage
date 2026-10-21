@@ -26,4 +26,4 @@ COPY --from=build --chown=node:node /app/packages/america-ui ./packages/america-
 
 EXPOSE 8080
 
-CMD ["node", "./dist/server/entry.mjs"]
+CMD ["./dist/server/entry.mjs"]
