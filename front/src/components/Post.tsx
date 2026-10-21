@@ -107,15 +107,15 @@ export default function Post({ filename }: { filename?: string }) {
     }
 
     return (
-        <div className='bg-window dark:bg-dark-window mt-16 mb-16 p-10 shadow-elevated rounded-2xl'>
+        <div className='bg-window mt-16 mb-16 p-10 shadow-elevated rounded-2xl'>
             <div ref={contentRef}  className="flex flex-col align-middle items-start mt-xs group w-full">
                 <SectionHeader title={post.title} link="#content" />
-                <div className='text-accent dark:text-dark-accent flex flex-row'>
+                <div className='text-accent flex flex-row'>
                     <p id='author' className="mr-1 hidden">{post.author} -</p>
                     <p>At {post.publishedDate}</p>
                 </div>
             </div>
-            <p className="mt-4 mb-10 post post prose prose-strong:text-text-light prose-strong:dark:text-dark-text prose-code:text-text-light prose-code:dark:text-dark-text  prose-headings:text-accent prose-headings:dark:text-dark-accent dark:text-dark-text dark:prose-a:text-dark-text text-black">
+            <p className="mt-4 mb-10 post post prose prose-strong:text-accent prose-code:text-accent prose-headings:text-accent prose-a:text-accent text-accent">
                 <ReactMarkdown>
                     {post.content}
                 </ReactMarkdown>

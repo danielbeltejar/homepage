@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
 import SectionHeader from './SectionHeader';
-import { ResponsiveImage } from '@america/ui';
 
 interface PostObject {
     filename: string;
@@ -160,10 +159,12 @@ export default function Posts() {
                                     {/* Thumbnail */}
                                     <div className="w-full h-40 overflow-hidden bg-gray-200 skeleton-simple">
                                         {imageUrl && (
-                                            <ResponsiveImage
+                                            <img
                                                 src={localImageUrl ?? undefined}
-                                                sources={responsiveSources(imageUrl)}
+                                                srcSet={responsiveSources(imageUrl)}
                                                 alt="" 
+                                                loading="lazy"
+                                                decoding="async"
                                                 className="w-full h-full object-cover object-center scale-125 group-hover:scale-150 transition-transform duration-700"
                                             />
                                         )}

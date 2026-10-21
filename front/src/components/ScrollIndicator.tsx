@@ -15,8 +15,8 @@ const ScrollIndicator = ({ totalItems, activeIndex, className = '', onPillClick 
             onClick={() => onPillClick?.(index)}
             className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
               index === activeIndex 
-                ? 'bg-accent dark:bg-dark-accent w-6' 
-                : 'bg-white dark:bg-dark-window w-2 shadow-sm outline outline-1 outline-gray-200'
+                ? 'bg-accent w-6'
+                : 'bg-window w-2 shadow-sm outline outline-1 outline-accent/20'
             }`}
             aria-label={`Item ${index + 1}${index === activeIndex ? ' (active)' : ''}`}
             aria-current={index === activeIndex ? 'true' : 'false'}

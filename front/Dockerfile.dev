@@ -3,7 +3,6 @@ FROM mirror.gcr.io/library/node:22-slim
 WORKDIR /app
 
 COPY package.json package-lock.json* ./
-COPY packages/america-ui ./packages/america-ui
 RUN npm install
 
 COPY . .

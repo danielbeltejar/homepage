@@ -16,7 +16,7 @@ function extractFirstImageUrl(content: string): string | null {
 export default function PostCard({ title, date, content, onClick }: PostCardProps) {
     const firstImageUrl = extractFirstImageUrl(content);
     return (
-        <div className="flex flex-row items-center justify-between bg-background dark:bg-dark-background
+        <div className="flex flex-row items-center justify-between bg-background
       px-5 py-4 rounded-2xl shadow-card hover:shadow-card-hover w-full transition-all duration-300 h-24 gap-4 border border-white/40">
             <div className="flex flex-row items-center gap-4 flex-1 min-w-0">
                 <div className="w-16 h-16 rounded-md overflow-hidden flex-shrink-0 skeleton-simple">

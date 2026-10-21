@@ -49,7 +49,7 @@ const Layout: React.FC<LayoutProps> = ({ children, showCertifications = false })
         <div className="orb-3"></div>
       </div>
       <div className="dot-grid"></div>
-      <div className="App flex flex-col text-text dark:text-dark-text text-11 lg:w-[740px] w-full">
+      <div className="App flex flex-col text-accent text-11 lg:w-[740px] w-full">
         <div className="shadow-elevated rounded-b-2xl overflow-hidden inner-glow">
           <Header />
           <Hero />

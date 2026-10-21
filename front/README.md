@@ -23,8 +23,8 @@ npm run preview
 ```
 
 `npm run build` also creates responsive WebP variants under the ignored
-`public/assets/optimized/` directory. The React design-system primitives live
-in the local `@america/ui` package and use Base UI.
+`public/assets/optimized/` directory. Interactive controls use the existing
+Tailwind palette and component styles directly.
 
 ## Runtime checks
 

@@ -5,7 +5,6 @@ ENV NODE_ENV=production
 WORKDIR /app
 
 COPY --chown=node:node package.json package-lock.json ./
-COPY --chown=node:node packages/america-ui ./packages/america-ui
 RUN npm ci --include=dev
 
 COPY --chown=node:node . .
@@ -22,7 +21,6 @@ WORKDIR /app
 
 COPY --from=build --chown=node:node /app/dist ./dist
 COPY --from=build --chown=node:node /app/node_modules ./node_modules
-COPY --from=build --chown=node:node /app/packages/america-ui ./packages/america-ui
 
 EXPOSE 8080
 

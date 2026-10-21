@@ -51,7 +51,7 @@ const Hero = () => {
     <section className="flex flex-col p-10 rounded-b-2xl">
       <div className="flex flex-col flex-1">
         <div className="relative">
-          <h2 id="type-effect" className="absolute text-accent dark:text-dark-accent font-bold text-4xl "> </h2>
+          <h2 id="type-effect" className="absolute text-accent font-bold text-4xl "> </h2>
           < h2 className=" mb-auto text-transparent font-bold text-4xl"> Developer, Operations
             and Cloud proficient
           </h2>
