@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
 import SectionHeader from './SectionHeader';
+import { ResponsiveImage } from '@america/ui';
 
 interface PostObject {
     filename: string;
@@ -32,14 +32,13 @@ function stripMarkdown(text: string, maxLen: number): string {
 
 export default function Posts() {
     const [posts, setPosts] = useState<PostObject[]>([]);
-    const navigate = useNavigate();
     const scrollRef = useRef<HTMLDivElement>(null);
     const [activeIndex, setActiveIndex] = useState(0);
 
     useEffect(() => {
         const fetchPosts = async () => {
             try {
-                const response = await fetch(`https://danielbeltejar.es/api/posts`);
+                const response = await fetch(`${window.location.origin}/api/posts`);
                 if (!response.ok) throw new Error('Failed to fetch posts');
                 const jsonResponse = await response.json();
                 setPosts(jsonResponse.posts);
@@ -82,9 +81,35 @@ export default function Posts() {
         }
     };
 
+    const navigate = (url: string) => {
+        if (document.startViewTransition) {
+            document.startViewTransition(() => window.location.assign(url));
+        } else {
+            window.location.assign(url);
+        }
+    };
+
+    const localAssetPath = (url: string | null) => {
+        if (!url) return null;
+        try {
+            const path = new URL(url, window.location.origin).pathname;
+            return path.startsWith('/assets/images/') ? path : null;
+        } catch {
+            return null;
+        }
+    };
+
+    const responsiveSources = (url: string | null) => {
+        const localPath = localAssetPath(url);
+        if (!localPath) return undefined;
+        const path = localPath.replace('/assets/images/', '/assets/optimized/');
+        const extension = path.lastIndexOf('.');
+        const stem = extension > -1 ? path.slice(0, extension) : path;
+        return `${stem}-320.webp 320w, ${stem}-640.webp 640w`;
+    };
+
     const scrollBy = (dir: 'prev' | 'next') => {
         if (!scrollRef.current) return;
-        const cardWidth = 280 + 16;
         const newIdx = Math.max(0, Math.min(posts.length - 1, activeIndex + (dir === 'next' ? 1 : -1)));
         scrollToCard(newIdx);
     };
@@ -122,6 +147,7 @@ export default function Posts() {
                     )}
                     {posts.map((post) => {
                         const imageUrl = extractFirstImageUrl(post.content);
+                        const localImageUrl = localAssetPath(imageUrl) ?? imageUrl;
                         return (
                             <div 
                                 key={post.filename}
@@ -134,10 +160,10 @@ export default function Posts() {
                                     {/* Thumbnail */}
                                     <div className="w-full h-40 overflow-hidden bg-gray-200 skeleton-simple">
                                         {imageUrl && (
-                                            <img 
-                                                src={imageUrl} 
+                                            <ResponsiveImage
+                                                src={localImageUrl ?? undefined}
+                                                sources={responsiveSources(imageUrl)}
                                                 alt="" 
-                                                loading="lazy"
                                                 className="w-full h-full object-cover object-center scale-125 group-hover:scale-150 transition-transform duration-700"
                                             />
                                         )}

@@ -3,7 +3,7 @@ import SectionHeader from './SectionHeader';
 import FilterPills from './FilterPills';
 import { useFilter } from '../hooks/useFilter';
 import { faMicrosoft, faLinux } from '@fortawesome/free-brands-svg-icons';
-import { faNetworkWired, faCertificate, faBridge } from '@fortawesome/free-solid-svg-icons';
+import { faCertificate, faBridge } from '@fortawesome/free-solid-svg-icons';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const certifications = [

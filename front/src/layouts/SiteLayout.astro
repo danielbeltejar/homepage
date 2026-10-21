@@ -1,0 +1,69 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import { getImage } from 'astro:assets';
+import cardImage from '../assets/card.png';
+import '../index.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Daniel Beltejar: DevOps architect',
+  description = "I'm Daniel Beltejar, DevOps & Cloud Engineer.",
+} = Astro.props;
+
+const optimizedCard = await getImage({
+  src: cardImage,
+  width: 1200,
+  format: 'webp',
+  quality: 80,
+});
+const socialImage = new URL(optimizedCard.src, Astro.url).href;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&family=Playfair+Display:ital,wght@0,400..700;1,400..700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="apple-touch-icon" sizes="512x512" href="/assets/icons/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="128x128" href="/assets/icons/favicon-128x128.png" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/assets/icons/favicon-64x64.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png" />
+
+    <meta name="msapplication-TileColor" content="#f8f7f2" />
+    <meta name="theme-color" content="#f8f7f2" />
+    <meta name="description" content={description} />
+    <meta property="og:title" content="Daniel Beltejar" />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:description" content="Homepage" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Daniel Beltejar" />
+    <meta name="twitter:description" content="Homepage" />
+    <meta name="twitter:image:src" content={socialImage} />
+    <title>{title}</title>
+
+    <script is:inline>
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.classList.toggle('dark', prefersDark);
+    </script>
+    <script is:inline src="/runtime-config.js"></script>
+    <ClientRouter />
+  </head>
+  <body class="bg-[#eae1d2]">
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <slot />
+  </body>
+</html>

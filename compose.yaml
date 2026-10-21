@@ -58,12 +58,11 @@ services:
       context: ./front
       dockerfile: Dockerfile.dev
     ports:
-      - "3000:5173"
+      - "3000:3000"
     volumes:
       - ./front/src:/app/src
       - ./front/public:/app/public
-      - ./front/index.html:/app/index.html
-      - ./front/vite.config.js:/app/vite.config.js
+      - ./front/astro.config.mjs:/app/astro.config.mjs
       - ./front/tailwind.config.js:/app/tailwind.config.js
       - ./front/postcss.config.js:/app/postcss.config.js
       - ./front/package.json:/app/package.json

@@ -9,7 +9,7 @@ dev: ## Start all services with hot-reload
 	$(COMPOSE) up --build -d
 	@echo ""
 	@echo "Services running:"
-	@echo "  Frontend:       http://localhost:3000 (vite hmr)"
+	@echo "  Frontend:       http://localhost:3000 (Astro SSR + React islands)"
 	@echo "  Admin Panel:    http://localhost:3001"
 	@echo "  Posts API:      http://localhost:8001"
 	@echo "  Admin API:      http://localhost:8002 (uvicorn reload)"
@@ -55,6 +55,7 @@ test-frontend: ## Frontend tests
 lint: ## Run linters
 	cd admin-back && pip install -q ruff && ruff check .
 	cd admin-front && npx tsc --noEmit
+	cd front && npm run typecheck
 
 status: ## Show service status
 	$(COMPOSE) ps

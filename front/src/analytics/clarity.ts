@@ -13,15 +13,21 @@ declare global {
   }
 }
 
-const projectId = (
-  window.__DANIEL_CONFIG__?.clarityProjectId
-  ?? import.meta.env.VITE_CLARITY_PROJECT_ID
-  ?? ''
-).trim();
+function getProjectId(): string {
+  if (typeof window === 'undefined') {
+    return (import.meta.env.VITE_CLARITY_PROJECT_ID ?? '').trim();
+  }
+
+  return (
+    window.__DANIEL_CONFIG__?.clarityProjectId
+    ?? import.meta.env.VITE_CLARITY_PROJECT_ID
+    ?? ''
+  ).trim();
+}
 
 /** Pilot mode: load Clarity in every environment where a project ID is set. */
 export function isClarityEnabled(): boolean {
-  return projectId.length > 0;
+  return getProjectId().length > 0;
 }
 
 function createClarityStub(): ClarityFunction {
@@ -36,7 +42,8 @@ function createClarityStub(): ClarityFunction {
 
 /** Load Clarity before React renders and queue calls until the script loads. */
 export function initializeClarity(): void {
-  if (!isClarityEnabled() || document.getElementById(CLARITY_SCRIPT_ID)) return;
+  const projectId = getProjectId();
+  if (!projectId || typeof document === 'undefined' || document.getElementById(CLARITY_SCRIPT_ID)) return;
 
   window.clarity = window.clarity ?? createClarityStub();
 

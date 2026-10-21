@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { faRssSquare } from '@fortawesome/free-solid-svg-icons';
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons"
 import Button from './Button';
-import { Link } from 'react-router-dom';
 
 const Hero = () => {
   useEffect(() => {
@@ -67,10 +66,10 @@ const Hero = () => {
           <Button icon={faRssSquare} text="Blog" url="/posts" newTab={false} />
           <div className="group flex flex-row gap-2 relative">
             <Button text="@" url="mailto:contacto@danielbeltejar.es" />
-            <Link to="mailto:contacto@danielbeltejar.es"
+            <a href="mailto:contacto@danielbeltejar.es"
               className="absolute lg:group-hover:left-[35px] pl-6 h-12 -left-40 flex  rounded-xl text-accent  border-gray-200 border-2 min-w-12 transition-all duration-300 flex-row gap-2    text-11 px-[10px] py-1 justify-center items-center  bg-background opacity-0 lg:group-hover:opacity-100 pointer-events-none lg:group-hover:pointer-events-auto">
               <p>hi@danielbeltejar.es</p>
-            </Link>
+            </a>
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import App from '../App';
 
 describe('App', () => {
@@ -16,8 +16,9 @@ describe('App', () => {
     vi.restoreAllMocks();
   });
 
-  test('renders without crashing', () => {
+  test('renders without crashing', async () => {
     render(<App />);
     expect(document.querySelector('div')).toBeInTheDocument();
+    await waitFor(() => expect(screen.getByText('Test')).toBeInTheDocument());
   });
 });

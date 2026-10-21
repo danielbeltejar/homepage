@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from 'react'; 
-import { useParams } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import SectionHeader from './SectionHeader';
 
@@ -10,14 +9,14 @@ interface PostObject {
     author: string;
 }
 
-export default function Post() {
+export default function Post({ filename }: { filename?: string }) {
     const [post, setPost] = useState<PostObject | null>(null);
-    const { filename } = useParams<{ filename: string }>();
     const contentRef = useRef<HTMLDivElement>(null); 
     useEffect(() => {
         const fetchPost = async () => {
             try {
-                const response = await fetch(`https://danielbeltejar.es/api/posts/${filename}.md`);
+                if (!filename) return;
+                const response = await fetch(`${window.location.origin}/api/posts/${encodeURIComponent(filename)}.md`);
 
                 if (!response.ok) {
                     throw new Error('Failed to fetch post');
@@ -45,7 +44,7 @@ export default function Post() {
     }, [filename]);
 
     useEffect(() => {
-        const images = document.querySelectorAll('.post img');
+        const images = document.querySelectorAll<HTMLImageElement>('.post img');
 
         const lazyLoadImage = (img: HTMLImageElement) => {
             const src = img.dataset.src;

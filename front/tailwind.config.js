@@ -1,7 +1,8 @@
 module.exports = {
+  darkMode: 'class',
   content: [
-    "./index.html",
-    "./src/**/*.{html,js,jsx,ts,tsx}",
+    "./src/**/*.{astro,html,js,jsx,ts,tsx}",
+    "./packages/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
     extend: {
@@ -21,6 +22,10 @@ module.exports = {
         'glow-amber': '#d4a574',
         'glow-rose': '#e8c4b8',
         'glow-sage': '#c5d5c0',
+        'dark-text': '#a99a90',
+        'dark-background': '#121212',
+        'dark-window': '#2d2a28',
+        'dark-accent': '#6c5546',
       },
       boxShadow: {
         'inner-lg': 'inset 0 4px 8px 0 rgba(0, 0, 0, 0.2)',

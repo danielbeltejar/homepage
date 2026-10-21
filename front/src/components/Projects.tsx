@@ -2,7 +2,6 @@ import ProjectCard from "./ProjectCard";
 import SectionHeader from './SectionHeader';
 import ScrollIndicator from './ScrollIndicator';
 import { useState, useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
 
 const projects = [
   {

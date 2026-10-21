@@ -76,7 +76,7 @@ spec:
             initialDelaySeconds: 10
           volumeMounts:
             - name: runtime-config
-              mountPath: /usr/share/nginx/html/runtime-config.js
+              mountPath: /app/dist/client/runtime-config.js
               subPath: runtime-config.js
               readOnly: true
           {{- with .Values.volumeMounts }}

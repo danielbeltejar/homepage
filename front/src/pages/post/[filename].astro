@@ -1,0 +1,10 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import HomePageIsland from '../../components/HomePageIsland';
+
+const { filename } = Astro.params;
+---
+
+<SiteLayout title="Post · Daniel Beltejar">
+  <HomePageIsland page="post" filename={filename} client:load />
+</SiteLayout>

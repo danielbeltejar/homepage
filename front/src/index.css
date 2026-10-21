@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Astro's ClientRouter uses the native View Transitions API when available. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 180ms;
+  animation-timing-function: ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 0ms;
+  }
+}
+
 /* =============================================
    2026 MODERN BASE STYLES
    ============================================= */

@@ -1,12 +1,12 @@
 # homepage-tailwind
 
-Página personal con panel de administración de entradas de blog. Construida con React + FastAPI y desplegada en Kubernetes.
+Página personal con panel de administración de entradas de blog. Construida con Astro SSR, React y FastAPI, y desplegada en Kubernetes.
 
 ## Servicios
 
 | Servicio | Descripción | Puerto |
 |---|---|---|
-| `front` | Frontend público (React + Vite + Tailwind) | 3000 |
+| `front` | Frontend público (Astro SSR + React islands + Tailwind) | 3000 |
 | `posts` | API de lectura de posts (FastAPI) | 8001 |
 | `admin-back` | API CRUD de administración con JWT (FastAPI) | 8002 |
 | `admin-front` | Panel de administración (React + shadcn/ui) | 3001 |
@@ -64,7 +64,7 @@ Las credenciales de administración se almacenan en un Secret de Kubernetes (`ad
 
 ## Stack
 
-- **Frontend**: React 19, Vite 6, Tailwind CSS 3, shadcn/ui
+- **Frontend**: Astro SSR, React 19 islands, Tailwind CSS 3, Base UI y `@america/ui`
 - **Backend**: FastAPI 0.115, Python 3.11, bcrypt, python-jose
 - **Infra**: Podman, Kubernetes, Helm, registro Harbor
 

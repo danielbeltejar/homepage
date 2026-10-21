@@ -1,5 +1,4 @@
 import { render, screen } from "@testing-library/react";
-import { BrowserRouter } from "react-router-dom";
 import PostCard from "../PostCard";
 
 function renderPostCard(props: Partial<Parameters<typeof PostCard>[0]> = {}) {
@@ -9,11 +8,7 @@ function renderPostCard(props: Partial<Parameters<typeof PostCard>[0]> = {}) {
     content: "Some markdown content here",
     onClick: vi.fn(),
   };
-  return render(
-    <BrowserRouter>
-      <PostCard {...defaults} {...props} />
-    </BrowserRouter>
-  );
+  return render(<PostCard {...defaults} {...props} />);
 }
 
 describe("PostCard", () => {

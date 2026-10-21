@@ -1,5 +1,5 @@
-import React, { ReactNode, useEffect, useRef } from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useEffect, useRef } from 'react';
+import type { ReactNode } from 'react';
 import Header from './Header';
 import Hero from './Hero';
 import Certifications from './Certifications';
@@ -7,10 +7,10 @@ import Footer from './Footer';
 
 interface LayoutProps {
   children: ReactNode;
+  showCertifications?: boolean;
 }
 
-const Layout: React.FC<LayoutProps> = ({ children }) => {
-  const location = useLocation();
+const Layout: React.FC<LayoutProps> = ({ children, showCertifications = false }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -40,7 +40,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           webkit-playsinline="true"
           className="neuphormism-video"
           preload="none"
-          decoding="async"
         >
           <source src="/assets/videos/background.webm" type="video/webm" />
           <source src="/assets/videos/background.mp4" type="video/mp4" />
@@ -56,7 +55,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           <Hero />
         </div>
         {children}
-        {location.pathname === "/" && <Certifications />}
+        {showCertifications && <Certifications />}
         <Footer />
       </div>
     </>
