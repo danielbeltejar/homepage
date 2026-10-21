@@ -34,7 +34,7 @@ export default function PostCard({ title, date, content, onClick }: PostCardProp
                     <h2 className="text-lg font-bold truncate">
                         {title}
                     </h2>
-                    <p className="text-sm text-gray-500 truncate">{date}</p>
+                    <p className="text-sm text-accent truncate">{date}</p>
                 </div>
             </div>
             <div className="flex-shrink-0">

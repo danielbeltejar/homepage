@@ -103,7 +103,7 @@ const Projects = () => {
     <div className='mt-16 mb-16 p-10 shadow-elevated rounded-2xl inner-glow'>
       <SectionHeader title="Projects" link="#projects" />
 
-      <p className="mt-4 mb-10 text-12">
+      <p className="mt-4 mb-10 text-12 text-accent">
         I build personal projects to explore new technologies. All projects are deployed in Kubernetes with CI/CD pipelines across various environments, using Jenkins for Docker multi-stage builds with minimal, distroless images, securized Helm deployments and managed by ArgoCD.
       </p>
       <div className="h-full w-full overflow-hidden">

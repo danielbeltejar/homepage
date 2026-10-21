@@ -56,7 +56,7 @@ const Hero = () => {
             and Cloud proficient
           </h2>
         </div>
-        < p className="justify-self-center mt-10 mb-10">
+        < p className="justify-self-center mt-10 mb-10 text-accent">
           Combining my technical skills with my enthusiasm for learning, I strive for excellence and
           continuous improvement, enabling me to deliver efficient, reliable, and high - quality solutions
           for various systems, task automations, and applications.

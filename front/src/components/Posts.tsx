@@ -117,7 +117,7 @@ export default function Posts() {
         <div className='mt-16 mb-16 p-10 shadow-elevated rounded-2xl inner-glow min-h-[400px]'>
             <SectionHeader title="Posts" link="/posts" />
 
-            <p className="mt-4 mb-8 text-12">
+            <p className="mt-4 mb-8 text-12 text-accent">
                 Welcome to my blog! Here, I share insights into my personal projects, hobby projects, and various topics related to my career.
             </p>
 
@@ -182,7 +182,7 @@ export default function Posts() {
                                     </span>
                                 </div>
 
-                                        <p className="text-xs text-gray-400 leading-relaxed line-clamp-2">
+                                        <p className="text-xs text-accent leading-relaxed line-clamp-2">
                                             {stripMarkdown(post.content, 120)}
                                         </p>
                                     </div>

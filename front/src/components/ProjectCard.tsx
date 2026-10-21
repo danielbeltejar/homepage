@@ -63,7 +63,7 @@ const ProjectCard = ({ videoSrc, description, technologies, visitLink, githubLin
       {/* Scrollable content — pt offsets video, shrinks on hover */}
       <div className="flex-1 flex flex-col pt-[168px] px-5 gap-3 transition-all duration-500 group-hover:pt-5 min-h-0 overflow-y-auto hide-scrollbar">
         {/* Description — clamped when idle, full on hover */}
-        <p className="text-sm text-gray-600 leading-relaxed line-clamp-4 group-hover:line-clamp-none">
+        <p className="text-sm text-accent leading-relaxed line-clamp-4 group-hover:line-clamp-none">
           {description}
         </p>
 

@@ -82,7 +82,7 @@ const Certifications = () => {
     <div className='mb-16 p-10 shadow-elevated rounded-2xl inner-glow'>
       <SectionHeader title="Certifications" link="#certifications" />
 
-      <p className="mt-4 mb-10 text-12">
+      <p className="mt-4 mb-10 text-12 text-accent">
         The following certifications demonstrate my expertise and proficiency in various technologies.
       </p>
 
