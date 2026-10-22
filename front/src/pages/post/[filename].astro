@@ -6,5 +6,5 @@ const { filename } = Astro.params;
 ---
 
 <SiteLayout title="Post · Daniel Beltejar">
-  <HomePageIsland page="post" filename={filename} client:load />
+  <HomePageIsland page="post" filename={filename} client:load transition:persist="homepage-island" />
 </SiteLayout>

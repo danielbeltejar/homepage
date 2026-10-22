@@ -80,14 +80,6 @@ export default function Posts() {
         }
     };
 
-    const navigate = (url: string) => {
-        if (document.startViewTransition) {
-            document.startViewTransition(() => window.location.assign(url));
-        } else {
-            window.location.assign(url);
-        }
-    };
-
     const localAssetPath = (url: string | null) => {
         if (!url) return null;
         try {
@@ -147,11 +139,12 @@ export default function Posts() {
                     {posts.map((post) => {
                         const imageUrl = extractFirstImageUrl(post.content);
                         const localImageUrl = localAssetPath(imageUrl) ?? imageUrl;
+                        const postUrl = `/post/${post.filename.replace('.md', '')}`;
                         return (
-                            <div 
+                            <a
                                 key={post.filename}
-                                onClick={() => navigate(`/post/${post.filename.replace('.md', '')}`)}
-                                className="flex-shrink-0 h-[340px] w-[280px] snap-center cursor-pointer group"
+                                href={postUrl}
+                                className="flex-shrink-0 block h-[340px] w-[280px] snap-center cursor-pointer group text-inherit no-underline"
                             >
                                 
                                 {/* Card */}
@@ -187,7 +180,7 @@ export default function Posts() {
                                         </p>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         );
                     })}
                     {/* Spacer to center last card */}

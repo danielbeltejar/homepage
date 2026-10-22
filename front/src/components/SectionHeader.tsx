@@ -18,7 +18,7 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({ title, link }) => {
             <a href={link}
                 className="text-accent opacity-0 absolute group-hover:opacity-100 transition-opacity duration-300"
                 onClick={handleClick}>
-                <FontAwesomeIcon icon={faLink} />
+                <FontAwesomeIcon icon={faLink} className="h-3 w-auto shrink-0" />
             </a>
             <h2 className="text-accent font-bold text-2xl group-hover:cursor-pointer group-hover:pl-7 group-hover:underline underline-offset-4 transition-all duration-300"
                 onClick={handleClick}>{title}</h2>

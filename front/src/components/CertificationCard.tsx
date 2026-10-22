@@ -19,7 +19,7 @@ const CertificationCard = ({ icon, vendor, name, highlight: _highlight, ...props
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
       {...props}
     >
-      <FontAwesomeIcon icon={icon} className="text-3xl mr-4 text-accent" />
+      <FontAwesomeIcon icon={icon} className="h-8 w-auto shrink-0 mr-4 text-accent" />
       <p className="text-sm flex-1">{name}</p>
       <span hidden>{vendor}</span>
     </motion.div>
