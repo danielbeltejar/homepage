@@ -155,6 +155,7 @@ export default function Posts() {
                                             <img
                                                 src={localImageUrl ?? undefined}
                                                 srcSet={responsiveSources(imageUrl)}
+                                                sizes="(min-width: 1024px) 280px, 80vw"
                                                 alt="" 
                                                 loading="lazy"
                                                 decoding="async"

@@ -14,7 +14,9 @@ interface ProjectProps {
 
 const ProjectCard = ({ videoSrc, description, technologies, visitLink, githubLink, postLink }: ProjectProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const posterSrc = videoSrc.replace('assets/videos/', 'assets/images/').replace('.webm', '.jpg');
+  const posterSrc = videoSrc
+    .replace('/assets/videos/', '/assets/images/')
+    .replace(/\.(webm|mp4)$/i, '.jpg');
 
   useEffect(() => {
     const video = videoRef.current;
@@ -50,7 +52,7 @@ const ProjectCard = ({ videoSrc, description, technologies, visitLink, githubLin
           loop
           muted
           playsInline
-          preload="metadata"
+          preload="none"
           poster={posterSrc}
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
         >

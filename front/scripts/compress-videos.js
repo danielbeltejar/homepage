@@ -5,70 +5,86 @@ const ffmpegPath = require('@ffmpeg-installer/ffmpeg').path;
 
 ffmpeg.setFfmpegPath(ffmpegPath);
 
-const inputDir = path.join(__dirname, '../public/assets/videos');
+const videoDir = path.join(__dirname, '../public/assets/videos');
+const imageDir = path.join(__dirname, '../public/assets/images');
+const force = process.env.FORCE_MEDIA_OPTIMIZATION === '1';
 
-const videoFiles = fs.readdirSync(inputDir).filter(file =>
-  path.extname(file).toLowerCase() === '.mp4' &&
-  !file.includes('_temp') &&
-  !fs.existsSync(path.join(inputDir, path.parse(file).name + '.webm'))
-);
+const videoFiles = fs.readdirSync(videoDir)
+  .filter((file) => path.extname(file).toLowerCase() === '.mp4')
+  .filter((file) => !file.endsWith('_temp.mp4'))
+  .sort();
 
-console.log(`Found ${videoFiles.length} video files to compress.`);
+fs.mkdirSync(imageDir, { recursive: true });
 
-let processed = 0;
+function runFfmpeg(command, outputPath) {
+  return new Promise((resolve, reject) => {
+    command
+      .output(outputPath)
+      .on('end', resolve)
+      .on('error', reject)
+      .run();
+  });
+}
 
-videoFiles.forEach(file => {
-  const inputPath = path.join(inputDir, file);
+async function optimizeVideo(file) {
+  const inputPath = path.join(videoDir, file);
   const baseName = path.parse(file).name;
-  const outputWebM = path.join(inputDir, baseName + '.webm');
-  const outputMP4 = path.join(inputDir, baseName + '_temp.mp4');
+  const webmPath = path.join(videoDir, `${baseName}.webm`);
 
-  console.log(`Compressing ${file} to WebM...`);
+  if (force || !fs.existsSync(webmPath)) {
+    const tempPath = `${webmPath}.tmp-${process.pid}.webm`;
+    try {
+      await runFfmpeg(
+        ffmpeg(inputPath)
+          .videoCodec('libvpx-vp9')
+          .audioCodec('libopus')
+          .outputOptions([
+            '-map 0:v:0',
+            '-map 0:a?',
+            '-crf 31',
+            '-b:v 0',
+            '-vf scale=-2:480',
+            '-row-mt 1',
+            '-deadline good',
+            '-cpu-used 4',
+          ]),
+        tempPath,
+      );
+      fs.renameSync(tempPath, webmPath);
+      console.log(`Optimized video: ${file} -> ${path.basename(webmPath)}`);
+    } finally {
+      fs.rmSync(tempPath, { force: true });
+    }
+  }
 
-  // Compress to WebM with VP9 for better efficiency
-  ffmpeg(inputPath)
-    .videoCodec('libvpx-vp9')
-    .audioCodec('libopus')
-    .outputOptions([
-      '-crf 30',  // Higher CRF for more compression
-      '-b:v 0',   // Variable bitrate
-      '-vf scale=-2:480',  // Lower resolution for better performance
-      '-deadline best',  // Best quality
-      '-cpu-used 4'  // Balance speed/quality
-    ])
-    .output(outputWebM)
-    .on('end', () => {
-      console.log(`Compressed to WebM: ${file}`);
-      // Also create MP4 fallback
-      ffmpeg(inputPath)
-        .videoCodec('libx264')
-        .audioCodec('aac')
-        .outputOptions([
-          '-crf 28',
-          '-preset fast',
-          '-vf scale=-2:480'
-        ])
-        .output(outputMP4)
-        .on('end', () => {
-          console.log(`Compressed to MP4: ${file}`);
-          // Remove original if not needed
-          if (path.extname(file).toLowerCase() !== '.mp4') {
-            fs.unlinkSync(inputPath);
-          }
-          processed++;
-          if (processed === videoFiles.length) {
-            console.log('All videos optimized.');
-          }
-        })
-        .on('error', err => {
-          console.error(`Error compressing MP4 ${file}:`, err);
-          processed++;
-        })
-        .run();
-    })
-    .on('error', err => {
-      console.error(`Error compressing WebM ${file}:`, err);
-      processed++;
-    })
-    .run();
+  const posterPath = path.join(imageDir, `${baseName}.jpg`);
+  if (baseName !== 'background' && !fs.existsSync(posterPath)) {
+    const tempPath = `${posterPath}.tmp-${process.pid}.jpg`;
+    try {
+      await runFfmpeg(
+        ffmpeg(inputPath)
+          .seekInput(0.5)
+          .frames(1)
+          .outputOptions(['-q:v 2']),
+        tempPath,
+      );
+      fs.renameSync(tempPath, posterPath);
+      console.log(`Generated poster: ${path.basename(posterPath)}`);
+    } finally {
+      fs.rmSync(tempPath, { force: true });
+    }
+  }
+}
+
+async function main() {
+  for (const file of videoFiles) {
+    await optimizeVideo(file);
+  }
+
+  console.log(`Checked ${videoFiles.length} video${videoFiles.length === 1 ? '' : 's'}.`);
+}
+
+main().catch((error) => {
+  console.error(error);
+  process.exitCode = 1;
 });
