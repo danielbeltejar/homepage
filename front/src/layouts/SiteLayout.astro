@@ -61,6 +61,23 @@ const socialImage = new URL(optimizedCard.src, Astro.url).href;
     </script>
     <script is:inline src="/runtime-config.js"></script>
     <ClientRouter />
+    <script is:inline>
+      let preservedScrollPosition = null;
+
+      document.addEventListener('astro:before-preparation', (event) => {
+        preservedScrollPosition = event.navigationType === 'traverse'
+          ? null
+          : { left: window.scrollX, top: window.scrollY };
+      });
+
+      document.addEventListener('astro:after-swap', () => {
+        if (!preservedScrollPosition) return;
+
+        const position = preservedScrollPosition;
+        preservedScrollPosition = null;
+        window.scrollTo({ ...position, behavior: 'instant' });
+      });
+    </script>
   </head>
   <body class="bg-[#eae1d2] text-accent">
     <noscript>You need to enable JavaScript to run this app.</noscript>
